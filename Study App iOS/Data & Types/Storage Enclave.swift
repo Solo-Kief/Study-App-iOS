@@ -14,12 +14,8 @@ import Foundation
 
 // To-Do list:
 //
-// Impliment Question lists locally.
-// Impliment Question sets locally. I.E. It's seperate sets of questions that one can select from
-// Impliment persistance for the questions and question lists.
 // Impliment data access and modifying operations.
 // Impliment application settings that will be determined at a later date.
-// Make all data sets and application settings locally persistant.
 // Bonus - Make a method for file based importation and exprotation for questions, question sets, themes, and settings.
 
 class StorageEnclave: NSObject, NSCoding {
@@ -88,8 +84,7 @@ class StorageEnclave: NSObject, NSCoding {
     }
     
     //MARK:- QuestionSet Modification Functions
-    
-    func setTitleOfQuestionSet(at index: Int, to newTitle: String) {
+    func changeTitleOfQuestionSet(at index: Int, to newTitle: String) {
         guard index < QuestionSets.count && index >= 0 else {
             return
         }
@@ -98,7 +93,7 @@ class StorageEnclave: NSObject, NSCoding {
         StorageEnclave.save()
     }
     
-    func setDescriptionOfQuestionSet(at index: Int, to newDescription: String?) {
+    func changeDescriptionOfQuestionSet(at index: Int, to newDescription: String?) {
         guard index < QuestionSets.count && index >= 0 else {
             return
         }
@@ -121,5 +116,9 @@ class StorageEnclave: NSObject, NSCoding {
     
     func changeQuestionCorrectAnswer(for question: Int, from questionSet: Int, to newCorrectAnswer: Int) {
         QuestionSets[questionSet].questions[question].correctAnswer = newCorrectAnswer
+    }
+    
+    func changeQuestionAnswer(for question: Int, from questionSet: Int, to newAnswer: String, at answer: Int) {
+        QuestionSets[questionSet].questions[question].answers[answer] = newAnswer
     }
 }
