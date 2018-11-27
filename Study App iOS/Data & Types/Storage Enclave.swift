@@ -55,7 +55,7 @@ class StorageEnclave: NSObject, NSCoding {
         UserDefaults.standard.set(storedData, forKey: "StorageEnclave")
     }
     
-    //MARK:- Set Return Functions
+    //MARK:- QuestionSet Return Functions
     func returnQuestionSet(at index: Int) -> QuestionSet? {
         guard index < QuestionSets.count && index >= 0 else {
             return nil
@@ -64,7 +64,7 @@ class StorageEnclave: NSObject, NSCoding {
         return QuestionSets[index]
     }
     
-    //MARK:- Set List Manipulation Functions
+    //MARK:- QuestionSet List Manipulation Functions
     func addQuestionSet(_ questionSet: QuestionSet) {
         QuestionSets.append(questionSet)
         StorageEnclave.save()
@@ -87,7 +87,7 @@ class StorageEnclave: NSObject, NSCoding {
         StorageEnclave.save()
     }
     
-    //MARK:- Set Modification Functions
+    //MARK:- QuestionSet Modification Functions
     
     func setTitleOfQuestionSet(at index: Int, to newTitle: String) {
         guard index < QuestionSets.count && index >= 0 else {
@@ -105,5 +105,21 @@ class StorageEnclave: NSObject, NSCoding {
         
         QuestionSets[index].details = newDescription
         StorageEnclave.save()
+    }
+    
+    func addQuestion(_ question: Question, to questionSet: Int) {
+        QuestionSets[questionSet].questions.append(question)
+    }
+    
+    func removeQuestion(at question: Int, from questionSet: Int) {
+        QuestionSets[questionSet].questions.remove(at: question)
+    }
+    
+    func changeQuestionText(for question: Int, from questionSet: Int, to newQuestion: String) {
+        QuestionSets[questionSet].questions[question].question = newQuestion
+    }
+    
+    func changeQuestionCorrectAnswer(for question: Int, from questionSet: Int, to newCorrectAnswer: Int) {
+        QuestionSets[questionSet].questions[question].correctAnswer = newCorrectAnswer
     }
 }
