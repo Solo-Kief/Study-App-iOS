@@ -67,6 +67,7 @@ class StorageEnclave: NSObject, NSCoding {
     //MARK:- Set List Manipulation Functions
     func addQuestionSet(_ questionSet: QuestionSet) {
         QuestionSets.append(questionSet)
+        StorageEnclave.save()
     }
     
     func removeQuestionSet(at index: Int) {
@@ -75,12 +76,15 @@ class StorageEnclave: NSObject, NSCoding {
         }
         
         QuestionSets.remove(at: index)
+        StorageEnclave.save()
     }
     
     func removeAllQuestionSets(ofStyle style: QuestionSet.Style) {
         QuestionSets.removeAll { (thisSet) -> Bool in
             return thisSet.style == style
         }
+        
+        StorageEnclave.save()
     }
     
     //MARK:- Set Modification Functions
@@ -91,6 +95,7 @@ class StorageEnclave: NSObject, NSCoding {
         }
         
         QuestionSets[index].title = newTitle
+        StorageEnclave.save()
     }
     
     func setDescriptionOfQuestionSet(at index: Int, to newDescription: String?) {
@@ -99,5 +104,6 @@ class StorageEnclave: NSObject, NSCoding {
         }
         
         QuestionSets[index].details = newDescription
+        StorageEnclave.save()
     }
 }
