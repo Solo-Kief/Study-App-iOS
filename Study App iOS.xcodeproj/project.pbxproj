@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C60AB8B321ADCC2B00E18CCE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60AB8B221ADCC2B00E18CCE /* ViewController.swift */; };
+		C60AB8B521ADCC3F00E18CCE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60AB8B421ADCC3F00E18CCE /* ViewController.swift */; };
 		C62F2B7C21A5021800C203EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62F2B7B21A5021800C203EE /* AppDelegate.swift */; };
 		C62F2B7E21A5021800C203EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62F2B7D21A5021800C203EE /* ViewController.swift */; };
 		C62F2B8621A5021900C203EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C62F2B8421A5021900C203EE /* LaunchScreen.storyboard */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C60AB8B221ADCC2B00E18CCE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C60AB8B421ADCC3F00E18CCE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C62F2B7821A5021800C203EE /* Study App iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Study App iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C62F2B7B21A5021800C203EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C62F2B7D21A5021800C203EE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +58,7 @@
 		C60AB8B121ADAF6100E18CCE /* Fill In The Blank */ = {
 			isa = PBXGroup;
 			children = (
+				C60AB8B221ADCC2B00E18CCE /* ViewController.swift */,
 			);
 			path = "Fill In The Blank";
 			sourceTree = "<group>";
@@ -102,6 +107,7 @@
 		C6E86FD421AA52A200E7A645 /* Flash Card */ = {
 			isa = PBXGroup;
 			children = (
+				C60AB8B421ADCC3F00E18CCE /* ViewController.swift */,
 			);
 			path = "Flash Card";
 			sourceTree = "<group>";
@@ -191,7 +197,9 @@
 				C62F2B7E21A5021800C203EE /* ViewController.swift in Sources */,
 				C6E86FD221AA51F100E7A645 /* QuestionSet.swift in Sources */,
 				C62F2B7C21A5021800C203EE /* AppDelegate.swift in Sources */,
+				C60AB8B321ADCC2B00E18CCE /* ViewController.swift in Sources */,
 				C6AA519421A502A500A29891 /* SettingsViewController.swift in Sources */,
+				C60AB8B521ADCC3F00E18CCE /* ViewController.swift in Sources */,
 				C6E86FD021AA4EA100E7A645 /* Storage Enclave.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,7 +339,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MA7ASKQ2T8;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Study App iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -350,7 +358,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MA7ASKQ2T8;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Study App iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
