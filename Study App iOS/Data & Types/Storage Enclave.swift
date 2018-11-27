@@ -25,7 +25,7 @@ import Foundation
 class StorageEnclave: NSObject, NSCoding {
     //MARK:- Core Values
     static let Access = StorageEnclave()
-    var QuestionSets: [QuestionSet]?
+    private var QuestionSets: [QuestionSet] = []
     
     //MARK:- Core Setup
     private override init() {
@@ -55,9 +55,49 @@ class StorageEnclave: NSObject, NSCoding {
         UserDefaults.standard.set(storedData, forKey: "StorageEnclave")
     }
     
-    //MARK:- Value Functions
-    
-    func returnQuestionSet(at index: Question) {
+    //MARK:- Set Return Functions
+    func returnQuestionSet(at index: Int) -> QuestionSet? {
+        guard index < QuestionSets.count && index >= 0 else {
+            return nil
+        }
         
+        return QuestionSets[index]
+    }
+    
+    //MARK:- Set List Manipulation Functions
+    func addQuestionSet(_ questionSet: QuestionSet) {
+        QuestionSets.append(questionSet)
+    }
+    
+    func removeQuestionSet(at index: Int) {
+        guard index < QuestionSets.count && index >= 0 else {
+            return
+        }
+        
+        QuestionSets.remove(at: index)
+    }
+    
+    func removeAllQuestionSets(ofStyle style: QuestionSet.Style) {
+        QuestionSets.removeAll { (thisSet) -> Bool in
+            return thisSet.style == style
+        }
+    }
+    
+    //MARK:- Set Modification Functions
+    
+    func setTitleOfQuestionSet(at index: Int, to newTitle: String) {
+        guard index < QuestionSets.count && index >= 0 else {
+            return
+        }
+        
+        QuestionSets[index].title = newTitle
+    }
+    
+    func setDescriptionOfQuestionSet(at index: Int, to newDescription: String?) {
+        guard index < QuestionSets.count && index >= 0 else {
+            return
+        }
+        
+        QuestionSets[index].details = newDescription
     }
 }
