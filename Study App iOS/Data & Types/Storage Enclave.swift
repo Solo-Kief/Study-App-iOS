@@ -46,11 +46,11 @@ class StorageEnclave: NSObject, NSCoding {
         self.init(QuestionSets: QuestionSets)
     }
     
-    func encode(with aCoder: NSCoder) {
+    internal func encode(with aCoder: NSCoder) {
         aCoder.encode(self.QuestionSets, forKey: "QuestionSets")
     }
     
-    static func save() {
+    private static func save() {
         let storedData = NSKeyedArchiver.archivedData(withRootObject: Access)
         UserDefaults.standard.set(storedData, forKey: "StorageEnclave")
     }
