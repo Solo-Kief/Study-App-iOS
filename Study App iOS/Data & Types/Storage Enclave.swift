@@ -55,5 +55,9 @@ class StorageEnclave: NSObject, NSCoding {
         UserDefaults.standard.set(storedData, forKey: "StorageEnclave")
     }
     
-    //MARK:- I'll put a name here later.
+    //MARK:- Value Functions
+    
+    func returnQuestionSet(at index: Question) {
+        
+    }
 }
