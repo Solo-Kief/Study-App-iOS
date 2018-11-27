@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C62F2B7C21A5021800C203EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62F2B7B21A5021800C203EE /* AppDelegate.swift */; };
-		C62F2B7E21A5021800C203EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62F2B7D21A5021800C203EE /* ViewController.swift */; };
+		C62F2B7E21A5021800C203EE /* multipleChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62F2B7D21A5021800C203EE /* multipleChoiceViewController.swift */; };
 		C62F2B8621A5021900C203EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C62F2B8421A5021900C203EE /* LaunchScreen.storyboard */; };
 		C6AA519121A5026D00A29891 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6AA519021A5026D00A29891 /* Main.storyboard */; };
 		C6AA519421A502A500A29891 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA519221A502A400A29891 /* SettingsViewController.swift */; };
@@ -21,7 +21,7 @@
 /* Begin PBXFileReference section */
 		C62F2B7821A5021800C203EE /* Study App iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Study App iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C62F2B7B21A5021800C203EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C62F2B7D21A5021800C203EE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C62F2B7D21A5021800C203EE /* multipleChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = multipleChoiceViewController.swift; sourceTree = "<group>"; };
 		C62F2B8521A5021900C203EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C62F2B8721A5021900C203EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6AA519021A5026D00A29891 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -46,7 +46,7 @@
 		C60AB8B021ADAC2B00E18CCE /* Multiple Choice */ = {
 			isa = PBXGroup;
 			children = (
-				C62F2B7D21A5021800C203EE /* ViewController.swift */,
+				C62F2B7D21A5021800C203EE /* multipleChoiceViewController.swift */,
 			);
 			path = "Multiple Choice";
 			sourceTree = "<group>";
@@ -188,7 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6AA519721A502AB00A29891 /* Question.swift in Sources */,
-				C62F2B7E21A5021800C203EE /* ViewController.swift in Sources */,
+				C62F2B7E21A5021800C203EE /* multipleChoiceViewController.swift in Sources */,
 				C6E86FD221AA51F100E7A645 /* QuestionSet.swift in Sources */,
 				C62F2B7C21A5021800C203EE /* AppDelegate.swift in Sources */,
 				C6AA519421A502A500A29891 /* SettingsViewController.swift in Sources */,
