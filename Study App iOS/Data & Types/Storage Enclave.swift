@@ -16,7 +16,7 @@ import Foundation
 //
 // Impliment data access and modifying operations.
 // Impliment application settings that will be determined at a later date.
-// Bonus - Make a method for file based importation and exprotation for questions, question sets, themes, and settings.
+// Bonus - Make a method for file based importation and exprotation for questions, question sets, themes, and settings..
 
 class StorageEnclave: NSObject, NSCoding {
     //MARK:- Core Values
