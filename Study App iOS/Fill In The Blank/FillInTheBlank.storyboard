@@ -47,6 +47,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Esf-yQ-OYH"/>
                     </view>
+                    <connections>
+                        <outlet property="answerTextField" destination="QNf-Np-w1n" id="gs7-UI-cWM"/>
+                        <outlet property="statementLabel" destination="kzx-HB-DN8" id="esk-oE-9MD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fzr-PF-WvK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

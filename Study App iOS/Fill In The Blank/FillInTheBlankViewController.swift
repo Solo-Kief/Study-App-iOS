@@ -9,7 +9,11 @@
 import UIKit
 
 class FillInTheBlankViewController: UIViewController {
-
+    
+    @IBOutlet weak var statementLabel: UILabel!
+    @IBOutlet weak var answerTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
