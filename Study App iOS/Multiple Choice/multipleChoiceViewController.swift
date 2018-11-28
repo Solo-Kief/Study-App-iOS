@@ -25,7 +25,7 @@ class multipleChoiceViewController: UIViewController {
         defaultColor = answer1.backgroundColor!
         
         
-        multipleChoiceViewController.questions = loadedQuestions
+        multipleChoiceViewController.questions = loadQuestion
         
         if multipleChoiceViewController.questions.count == 0 { //temporary for testing.
             buildDefaultQuestions()
@@ -56,15 +56,55 @@ class multipleChoiceViewController: UIViewController {
         time.fireDate = Date().addingTimeInterval(0.35)
     }
     
-    func buildDefaultQuestions() { //temporary function for testing.
-        multipleChoiceViewController.questions.append(Question(Question: "How many buttons are on an iPhone X?", Answers: ["One", "Two", "Three", "Four"], CorrectAnswer: 3))
-        multipleChoiceViewController.questions.append(Question(Question: "But what of the poor gator?", Answers: ["Forever More", "Forever Blank", "Forever Great", "Fourever Pun"], CorrectAnswer: 2))
-        multipleChoiceViewController.questions.append(Question(Question: "Babe Ruth is assosiated with which sport?", Answers: ["Football", "Basketball", "Baseball", "Soccer"], CorrectAnswer: 3))
-        multipleChoiceViewController.questions.append(Question(Question: "What's the total number of dots on a pair of dice?", Answers: ["36", "32", "12", "42"], CorrectAnswer: 4))
-        multipleChoiceViewController.questions.append(Question(Question: "What planet is the closest to earth?", Answers: ["Venus", "Pluto", "Mars", "Neptune"], CorrectAnswer: 1))
-        multipleChoiceViewController.questions.append(Question(Question: "What is the tallest Mammal?", Answers: ["Elephant", "Human", "Giraffe", "Kangaroo"], CorrectAnswer: 3))
-        multipleChoiceViewController.questions.append(Question(Question: "How many strings does a violin have?", Answers: ["Three", "Four", "Five", "Six"], CorrectAnswer: 2))
-        multipleChoiceViewController.questions.append(Question(Question: "What is the chemical symbol for hydrogen?", Answers: ["Hy", "Hn", "HyGn", "H"], CorrectAnswer: 4))
+   
+    class QuestionModel {
+        var questions: Array<Question>
+        
+        init () {
+            questions = []
+            questions.append(Question(question: "What year did WWII start?", answers:["1939", "1940", "1941", "1942"], correctAnswerIndex: 0))
+            questions.append(Question(question: "What day was D-Day?", answers:["June 6, 1944", "June 16, 1944", "June 26, 1944", "June 16, 1943"], correctAnswerIndex: 0))
+            questions.append(Question(question: "What country was first invaded by Germany?", answers:["France", "Belgium", "Poland", "Russia"], correctAnswerIndex: 2))
+            questions.append(Question(question:"Which article of the Weimar Constitution granted Hitler emergency powers essentially allowing him to avoid parliament? ", answers:["Article 26", "Article 86", "Article 3", "Article 48"], correctAnswerIndex: 3))
+            questions.append(Question(question:"Who was the leader of the Soviet Union during World War II?", answers:["Lenin", "Trotsky", "Stalin",  "Khruschev"], correctAnswerIndex: 2))
+            questions.append(Question(question:"The main Axis powers of WWII Consisted of: Germany, _____, _____", answers:["Italy, Japan", "Russia, Japan", "Romania, Russia", "Japan, Romania"], correctAnswerIndex: 0))
+        }
+    }
+    
+    class Question {
+        var question: String
+        var answers: Array<String>
+        var correctAnswerIndex: Int
+        
+        init(question: String,answers:Array<String>,correctAnswerIndex: Int) {
+            self.question = question
+            self.answers = answers
+            self.correctAnswerIndex = correctAnswerIndex
+        }
+        
+        func isGuessCorrect(guessNumber: Int) -> Bool {
+            return correctAnswerIndex == Int(guessNumber-1)
+        }
+        
+        var description:String {
+            var str = "Multiple Choice = \(self.question)"
+            for answer in answers {
+                str += " " + answer
+            }
+            return str + " \(self.correctAnswerIndex)"
+        }
+    }
+    
+    var questionModel = QuestionModel()
+    
+    func randomQuestion(queModel:QuestionModel){
+        var questions = questionModel.questions
+        var randomIndex = Int(arc4random_uniform(UInt32(questions.count)))
+        print(questions[randomIndex].description)
+    }
+    
+    for _ in 1...5 {
+    randomQuestion(queModel: questionModel)
     }
     
     @IBAction func checkAnswer(_ sender: UIButton) {
