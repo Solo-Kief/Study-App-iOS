@@ -24,12 +24,7 @@ class multipleChoiceViewController: UIViewController {
         super.viewDidLoad()
         defaultColor = answer1.backgroundColor!
         
-        guard let loadedQuestions = Question.loadArray() else {
-            buildDefaultQuestions()
-            Question.saveArray(questions: multipleChoiceViewController.questions)
-            loadQuestion()
-            return
-        }
+        
         multipleChoiceViewController.questions = loadedQuestions
         
         if multipleChoiceViewController.questions.count == 0 { //temporary for testing.
