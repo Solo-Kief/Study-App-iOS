@@ -7,15 +7,8 @@
 import Foundation
 import UIKit
 
-// The following is the purpose and goals of this file.
-//
-// Purpose: This file intends to handle non-specific application data. It will perform all data operations,
-// provide data to the modules that request it, provide a singleton of data avaliable app wide, and be
-// self persistant.
-
 // To-Do list:
 //
-// Impliment data access and modifying operations.
 // Impliment application settings that will be determined at a later date.
 // Bonus - Make a method for file based importation and exprotation for questions, question sets, themes, and settings..
 
