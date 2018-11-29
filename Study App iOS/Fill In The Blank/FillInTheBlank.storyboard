@@ -19,27 +19,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Statement" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzx-HB-DN8">
-                                <rect key="frame" x="131.66666666666666" y="169" width="111.66666666666666" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <rect key="frame" x="154" y="169" width="67" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QNf-Np-w1n">
-                                <rect key="frame" x="16" y="358" width="343" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Answer Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QNf-Np-w1n">
+                                <rect key="frame" x="16" y="345" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOc-kH-DTm">
-                                <rect key="frame" x="154.66666666666666" y="324" width="66" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNq-2W-CA5">
-                                <rect key="frame" x="156.66666666666666" y="398" width="62" height="36"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNq-2W-CA5">
+                                <rect key="frame" x="50" y="385" width="275" height="45"/>
                                 <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="ANF-mh-mm7"/>
+                                    <constraint firstAttribute="width" constant="275" id="LIF-Ig-jDq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Submit">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -52,10 +50,7 @@
                         <constraints>
                             <constraint firstItem="kzx-HB-DN8" firstAttribute="centerX" secondItem="Esf-yQ-OYH" secondAttribute="centerX" id="1hl-jE-Et8"/>
                             <constraint firstItem="kzx-HB-DN8" firstAttribute="top" secondItem="Esf-yQ-OYH" secondAttribute="top" constant="125" id="3yU-Dw-qcn"/>
-                            <constraint firstItem="QNf-Np-w1n" firstAttribute="top" secondItem="gOc-kH-DTm" secondAttribute="bottom" constant="10" id="B7X-Ma-yQY"/>
                             <constraint firstItem="QNq-2W-CA5" firstAttribute="centerX" secondItem="Esf-yQ-OYH" secondAttribute="centerX" id="Ch1-JB-CET"/>
-                            <constraint firstItem="gOc-kH-DTm" firstAttribute="centerX" secondItem="Esf-yQ-OYH" secondAttribute="centerX" id="GyE-Ta-PJA"/>
-                            <constraint firstItem="gOc-kH-DTm" firstAttribute="top" secondItem="kzx-HB-DN8" secondAttribute="bottom" constant="125" id="PER-3l-m2o"/>
                             <constraint firstItem="QNq-2W-CA5" firstAttribute="top" secondItem="QNf-Np-w1n" secondAttribute="bottom" constant="10" id="r3X-r8-sW8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Esf-yQ-OYH"/>
