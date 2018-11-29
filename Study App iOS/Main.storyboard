@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Multiple Choice View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Study_App_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="multipleChoiceViewController" customModule="Study_App_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -95,15 +95,6 @@
                                     <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nhN-8I-8nW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nn1-NV-dkT">
-                                <rect key="frame" x="302" y="44" width="57" height="30"/>
-                                <state key="normal" title="Settings">
-                                    <color key="titleColor" red="0.93678659200000003" green="0.55373817680000004" blue="0.2037730515" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                                <connections>
-                                    <segue destination="KTF-bo-hGQ" kind="presentation" modalTransitionStyle="flipHorizontal" id="HvK-1B-BCn"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5S-q9-M4t">
                                 <rect key="frame" x="5" y="89" width="365" height="64"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -122,17 +113,15 @@
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nn1-NV-dkT" secondAttribute="trailing" constant="16" id="98Z-OZ-G28"/>
                             <constraint firstItem="dmS-Ye-ZdN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BAp-M8-08j"/>
                             <constraint firstItem="00n-Jb-baS" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="FDN-vc-H5Z"/>
                             <constraint firstItem="Zle-1J-HLd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ITp-OI-AO6"/>
                             <constraint firstItem="X5S-q9-M4t" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LlY-At-JEu"/>
+                            <constraint firstItem="X5S-q9-M4t" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="45" id="O98-8L-UiO"/>
                             <constraint firstItem="Zle-1J-HLd" firstAttribute="top" secondItem="dmS-Ye-ZdN" secondAttribute="bottom" constant="50" id="P3l-uf-PpL"/>
                             <constraint firstItem="00n-Jb-baS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WhR-c8-MBc"/>
-                            <constraint firstItem="nn1-NV-dkT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Yfc-X8-igt"/>
                             <constraint firstItem="fkX-Eg-CPl" firstAttribute="top" secondItem="Zle-1J-HLd" secondAttribute="bottom" constant="50" id="j1b-c3-CFl"/>
                             <constraint firstItem="fkX-Eg-CPl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kb6-SI-xlS"/>
-                            <constraint firstItem="X5S-q9-M4t" firstAttribute="top" secondItem="nn1-NV-dkT" secondAttribute="bottom" constant="15" id="lko-Ge-cIB"/>
                             <constraint firstItem="dmS-Ye-ZdN" firstAttribute="top" secondItem="00n-Jb-baS" secondAttribute="bottom" constant="50" id="xEf-jT-2ro"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -159,27 +148,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EZx-0S-JUa">
-                                <rect key="frame" x="251" y="515" width="32" height="30"/>
+                                <rect key="frame" x="236" y="450" width="32" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next">
                                     <color key="titleColor" red="1" green="0.63289841629999999" blue="0.099396445459999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYv-1Y-WO9">
-                                <rect key="frame" x="98" y="515" width="30" height="30"/>
+                                <rect key="frame" x="93" y="451" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Flip">
                                     <color key="titleColor" red="1" green="0.63289841629999999" blue="0.099396445459999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Blank-FlashCard" translatesAutoresizingMaskIntoConstraints="NO" id="llB-47-V7B">
+                                <rect key="frame" x="67" y="230" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Question/Answer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVb-7n-dn8">
+                                <rect key="frame" x="122" y="284" width="131" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="bfZ-JZ-hiA"/>
                     </view>
+                    <connections>
+                        <outlet property="flashCardImage" destination="llB-47-V7B" id="SO0-mm-K5g"/>
+                        <outlet property="flipButton" destination="eYv-1Y-WO9" id="gsL-Ub-ea3"/>
+                        <outlet property="nextButton" destination="EZx-0S-JUa" id="YiX-ts-MLt"/>
+                        <outlet property="questionAnswerLabel" destination="oVb-7n-dn8" id="qaR-Dg-dHe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y18-Ow-C9A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="169" y="923"/>
+            <point key="canvasLocation" x="137" y="923"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="x0A-M7-vbM">
@@ -379,4 +385,7 @@
             <point key="canvasLocation" x="1109.5999999999999" y="132.26600985221674"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Blank-FlashCard" width="438" height="315"/>
+    </resources>
 </document>

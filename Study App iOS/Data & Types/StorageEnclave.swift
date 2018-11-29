@@ -7,15 +7,8 @@
 import Foundation
 import UIKit
 
-// The following is the purpose and goals of this file.
-//
-// Purpose: This file intends to handle non-specific application data. It will perform all data operations,
-// provide data to the modules that request it, provide a singleton of data avaliable app wide, and be
-// self persistant.
-
 // To-Do list:
 //
-// Impliment data access and modifying operations.
 // Impliment application settings that will be determined at a later date.
 // Bonus - Make a method for file based importation and exprotation for questions, question sets, themes, and settings..
 
@@ -76,6 +69,34 @@ class StorageEnclave: NSObject, NSCoding {
         }
         
         return QuestionSets[index]
+    }
+    
+    func getQuestionSetCount() -> Int {
+        return QuestionSets.count
+    }
+    
+    func getQuestionSetCount(ofStyle style: QuestionSet.Style) -> Int {
+        var count = 0
+        
+        for set in QuestionSets {
+            if set.style == style {
+                count += 1
+            }
+        }
+        
+        return count
+    }
+    
+    func getQuestionSetIndices(ofStyle style: QuestionSet.Style) -> [Int] {
+        var indicies: [Int] = []
+        
+        for (i, set) in QuestionSets.enumerated() {
+            if set.style == style {
+                indicies.append(i)
+            }
+        }
+        
+        return indicies
     }
     
     //MARK:- QuestionSet List Manipulation Functions
