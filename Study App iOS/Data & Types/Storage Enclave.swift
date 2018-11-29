@@ -5,6 +5,7 @@
 //  Copyright © 2018 Phoenix Development. All rights reserved.
 
 import Foundation
+import UIKit
 
 // The following is the purpose and goals of this file.
 //
@@ -16,12 +17,17 @@ import Foundation
 //
 // Impliment data access and modifying operations.
 // Impliment application settings that will be determined at a later date.
-// Bonus - Make a method for file based importation and exprotation for questions, question sets, themes, and settings.
+// Bonus - Make a method for file based importation and exprotation for questions, question sets, themes, and settings..
 
 class StorageEnclave: NSObject, NSCoding {
     //MARK:- Core Values
     static let Access = StorageEnclave()
     private var QuestionSets: [QuestionSet] = []
+    
+    //MARK:- Settings Values
+    private var PrimaryColor = UIColor.darkGray
+    private var SecondaryColor = UIColor(red: 255, green: 143, blue: 54, alpha: 1)
+    private var TextColor = UIColor.white
     
     //MARK:- Core Setup
     private override init() {
@@ -29,21 +35,33 @@ class StorageEnclave: NSObject, NSCoding {
             let enclave = NSKeyedUnarchiver.unarchiveObject(with: storedData as! Data) as! StorageEnclave
             
             QuestionSets = enclave.QuestionSets
+            PrimaryColor = enclave.PrimaryColor
+            SecondaryColor = enclave.SecondaryColor
+            TextColor = enclave.TextColor
         }
     }
     
-    private init(QuestionSets: [QuestionSet]) {
+    private init(QuestionSets: [QuestionSet], PrimaryColor: UIColor, SecondaryColor: UIColor, TextColor: UIColor) {
         self.QuestionSets = QuestionSets
+        self.PrimaryColor = PrimaryColor
+        self.SecondaryColor = SecondaryColor
+        self.TextColor = TextColor
     }
     
     internal required convenience init?(coder aDecoder: NSCoder) {
         let QuestionSets = aDecoder.decodeObject(forKey: "QuestionSets") as! [QuestionSet]
+        let PrimaryColor = aDecoder.decodeObject(forKey: "PrimaryColor") as! UIColor
+        let SecondaryColor = aDecoder.decodeObject(forKey: "SecondaryColor") as! UIColor
+        let TextColor = aDecoder.decodeObject(forKey: "TextColor") as! UIColor
         
-        self.init(QuestionSets: QuestionSets)
+        self.init(QuestionSets: QuestionSets, PrimaryColor: PrimaryColor, SecondaryColor: SecondaryColor, TextColor: TextColor)
     }
     
     internal func encode(with aCoder: NSCoder) {
         aCoder.encode(self.QuestionSets, forKey: "QuestionSets")
+        aCoder.encode(self.PrimaryColor, forKey: "PrimaryColor")
+        aCoder.encode(self.SecondaryColor, forKey: "SecondaryColor")
+        aCoder.encode(self.TextColor, forKey: "TextColor")
     }
     
     private static func save() {
@@ -52,7 +70,7 @@ class StorageEnclave: NSObject, NSCoding {
     }
     
     //MARK:- QuestionSet Return Functions
-    func returnQuestionSet(at index: Int) -> QuestionSet? {
+    func getQuestionSet(at index: Int) -> QuestionSet? {
         guard index < QuestionSets.count && index >= 0 else {
             return nil
         }
@@ -104,21 +122,54 @@ class StorageEnclave: NSObject, NSCoding {
     
     func addQuestion(_ question: Question, to questionSet: Int) {
         QuestionSets[questionSet].questions.append(question)
+        StorageEnclave.save()
     }
     
     func removeQuestion(at question: Int, from questionSet: Int) {
         QuestionSets[questionSet].questions.remove(at: question)
+        StorageEnclave.save()
     }
     
     func changeQuestionText(for question: Int, from questionSet: Int, to newQuestion: String) {
         QuestionSets[questionSet].questions[question].question = newQuestion
+        StorageEnclave.save()
     }
     
     func changeQuestionCorrectAnswer(for question: Int, from questionSet: Int, to newCorrectAnswer: Int) {
         QuestionSets[questionSet].questions[question].correctAnswer = newCorrectAnswer
+        StorageEnclave.save()
     }
     
     func changeQuestionAnswer(for question: Int, from questionSet: Int, to newAnswer: String, at answer: Int) {
         QuestionSets[questionSet].questions[question].answers[answer] = newAnswer
+        StorageEnclave.save()
+    }
+    
+    //MARK:- User Settings
+    func setNewPrimaryColor(_ newColor: UIColor) {
+        self.PrimaryColor = newColor
+        StorageEnclave.save()
+    }
+    
+    func setNewSecondaryColor(_ newColor: UIColor) {
+        self.SecondaryColor = newColor
+        StorageEnclave.save()
+    }
+    
+    func setNewTextColor(_ newColor: UIColor) {
+        self.TextColor = newColor
+        StorageEnclave.save()
+    }
+    
+    func getCurrentPrimaryColor() -> UIColor {
+        return PrimaryColor
+    }
+    
+    func getCurrentSecondaryColor() -> UIColor {
+        return SecondaryColor
+    }
+    
+    func getCurrentTextColor() -> UIColor {
+        return TextColor
     }
 }

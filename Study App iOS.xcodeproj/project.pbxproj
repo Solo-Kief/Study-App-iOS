@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		209A62DC21ADDABF007C3A6D /* FlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209A62DB21ADDABF007C3A6D /* FlashCardViewController.swift */; };
 		C62F2B7C21A5021800C203EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62F2B7B21A5021800C203EE /* AppDelegate.swift */; };
 		C62F2B7E21A5021800C203EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62F2B7D21A5021800C203EE /* ViewController.swift */; };
 		C62F2B8621A5021900C203EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C62F2B8421A5021900C203EE /* LaunchScreen.storyboard */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		209A62DB21ADDABF007C3A6D /* FlashCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlashCardViewController.swift; path = "Study App iOS/FlashCardViewController.swift"; sourceTree = SOURCE_ROOT; };
 		C62F2B7821A5021800C203EE /* Study App iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Study App iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C62F2B7B21A5021800C203EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C62F2B7D21A5021800C203EE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		C6E86FD421AA52A200E7A645 /* Flash Card */ = {
 			isa = PBXGroup;
 			children = (
+				209A62DB21ADDABF007C3A6D /* FlashCardViewController.swift */,
 			);
 			path = "Flash Card";
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6AA519721A502AB00A29891 /* Question.swift in Sources */,
+				209A62DC21ADDABF007C3A6D /* FlashCardViewController.swift in Sources */,
 				C62F2B7E21A5021800C203EE /* ViewController.swift in Sources */,
 				C6E86FD221AA51F100E7A645 /* QuestionSet.swift in Sources */,
 				C62F2B7C21A5021800C203EE /* AppDelegate.swift in Sources */,
