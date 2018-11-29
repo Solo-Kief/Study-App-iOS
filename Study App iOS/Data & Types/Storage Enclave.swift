@@ -78,6 +78,34 @@ class StorageEnclave: NSObject, NSCoding {
         return QuestionSets[index]
     }
     
+    func getQuestionSetCount() -> Int {
+        return QuestionSets.count
+    }
+    
+    func getQuestionSetCount(ofStyle style: QuestionSet.Style) -> Int {
+        var count = 0
+        
+        for set in QuestionSets {
+            if set.style == style {
+                count += 1
+            }
+        }
+        
+        return count
+    }
+    
+    func getQuestionSetIndices(ofStyle style: QuestionSet.Style) -> [Int] {
+        var indicies: [Int] = []
+        
+        for (i, set) in QuestionSets.enumerated() {
+            if set.style == style {
+                indicies.append(i)
+            }
+        }
+        
+        return indicies
+    }
+    
     //MARK:- QuestionSet List Manipulation Functions
     func addQuestionSet(_ questionSet: QuestionSet) {
         QuestionSets.append(questionSet)
