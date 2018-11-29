@@ -88,12 +88,19 @@ class FillInTheBlankViewController: UIViewController {
         //Present the alert controller
         self.present(incorrectAlert, animated: true, completion: nil)
     }
-
+    
     @IBAction func submitButtonTapped(_ sender: Any) {
-        if answerTextField.text! == currentFillInTheBlankQuestion.answers[0].lowercased() {
+        if answerTextField.text! == "" {
+            answerTextField.placeholder = "Please enter an answer"
+            return
+        } else if answerTextField.text!.lowercased() == currentFillInTheBlankQuestion.answers[0].lowercased() {
             showCorrectAnswerAlert()
+            answerTextField.text! = ""
+            answerTextField.placeholder = ""
         } else {
             showIncorrectAnswerAlert()
+            answerTextField.text! = ""
+            answerTextField.placeholder = ""
         }
     }
     
@@ -108,8 +115,4 @@ class FillInTheBlankViewController: UIViewController {
     }
     */
 }
-
-
-
-//FIX FILL IN THE BLANK LINE
 
