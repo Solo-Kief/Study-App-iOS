@@ -90,7 +90,7 @@ class FillInTheBlankViewController: UIViewController {
     }
 
     @IBAction func submitButtonTapped(_ sender: Any) {
-        if answerTextField.text!.lowercased() == currentFillInTheBlankQuestion.answers[0] {
+        if answerTextField.text! == currentFillInTheBlankQuestion.answers[0].lowercased() {
             showCorrectAnswerAlert()
         } else {
             showIncorrectAnswerAlert()

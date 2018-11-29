@@ -19,19 +19,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzx-HB-DN8">
-                                <rect key="frame" x="158.66666666666666" y="169" width="58" height="17"/>
+                                <rect key="frame" x="50" y="169" width="275" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="275" id="EAF-ZW-G1S"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Answer Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QNf-Np-w1n">
-                                <rect key="frame" x="16" y="345" width="343" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Answer Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QNf-Np-w1n">
+                                <rect key="frame" x="50" y="386" width="275" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="275" id="pNr-nQ-AMh"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNq-2W-CA5">
-                                <rect key="frame" x="50" y="385" width="275" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNq-2W-CA5">
+                                <rect key="frame" x="50" y="426" width="275" height="45"/>
                                 <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="ANF-mh-mm7"/>
@@ -51,7 +57,9 @@
                             <constraint firstItem="kzx-HB-DN8" firstAttribute="centerX" secondItem="Esf-yQ-OYH" secondAttribute="centerX" id="1hl-jE-Et8"/>
                             <constraint firstItem="kzx-HB-DN8" firstAttribute="top" secondItem="Esf-yQ-OYH" secondAttribute="top" constant="125" id="3yU-Dw-qcn"/>
                             <constraint firstItem="QNq-2W-CA5" firstAttribute="centerX" secondItem="Esf-yQ-OYH" secondAttribute="centerX" id="Ch1-JB-CET"/>
+                            <constraint firstItem="QNf-Np-w1n" firstAttribute="top" secondItem="kzx-HB-DN8" secondAttribute="bottom" constant="200" id="q27-fZ-mET"/>
                             <constraint firstItem="QNq-2W-CA5" firstAttribute="top" secondItem="QNf-Np-w1n" secondAttribute="bottom" constant="10" id="r3X-r8-sW8"/>
+                            <constraint firstItem="QNf-Np-w1n" firstAttribute="centerX" secondItem="Esf-yQ-OYH" secondAttribute="centerX" id="sf5-3B-RZj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Esf-yQ-OYH"/>
                     </view>
