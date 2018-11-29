@@ -10,7 +10,8 @@ import UIKit
 
 class FillInTheBlankViewController: UIViewController {
     
-    @IBOutlet weak var statementLabel: UILabel!
+
+    @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var answerTextField: UITextField!
     
     var dummyFillInTheBlankQuestionSet: QuestionSet!
@@ -19,7 +20,7 @@ class FillInTheBlankViewController: UIViewController {
     var currentFillInTheBlankQuestion: Question! {
         didSet {
             //Whenever a new currentFillInTheBlankQuestion is set, update the UI for that new question
-            statementLabel.text = currentFillInTheBlankQuestion.question
+            questionLabel.text = currentFillInTheBlankQuestion.question
         }
     }
     
