@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class multipleChoiceViewController: UIViewController {
     @IBOutlet var questionField: UITextView!
     @IBOutlet var questionFieldHeight: NSLayoutConstraint!
     @IBOutlet var answer1: UIButton!
@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet var answer4: UIButton!
     
     
-    static var questions: [Question] = []
+    var questions: QuestionSet = QuestionSet(Title: "Temp", Style: .MultipleChoice)
     var correctAnswer = 0
     var defaultColor = UIColor()
     var lastQuestion = -1
@@ -24,34 +24,36 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         defaultColor = answer1.backgroundColor!
         
-        guard let loadedQuestions = Question.loadArray() else {
-            buildDefaultQuestions()
-            Question.saveArray(questions: ViewController.questions)
-            loadQuestion()
-            return
-        }
-        ViewController.questions = loadedQuestions
-        
-        if ViewController.questions.count == 0 { //temporary for testing.
-            buildDefaultQuestions()
-        }
-        
+        questions = buildDefaultQuestions()
+
         loadQuestion()
+    }
+    
+    func buildDefaultQuestions() -> QuestionSet {
+        let question1 = Question(Question: "What is Dr Suess's real name?", Answers: ["Andrew Butterson", "Suess Stephenson", "Micheal Gene Scott", "Theodor Seuss Geisel"], CorrectAnswer: 3)
+        let question2 = Question(Question: "What year did heavy metal legend Lemmy Kilmister die?", Answers: ["1997", "2012", "2015", "2008"], CorrectAnswer: 2)
+        let question3 = Question(Question: "In Norse Mythology who is the god of light, joy, purity, beauty, innocence, and reconciliation?", Answers: ["Odin", "Balder", "Frigg", "Tyr"], CorrectAnswer: 1)
+        let question4 = Question(Question: "Famous gothic author Edgar Allen Poe wrote which short story?", Answers: ["Call of Cathulu", "Reign in Blood", "Tomorrow is Today", "Tell Tale Heart"], CorrectAnswer: 3)
+        let question5 = Question(Question: "Which is a real law in the state of Oklahoma?", Answers: ["No bear wrestling", "No eating rice past 9:00 p.m.", "Can't wear red shoes in the month of January", "It is illegal to practice Vodoo within 5 miles of a school or place of business"], CorrectAnswer: 0)
+        
+        let questionSet = QuestionSet(Title: "Default Questions", Details: nil, Questions: [question1, question2, question3, question4, question5], Style: .MultipleChoice)
+        
+        return questionSet
     }
 
     func loadQuestion() {
-        var selector = Int.random(in: 0..<ViewController.questions.count)
-        while lastQuestion == selector && ViewController.questions.count != 1 {
-            selector = Int.random(in: 0..<ViewController.questions.count)
+        var selector = Int.random(in: 0..<questions.questions.count)
+        while lastQuestion == selector && questions.questions.count != 1 {
+            selector = Int.random(in: 0..<questions.questions.count)
         } //Prevents a question from repeating back-to-back.
         lastQuestion = selector
         
-        questionField.text = ViewController.questions[selector].question
-        answer1.setTitle(ViewController.questions[selector].answers[0], for: .normal)
-        answer2.setTitle(ViewController.questions[selector].answers[1], for: .normal)
-        answer3.setTitle(ViewController.questions[selector].answers[2], for: .normal)
-        answer4.setTitle(ViewController.questions[selector].answers[3], for: .normal)
-        correctAnswer = ViewController.questions[selector].correctAnswer
+        questionField.text = questions.questions[selector].question
+        answer1.setTitle(questions.questions[selector].answers[0], for: .normal)
+        answer2.setTitle(questions.questions[selector].answers[1], for: .normal)
+        answer3.setTitle(questions.questions[selector].answers[2], for: .normal)
+        answer4.setTitle(questions.questions[selector].answers[3], for: .normal)
+        correctAnswer = questions.questions[selector].correctAnswer
         
         UIView.animate(withDuration: 0.25, animations: {
             self.questionField.backgroundColor = UIColor.clear
@@ -59,17 +61,6 @@ class ViewController: UIViewController {
         })
         let time = Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(updateTextViewConstraint), userInfo: nil, repeats: false)
         time.fireDate = Date().addingTimeInterval(0.35)
-    }
-    
-    func buildDefaultQuestions() { //temporary function for testing.
-        ViewController.questions.append(Question(Question: "How many buttons are on an iPhone X?", Answers: ["One", "Two", "Three", "Four"], CorrectAnswer: 3))
-        ViewController.questions.append(Question(Question: "But what of the poor gator?", Answers: ["Forever More", "Forever Blank", "Forever Great", "Fourever Pun"], CorrectAnswer: 2))
-        ViewController.questions.append(Question(Question: "Babe Ruth is assosiated with which sport?", Answers: ["Football", "Basketball", "Baseball", "Soccer"], CorrectAnswer: 3))
-        ViewController.questions.append(Question(Question: "What's the total number of dots on a pair of dice?", Answers: ["36", "32", "12", "42"], CorrectAnswer: 4))
-        ViewController.questions.append(Question(Question: "What planet is the closest to earth?", Answers: ["Venus", "Pluto", "Mars", "Neptune"], CorrectAnswer: 1))
-        ViewController.questions.append(Question(Question: "What is the tallest Mammal?", Answers: ["Elephant", "Human", "Giraffe", "Kangaroo"], CorrectAnswer: 3))
-        ViewController.questions.append(Question(Question: "How many strings does a violin have?", Answers: ["Three", "Four", "Five", "Six"], CorrectAnswer: 2))
-        ViewController.questions.append(Question(Question: "What is the chemical symbol for hydrogen?", Answers: ["Hy", "Hn", "HyGn", "H"], CorrectAnswer: 4))
     }
     
     @IBAction func checkAnswer(_ sender: UIButton) {
