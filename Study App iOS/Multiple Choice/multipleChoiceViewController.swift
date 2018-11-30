@@ -34,7 +34,7 @@ class multipleChoiceViewController: UIViewController {
         let question2 = Question(Question: "What year did heavy metal legend Lemmy Kilmister die?", Answers: ["1997", "2012", "2015", "2008"], CorrectAnswer: 2)
         let question3 = Question(Question: "In Norse Mythology who is the god of light, joy, purity, beauty, innocence, and reconciliation?", Answers: ["Odin", "Balder", "Frigg", "Tyr"], CorrectAnswer: 1)
         let question4 = Question(Question: "Famous gothic author Edgar Allen Poe wrote which short story?", Answers: ["Call of Cathulu", "Reign in Blood", "Tomorrow is Today", "Tell Tale Heart"], CorrectAnswer: 3)
-        let question5 = Question(Question: "Which is a real law in the state of Oklahoma?", Answers: ["No bear wrestling", "No eating rice past 9:00 p.m.", "Can't wear red shoes in the month of January", "It is illegal to practice Vodoo within 5 miles of a school or place of business"], CorrectAnswer: 0)
+        let question5 = Question(Question: "Which is a real law in the state of Oklahoma?", Answers: ["No bear wrestling", "No eating rice past 9:00 p.m.", "Can't wear red shoes in the month of January", "It is illegal to practice Vodoo"], CorrectAnswer: 0)
         
         let questionSet = QuestionSet(Title: "Default Questions", Details: nil, Questions: [question1, question2, question3, question4, question5], Style: .MultipleChoice)
         
