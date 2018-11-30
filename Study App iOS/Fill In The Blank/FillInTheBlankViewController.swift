@@ -10,7 +10,7 @@ import UIKit
 
 class FillInTheBlankViewController: UIViewController {
     
-
+    
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var answerTextField: UITextField!
     
@@ -55,7 +55,10 @@ class FillInTheBlankViewController: UIViewController {
             //Set currentQuestion equal to the question that is at the random index in the questions array
             currentFillInTheBlankQuestion = dummyFillInTheBlankQuestionSet.questions[randomIndex]
         } else {
-            
+            dummyFillInTheBlankQuestionSet.questions = self.completedFillInTheBlankQuestions
+            completedFillInTheBlankQuestions.removeAll()
+            //Get a new question
+            getNewFillInTheBlankQuestion()
         }
     }
     
@@ -73,7 +76,7 @@ class FillInTheBlankViewController: UIViewController {
         //Present the alert controller
         self.present(correctAlert, animated: true, completion: nil)
     }
-
+    
     //Shows an alert when the user get the question wrong
     func showIncorrectAnswerAlert() {
         //UIAlertController
@@ -104,13 +107,13 @@ class FillInTheBlankViewController: UIViewController {
         }
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
 }
 
