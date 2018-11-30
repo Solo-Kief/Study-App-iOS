@@ -51,7 +51,7 @@ class FillInTheBlankViewController: UIViewController {
     func getNewFillInTheBlankQuestion() {
         if dummyFillInTheBlankQuestionSet.questions.count > 0 {
             //Get a random index from 0 to 1 less then the amount of elements in the questions array
-            randomIndex = Int(arc4random_uniform(UInt32(dummyFillInTheBlankQuestionSet.questions.count)))
+            randomIndex = Int.random(in: 0..<dummyFillInTheBlankQuestionSet.questions.count)
             //Set currentQuestion equal to the question that is at the random index in the questions array
             currentFillInTheBlankQuestion = dummyFillInTheBlankQuestionSet.questions[randomIndex]
         } else {
@@ -103,8 +103,6 @@ class FillInTheBlankViewController: UIViewController {
             answerTextField.placeholder = ""
         }
     }
-    
-
     /*
     // MARK: - Navigation
 
