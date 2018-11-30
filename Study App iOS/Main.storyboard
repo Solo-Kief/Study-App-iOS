@@ -18,12 +18,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkX-Eg-CPl">
-                                <rect key="frame" x="50" y="644" width="275" height="70"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkX-Eg-CPl">
+                                <rect key="frame" x="37.666666666666657" y="668.66666666666663" width="300" height="45"/>
                                 <color key="backgroundColor" red="0.93678659200668335" green="0.55373817682266235" blue="0.20377305150032043" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="SoZ-15-pUm"/>
-                                    <constraint firstAttribute="width" constant="275" id="Vyo-Ns-vzE"/>
+                                    <constraint firstAttribute="width" constant="300" id="Vyo-Ns-vzE"/>
                                 </constraints>
                                 <state key="normal" title="Answer 4">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -38,11 +38,11 @@
                                     <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cvy-y6-f1h"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zle-1J-HLd">
-                                <rect key="frame" x="50" y="548" width="275" height="70"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zle-1J-HLd">
+                                <rect key="frame" x="37.666666666666657" y="573.66666666666663" width="300" height="45"/>
                                 <color key="backgroundColor" red="0.93678659200668335" green="0.55373817682266235" blue="0.20377305150032043" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="275" id="25O-q4-Gh3"/>
+                                    <constraint firstAttribute="width" constant="300" id="25O-q4-Gh3"/>
                                     <constraint firstAttribute="height" constant="45" id="8nd-fG-yOS"/>
                                 </constraints>
                                 <state key="normal" title="Answer 3">
@@ -57,12 +57,12 @@
                                     <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nGV-fj-1hD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmS-Ye-ZdN">
-                                <rect key="frame" x="50" y="454" width="275" height="70"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmS-Ye-ZdN">
+                                <rect key="frame" x="37.666666666666657" y="478.66666666666669" width="300" height="45.000000000000057"/>
                                 <color key="backgroundColor" red="0.93678659200668335" green="0.55373817682266235" blue="0.20377305150032043" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Fu9-lD-lrG"/>
-                                    <constraint firstAttribute="width" constant="275" id="hd1-Ws-HIz"/>
+                                    <constraint firstAttribute="width" constant="300" id="hd1-Ws-HIz"/>
                                 </constraints>
                                 <state key="normal" title="Answer 2">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -76,12 +76,12 @@
                                     <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qpk-yy-2xi"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00n-Jb-baS">
-                                <rect key="frame" x="50" y="358" width="275" height="70"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00n-Jb-baS">
+                                <rect key="frame" x="37.666666666666657" y="383.66666666666669" width="300" height="45"/>
                                 <color key="backgroundColor" red="1" green="0.55984028200049374" blue="0.21234739150955617" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="33l-bE-4r2"/>
-                                    <constraint firstAttribute="width" constant="275" id="jv6-kC-ZOV"/>
+                                    <constraint firstAttribute="width" constant="300" id="jv6-kC-ZOV"/>
                                 </constraints>
                                 <state key="normal" title="Answer 1">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
