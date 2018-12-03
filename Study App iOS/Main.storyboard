@@ -311,23 +311,12 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="vc5-ny-Of9"/>
                         <segue destination="nxL-Mj-e6m" kind="relationship" relationship="viewControllers" id="Je2-LH-Vbw"/>
-                        <segue destination="kkw-Ln-BA9" kind="relationship" relationship="viewControllers" id="sP5-BV-oN0"/>
                         <segue destination="D5y-7D-5FQ" kind="relationship" relationship="viewControllers" id="vuv-6l-Bz4"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xLD-wd-6mG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1254" y="133"/>
-        </scene>
-        <!--Fitb-->
-        <scene sceneID="keu-zW-voy">
-            <objects>
-                <viewControllerPlaceholder storyboardName="FillInTheBlank" referencedIdentifier="Fitb" id="kkw-Ln-BA9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="fPs-s2-0s6"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3ec-IR-Zkx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1256" y="923"/>
         </scene>
         <!--Item-->
         <scene sceneID="DFS-ew-32S">
@@ -554,8 +543,70 @@
             </objects>
             <point key="canvasLocation" x="1313" y="132"/>
         </scene>
+        <!--Fill In The Blank-->
+        <scene sceneID="Hvi-6G-uld">
+            <objects>
+                <viewController storyboardIdentifier="Fitb" title="Fill In The Blank" id="pKl-rO-j64" customClass="FillInTheBlankViewController" customModule="Study_App_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="z7K-Rz-h0S">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Answer Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CHW-bd-g29">
+                                <rect key="frame" x="50" y="330" width="275" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fTL-k2-9Ps">
+                                <rect key="frame" x="50" y="93" width="275" height="83"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="83" id="4xX-Uf-Jun"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MAU-YA-iwz">
+                                <rect key="frame" x="50" y="405" width="275" height="45"/>
+                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="G4z-jf-Q5k"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitButtonTapped:" destination="pKl-rO-j64" eventType="touchUpInside" id="xF7-0i-4fL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dRB-dx-d2d" firstAttribute="bottom" secondItem="MAU-YA-iwz" secondAttribute="bottom" constant="328" id="7cN-VM-N68"/>
+                            <constraint firstItem="fTL-k2-9Ps" firstAttribute="leading" secondItem="CHW-bd-g29" secondAttribute="leading" id="DA5-0j-GW2"/>
+                            <constraint firstItem="fTL-k2-9Ps" firstAttribute="trailing" secondItem="CHW-bd-g29" secondAttribute="trailing" id="I6I-4B-SUb"/>
+                            <constraint firstItem="fTL-k2-9Ps" firstAttribute="top" secondItem="dRB-dx-d2d" secondAttribute="top" constant="49" id="T4J-JH-YqK"/>
+                            <constraint firstItem="CHW-bd-g29" firstAttribute="trailing" secondItem="MAU-YA-iwz" secondAttribute="trailing" id="UbZ-rn-n5j"/>
+                            <constraint firstItem="CHW-bd-g29" firstAttribute="leading" secondItem="MAU-YA-iwz" secondAttribute="leading" id="Ztd-FD-Ua9"/>
+                            <constraint firstItem="fTL-k2-9Ps" firstAttribute="centerX" secondItem="z7K-Rz-h0S" secondAttribute="centerX" id="dXf-R6-Hmd"/>
+                            <constraint firstItem="MAU-YA-iwz" firstAttribute="top" secondItem="CHW-bd-g29" secondAttribute="bottom" constant="45" id="fh7-sE-vZ3"/>
+                            <constraint firstItem="fTL-k2-9Ps" firstAttribute="leading" secondItem="dRB-dx-d2d" secondAttribute="leading" constant="50" id="y3F-dS-uz2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dRB-dx-d2d"/>
+                    </view>
+                    <connections>
+                        <outlet property="answerTextField" destination="CHW-bd-g29" id="ya3-6f-cOl"/>
+                        <outlet property="questionTextView" destination="fTL-k2-9Ps" id="ZIn-83-9mC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8KZ-H2-qfD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1255" y="923"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="Gear-Icon" width="25" height="25"/>
+        <image name="Gear-Icon" width="75" height="75"/>
     </resources>
 </document>
