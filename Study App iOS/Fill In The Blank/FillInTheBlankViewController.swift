@@ -129,6 +129,7 @@ class FillInTheBlankViewController: UIViewController {
  5. Pull colors from storage enclave
  6. Change label to textView like on multipleChoice screen
  7. Changed buttons to rounded corners
+ 8. Redo name and outlet for questionTextView
  
  */
 
