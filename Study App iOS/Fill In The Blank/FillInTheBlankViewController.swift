@@ -124,5 +124,8 @@ class FillInTheBlankViewController: UIViewController {
  2. Change questionLabel.text make it show Correct or not correct with a sleep timer and then showing the next question? (Instead of having the pop up alert action thing)
  3. Set up a reset button?
  4. Set up a score keeper?
+ 5. Pull colors from storage enclave
+ 6. Change label to textView like on multipleChoice screen
+ 7. Changed buttons to rounded corners
 
 */
