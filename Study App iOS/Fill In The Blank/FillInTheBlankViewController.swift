@@ -10,9 +10,9 @@ import UIKit
 
 class FillInTheBlankViewController: UIViewController {
     
-
-    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var questionTextView: UITextView!
     @IBOutlet weak var answerTextField: UITextField!
+    @IBOutlet weak var submitButton: UIButton!
     
     var dummyFillInTheBlankQuestionSet: QuestionSet!
     
@@ -20,7 +20,7 @@ class FillInTheBlankViewController: UIViewController {
     var currentFillInTheBlankQuestion: Question! {
         didSet {
             //Whenever a new currentFillInTheBlankQuestion is set, update the UI for that new question
-            questionLabel.text = currentFillInTheBlankQuestion.question
+            questionTextView.text = currentFillInTheBlankQuestion.question
         }
     }
     
@@ -32,7 +32,8 @@ class FillInTheBlankViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
+        self.submitButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentSecondaryColor()
         
         populateFillInTheBlankQuestions()
         getNewFillInTheBlankQuestion()
