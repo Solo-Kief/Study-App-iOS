@@ -19,7 +19,7 @@ class StorageEnclave: NSObject, NSCoding {
     
     //MARK:- Settings Values
     private var PrimaryColor = UIColor.darkGray
-    private var SecondaryColor = UIColor(red: 255, green: 143, blue: 54, alpha: 1)
+    private var SecondaryColor = UIColor(red: 255.0/255.0, green: 143.0/255.0, blue: 54.0/255.0, alpha: 1.0)
     private var TertiaryColor = UIColor.lightGray
     private var TextColor = UIColor.white
     
@@ -210,7 +210,7 @@ class StorageEnclave: NSObject, NSCoding {
     
     func restoreDefaultColors() {
         PrimaryColor = UIColor.darkGray
-        SecondaryColor = UIColor(red: 255, green: 143, blue: 54, alpha: 1)
+        SecondaryColor = UIColor(red: 255.0/255.0, green: 143.0/255.0, blue: 54.0/255.0, alpha: 1.0)
         TertiaryColor = UIColor.lightGray
         TextColor = UIColor.white
         StorageEnclave.save()
