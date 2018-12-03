@@ -1,7 +1,7 @@
 //  ViewController.swift
 //  Trivia Game
 //
-//  Created by Solomon Kieffer on 10/8/18.
+//  Created by Jake Dillon on 11/26/18.
 //  Copyright © 2018 Phoenix Development. All rights reserved.
 
 import UIKit
@@ -22,6 +22,11 @@ class multipleChoiceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
+        self.answer1.titleLabel?.textColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        self.answer2.titleLabel?.textColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        self.answer3.titleLabel?.textColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        self.answer4.titleLabel?.textColor = StorageEnclave.Access.getCurrentSecondaryColor()
         defaultColor = answer1.backgroundColor!
         
         questions = buildDefaultQuestions()
@@ -143,4 +148,12 @@ class multipleChoiceViewController: UIViewController {
         
         loadQuestion()
     }
+
+    
+
+
+
+
 }
+
+

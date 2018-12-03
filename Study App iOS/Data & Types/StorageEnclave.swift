@@ -48,7 +48,7 @@ class StorageEnclave: NSObject, NSCoding {
         let QuestionSets = aDecoder.decodeObject(forKey: "QuestionSets") as! [QuestionSet]
         let PrimaryColor = aDecoder.decodeObject(forKey: "PrimaryColor") as! UIColor
         let SecondaryColor = aDecoder.decodeObject(forKey: "SecondaryColor") as! UIColor
-        let TertiaryColor = aDecoder.decodeObject(forKey: "TertiaryColor") as! UIColor)
+        let TertiaryColor = aDecoder.decodeObject(forKey: "TertiaryColor") as! UIColor
         let TextColor = aDecoder.decodeObject(forKey: "TextColor") as! UIColor
         
         self.init(QuestionSets: QuestionSets, PrimaryColor: PrimaryColor, SecondaryColor: SecondaryColor, TertiaryColor: TertiaryColor, TextColor: TextColor)
