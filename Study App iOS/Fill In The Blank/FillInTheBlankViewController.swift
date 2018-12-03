@@ -10,10 +10,9 @@ import UIKit
 
 class FillInTheBlankViewController: UIViewController {
     
-
-    
     @IBOutlet weak var questionTextView: UITextView!
     @IBOutlet weak var answerTextField: UITextField!
+    @IBOutlet weak var submitButton: UIButton!
     
     var dummyFillInTheBlankQuestionSet: QuestionSet!
     
@@ -33,9 +32,8 @@ class FillInTheBlankViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        
+        self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
+        self.submitButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentSecondaryColor()
         
         populateFillInTheBlankQuestions()
         getNewFillInTheBlankQuestion()
