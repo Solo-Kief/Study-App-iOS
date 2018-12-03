@@ -48,7 +48,7 @@ class StorageEnclave: NSObject, NSCoding {
         let QuestionSets = aDecoder.decodeObject(forKey: "QuestionSets") as! [QuestionSet]
         let PrimaryColor = aDecoder.decodeObject(forKey: "PrimaryColor") as! UIColor
         let SecondaryColor = aDecoder.decodeObject(forKey: "SecondaryColor") as! UIColor
-        let TertiaryColor = aDecoder.decodeObject(forKey: "TertiaryColor") as! UIColor)
+        let TertiaryColor = aDecoder.decodeObject(forKey: "TertiaryColor") as! UIColor
         let TextColor = aDecoder.decodeObject(forKey: "TextColor") as! UIColor
         
         self.init(QuestionSets: QuestionSets, PrimaryColor: PrimaryColor, SecondaryColor: SecondaryColor, TertiaryColor: TertiaryColor, TextColor: TextColor)
@@ -182,6 +182,11 @@ class StorageEnclave: NSObject, NSCoding {
         StorageEnclave.save()
     }
     
+    func setNewTertiaryColor(_ newColor: UIColor) {
+        self.TertiaryColor = newColor
+        StorageEnclave.save()
+    }
+    
     func setNewTextColor(_ newColor: UIColor) {
         self.TextColor = newColor
         StorageEnclave.save()
@@ -201,5 +206,17 @@ class StorageEnclave: NSObject, NSCoding {
     
     func getCurrentTextColor() -> UIColor {
         return TextColor
+    }
+    
+    func restoreDefaultColors() {
+        PrimaryColor = UIColor.darkGray
+        SecondaryColor = UIColor(red: 255, green: 143, blue: 54, alpha: 1)
+        TertiaryColor = UIColor.lightGray
+        TextColor = UIColor.white
+        StorageEnclave.save()
+    }
+    
+    func deleteAllQuestions() {
+        QuestionSets = []
     }
 }
