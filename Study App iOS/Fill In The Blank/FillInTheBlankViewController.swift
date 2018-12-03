@@ -51,11 +51,14 @@ class FillInTheBlankViewController: UIViewController {
     func getNewFillInTheBlankQuestion() {
         if dummyFillInTheBlankQuestionSet.questions.count > 0 {
             //Get a random index from 0 to 1 less then the amount of elements in the questions array
-            randomIndex = Int(arc4random_uniform(UInt32(dummyFillInTheBlankQuestionSet.questions.count)))
+            randomIndex = Int.random(in: 0..<dummyFillInTheBlankQuestionSet.questions.count)
             //Set currentQuestion equal to the question that is at the random index in the questions array
             currentFillInTheBlankQuestion = dummyFillInTheBlankQuestionSet.questions[randomIndex]
         } else {
-            
+            dummyFillInTheBlankQuestionSet.questions = self.completedFillInTheBlankQuestions
+            completedFillInTheBlankQuestions.removeAll()
+            //Get a new question
+            getNewFillInTheBlankQuestion()
         }
     }
     
@@ -115,4 +118,17 @@ class FillInTheBlankViewController: UIViewController {
     }
     */
 }
+
+/*
+ 
+ IDEAS FOR FILL IN THE BLANK PAGE
+ 1. Fix placeholder stuff (Ex: Changing placeholder text to disapper when beginning to edit text in answerTextField)
+ 2. Change questionLabel.text make it show Correct or not correct with a sleep timer and then showing the next question? (Instead of having the pop up alert action thing)
+ 3. Set up a reset button?
+ 4. Set up a score keeper?
+ 5. Pull colors from storage enclave
+ 6. Change label to textView like on multipleChoice screen
+ 7. Changed buttons to rounded corners
+ 
+ */
 
