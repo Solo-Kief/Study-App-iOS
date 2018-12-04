@@ -53,7 +53,7 @@ class FillInTheBlankViewController: UIViewController {
         //A Fill in the blank QuestionSet
         let question1 = Question(Question: "In a deck of cards the king of ______ is the only king without a moustache.", Answers: ["Hearts"], CorrectAnswer: 0)
         let question2 = Question(Question: "Stressed is ______ spelled backwards.", Answers: ["Desserts"], CorrectAnswer: 0)
-        let question3 = Question(Question: "The Twitter bird's actual name is ______.", Answers: ["Larry"], CorrectAnswer: 0)
+        let question3 = Question(Question: "What is the Twitter bird's actual name?", Answers: ["Larry"], CorrectAnswer: 0)
         dummyFillInTheBlankQuestionSet = QuestionSet(Title: "Dummy Fill In The Blank Questions", Details: nil, Questions: [question1, question2, question3], Style: .Blank)
     }
     
@@ -117,7 +117,10 @@ class FillInTheBlankViewController: UIViewController {
         }
     }
     
-
+    @IBAction func tappedInsideAnswerTextField(_ sender: Any) {
+        answerTextField.placeholder = ""
+    }
+    
     /*
     // MARK: - Navigation
 

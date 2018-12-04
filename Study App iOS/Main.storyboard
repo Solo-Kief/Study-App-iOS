@@ -581,6 +581,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="tappedInsideAnswerTextField:" destination="pKl-rO-j64" eventType="editingDidBegin" id="1Ah-Yv-IkJ"/>
+                                </connections>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" text="Question" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTL-k2-9Ps">
                                 <rect key="frame" x="5" y="89" width="365" height="64"/>
