@@ -52,9 +52,8 @@ class FlashCardViewController: UIViewController {
             flashCardTextView.text = currentCard.question
         }
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  
+    override func viewDidAppear(_ animated: Bool) {
         
         //Sets the colors for buttons and background
         self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
@@ -63,6 +62,14 @@ class FlashCardViewController: UIViewController {
         self.nextButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
         self.nextButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
         self.flashCardTextView.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
+        
+        
+        
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewDidAppear(false)
+        
         
         
         nextButton.layer.cornerRadius = 10
