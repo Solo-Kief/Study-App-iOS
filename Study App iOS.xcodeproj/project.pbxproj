@@ -17,7 +17,6 @@
 		C6AA519721A502AB00A29891 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA519621A502AB00A29891 /* Question.swift */; };
 		C6AA519921A502C100A29891 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6AA519821A502C100A29891 /* Assets.xcassets */; };
 		C6E86FD221AA51F100E7A645 /* QuestionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E86FD121AA51F100E7A645 /* QuestionSet.swift */; };
-		C9A5142321ADDB1D00DB9393 /* FillInTheBlank.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A5142221ADDB1D00DB9393 /* FillInTheBlank.storyboard */; };
 		C9A5142521ADDC6800DB9393 /* FillInTheBlankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A5142421ADDC6800DB9393 /* FillInTheBlankViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +33,6 @@
 		C6AA519621A502AB00A29891 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		C6AA519821A502C100A29891 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C6E86FD121AA51F100E7A645 /* QuestionSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSet.swift; sourceTree = "<group>"; };
-		C9A5142221ADDB1D00DB9393 /* FillInTheBlank.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FillInTheBlank.storyboard; sourceTree = "<group>"; };
 		C9A5142421ADDC6800DB9393 /* FillInTheBlankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillInTheBlankViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,7 +117,6 @@
 		C9A5142121ADDAED00DB9393 /* Fill In The Blank */ = {
 			isa = PBXGroup;
 			children = (
-				C9A5142221ADDB1D00DB9393 /* FillInTheBlank.storyboard */,
 				C9A5142421ADDC6800DB9393 /* FillInTheBlankViewController.swift */,
 			);
 			path = "Fill In The Blank";
@@ -186,7 +183,6 @@
 				C6AA519121A5026D00A29891 /* Main.storyboard in Resources */,
 				C6AA519921A502C100A29891 /* Assets.xcassets in Resources */,
 				C62F2B8621A5021900C203EE /* LaunchScreen.storyboard in Resources */,
-				C9A5142321ADDB1D00DB9393 /* FillInTheBlank.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,7 +339,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = MA7ASKQ2T8;
 				INFOPLIST_FILE = "Study App iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -362,7 +358,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = MA7ASKQ2T8;
 				INFOPLIST_FILE = "Study App iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

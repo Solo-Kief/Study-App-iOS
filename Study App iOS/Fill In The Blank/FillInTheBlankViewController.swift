@@ -10,9 +10,9 @@ import UIKit
 
 class FillInTheBlankViewController: UIViewController {
     
-
-    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var questionTextView: UITextView!
     @IBOutlet weak var answerTextField: UITextField!
+    @IBOutlet weak var submitButton: UIButton!
     
     var dummyFillInTheBlankQuestionSet: QuestionSet!
     
@@ -20,7 +20,7 @@ class FillInTheBlankViewController: UIViewController {
     var currentFillInTheBlankQuestion: Question! {
         didSet {
             //Whenever a new currentFillInTheBlankQuestion is set, update the UI for that new question
-            questionLabel.text = currentFillInTheBlankQuestion.question
+            questionTextView.text = currentFillInTheBlankQuestion.question
         }
     }
     
@@ -32,11 +32,16 @@ class FillInTheBlankViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
+        self.submitButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        self.questionTextView.backgroundColor = UIColor.lightGray
+        self.questionTextView.textColor = UIColor.black
+
         
         populateFillInTheBlankQuestions()
         getNewFillInTheBlankQuestion()
     }
+    
     
     //Popultates questions when the screen loads
     func populateFillInTheBlankQuestions() {
@@ -51,11 +56,14 @@ class FillInTheBlankViewController: UIViewController {
     func getNewFillInTheBlankQuestion() {
         if dummyFillInTheBlankQuestionSet.questions.count > 0 {
             //Get a random index from 0 to 1 less then the amount of elements in the questions array
-            randomIndex = Int(arc4random_uniform(UInt32(dummyFillInTheBlankQuestionSet.questions.count)))
+            randomIndex = Int.random(in: 0..<dummyFillInTheBlankQuestionSet.questions.count)
             //Set currentQuestion equal to the question that is at the random index in the questions array
             currentFillInTheBlankQuestion = dummyFillInTheBlankQuestionSet.questions[randomIndex]
         } else {
-            
+            dummyFillInTheBlankQuestionSet.questions = self.completedFillInTheBlankQuestions
+            completedFillInTheBlankQuestions.removeAll()
+            //Get a new question
+            getNewFillInTheBlankQuestion()
         }
     }
     
@@ -115,4 +123,15 @@ class FillInTheBlankViewController: UIViewController {
     }
     */
 }
+
+/*
+ 
+ IDEAS FOR FILL IN THE BLANK PAGE
+ 1. Fix placeholder stuff (Ex: Changing placeholder text to disapper when beginning to edit text in answerTextField)
+ 2. Change questionLabel.text make it show Correct or not correct with a sleep timer and then showing the next question? (Instead of having the pop up alert action thing)
+ 3. Set up a reset button?
+ 4. Set up a score keeper?
+ 5. Change questionTextView to a LABEL
+ 
+ */
 
