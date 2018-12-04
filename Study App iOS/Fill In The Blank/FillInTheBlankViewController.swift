@@ -36,8 +36,10 @@ class FillInTheBlankViewController: UIViewController {
         self.submitButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentSecondaryColor()
         self.questionTextView.backgroundColor = UIColor.lightGray
         self.questionTextView.textColor = UIColor.black
-
         
+        answerTextField.layer.cornerRadius = 15
+        answerTextField.layer.masksToBounds = true
+
         populateFillInTheBlankQuestions()
         getNewFillInTheBlankQuestion()
     }
