@@ -285,7 +285,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Multi-Choice" id="k3U-pf-Kk6"/>
+                    <tabBarItem key="tabBarItem" title="Multi-Choice" image="MC-Icon" id="k3U-pf-Kk6"/>
                     <connections>
                         <outlet property="answer1" destination="00n-Jb-baS" id="9ur-8C-HAM"/>
                         <outlet property="answer2" destination="dmS-Ye-ZdN" id="5jW-1o-yRf"/>
@@ -626,5 +626,6 @@
     </scenes>
     <resources>
         <image name="Gear-Icon" width="75" height="75"/>
+        <image name="MC-Icon" width="75" height="75"/>
     </resources>
 </document>
