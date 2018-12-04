@@ -32,16 +32,19 @@ class FillInTheBlankViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
-        self.submitButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentSecondaryColor()
-        self.questionTextView.backgroundColor = UIColor.lightGray
-        self.questionTextView.textColor = UIColor.black
-        
-        answerTextField.layer.cornerRadius = 15
-        answerTextField.layer.masksToBounds = true
-
         populateFillInTheBlankQuestions()
         getNewFillInTheBlankQuestion()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
+        self.submitButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
+        self.submitButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        self.questionTextView.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
+        self.questionTextView.textColor = StorageEnclave.Access.getCurrentTextColor()
+        answerTextField.layer.cornerRadius = 15
+        answerTextField.layer.masksToBounds = true
     }
     
     
@@ -134,7 +137,6 @@ class FillInTheBlankViewController: UIViewController {
  3. Set up a reset button?
  4. Set up a score keeper?
  5. Change questionTextView to a LABEL
- 6. Set up ViewDidAppear function
  
  */
 
