@@ -36,7 +36,7 @@ class FillInTheBlankViewController: UIViewController {
         getNewFillInTheBlankQuestion()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
         self.submitButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()

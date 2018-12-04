@@ -30,6 +30,7 @@ class multipleChoiceViewController: UIViewController {
         loadQuestion()
         self.navigationItem.title = "Multiple Choice";
     }
+    //changes the colors of text, buttons, and question field
     override func viewDidAppear(_ animated: Bool) {
         self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
         self.answer1.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
@@ -44,7 +45,7 @@ class multipleChoiceViewController: UIViewController {
         self.questionField.textColor = StorageEnclave.Access.getCurrentTextColor()
     }
     
-    
+   // default questions
     func buildDefaultQuestions() -> QuestionSet {
         let question1 = Question(Question: "What is Dr Suess's real name?", Answers: ["Andrew Butterson", "Suess Stephenson", "Micheal Gene Scott", "Theodor Seuss Geisel"], CorrectAnswer: 3)
         let question2 = Question(Question: "What year did heavy metal legend Lemmy Kilmister die?", Answers: ["1997", "2012", "2015", "2008"], CorrectAnswer: 2)
@@ -57,6 +58,7 @@ class multipleChoiceViewController: UIViewController {
         return questionSet
     }
 
+    // this function loads new questions at random
     func loadQuestion() {
         var selector = Int.random(in: 0..<questions.questions.count)
         while lastQuestion == selector && questions.questions.count != 1 {
@@ -79,6 +81,7 @@ class multipleChoiceViewController: UIViewController {
         time.fireDate = Date().addingTimeInterval(0.35)
     }
     
+    // this function is used to check if the answer chosen is correct or incorrect
     @IBAction func checkAnswer(_ sender: UIButton) {
         answer1.isUserInteractionEnabled = false
         answer2.isUserInteractionEnabled = false
@@ -114,10 +117,12 @@ class multipleChoiceViewController: UIViewController {
             return
         }
         
+        // timer for questions
         let time = Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(resetScenario), userInfo: nil, repeats: false)
         time.fireDate = Date().addingTimeInterval(1.25)
     }
     
+   // button changes color if right or wrong
     func changeColor(button: Int, color: UIColor) {
         switch button {
         case 1:
