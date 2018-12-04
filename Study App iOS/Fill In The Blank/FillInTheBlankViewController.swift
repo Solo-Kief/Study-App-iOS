@@ -16,6 +16,9 @@ class FillInTheBlankViewController: UIViewController {
     @IBOutlet weak var submitButton: UIButton!
     
     var dummyFillInTheBlankQuestionSet: QuestionSet!
+    var lastQuestion = -1
+    var defaultColor = StorageEnclave.Access.getCurrentSecondaryColor()
+
     
     //Current fill in the blank question being answered
     var currentFillInTheBlankQuestion: Question! {
@@ -48,7 +51,6 @@ class FillInTheBlankViewController: UIViewController {
         answerTextField.layer.masksToBounds = true
     }
     
-    
     //Popultates questions when the screen loads
     func populateFillInTheBlankQuestions() {
         //A Fill in the blank QuestionSet
@@ -71,6 +73,12 @@ class FillInTheBlankViewController: UIViewController {
             //Get a new question
             getNewFillInTheBlankQuestion()
         }
+        UIView.animate(withDuration: 0.25, animations: {
+            self.questionTextView.backgroundColor = UIColor.clear
+            self.questionTextView.textColor = UIColor.clear
+        })
+        let time = Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(updateTextViewConstraint), userInfo: nil, repeats: false)
+        time.fireDate = Date().addingTimeInterval(0.35)
     }
     
     //Shows an alert when the user gets the question correct
@@ -80,7 +88,6 @@ class FillInTheBlankViewController: UIViewController {
         //UIAlertAction
         let closeAction = UIAlertAction(title: "Close", style: .default) { _ in
             self.completedFillInTheBlankQuestions.append(self.dummyFillInTheBlankQuestionSet.questions.remove(at: self.randomIndex))
-            self.getNewFillInTheBlankQuestion()
         }
         //Add action to the alert controller
         correctAlert.addAction(closeAction)
@@ -95,27 +102,12 @@ class FillInTheBlankViewController: UIViewController {
         //UIAlertAction
         let closeAction = UIAlertAction(title: "Close", style: .default) { _ in
             self.completedFillInTheBlankQuestions.append(self.dummyFillInTheBlankQuestionSet.questions.remove(at: self.randomIndex))
-            self.getNewFillInTheBlankQuestion()
         }
         //Add the action to the alert controller
         incorrectAlert.addAction(closeAction)
         //Present the alert controller
         self.present(incorrectAlert, animated: true, completion: nil)
     }
-    
-    @objc func updateTextViewConstraint() { //View did load helper.
-        questionTextViewHeight.constant = CGFloat(20 * Double(Double(self.questionTextView.text.count) / 50).rounded(.up) + 10)
-        if questionTextViewHeight.constant == 30 {
-            questionTextView.layer.cornerRadius = 15
-        } else {
-            questionTextView.layer.cornerRadius = 20
-        }
-        UIView.animate(withDuration: 0.25, animations: {
-            self.questionTextView.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
-            self.questionTextView.textColor = StorageEnclave.Access.getCurrentTextColor()
-        })
-    }
-
     
     @IBAction func submitButtonTapped(_ sender: Any) {
         if answerTextField.text! == "" {
@@ -130,10 +122,32 @@ class FillInTheBlankViewController: UIViewController {
             answerTextField.text! = ""
             answerTextField.placeholder = ""
         }
+        
+        let time = Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(resetScenario), userInfo: nil, repeats: false)
+        time.fireDate = Date().addingTimeInterval(1.25)
     }
     
     @IBAction func tappedInsideAnswerTextField(_ sender: Any) {
         answerTextField.placeholder = ""
+    }
+    
+    @objc func updateTextViewConstraint() { //View did load helper.
+        questionTextViewHeight.constant = CGFloat(20 * Double(Double(self.questionTextView.text.count) / 50).rounded(.up) + 10)
+        if questionTextViewHeight.constant == 30 {
+            questionTextView.layer.cornerRadius = 15
+        } else {
+            questionTextView.layer.cornerRadius = 20
+        }
+        UIView.animate(withDuration: 0.25, animations: {
+            self.questionTextView.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
+            self.questionTextView.textColor = StorageEnclave.Access.getCurrentTextColor()
+        })
+    }
+    
+    @objc func resetScenario() {
+        UIView.animate(withDuration: 0.25, animations: {self.submitButton.backgroundColor = self.defaultColor})
+        submitButton.isUserInteractionEnabled = true
+        getNewFillInTheBlankQuestion()
     }
     
     /*
