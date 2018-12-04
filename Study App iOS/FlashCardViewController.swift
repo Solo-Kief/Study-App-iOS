@@ -62,6 +62,8 @@ class FlashCardViewController: UIViewController {
         self.flipButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
         self.nextButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
         self.nextButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        self.flashCardTextView.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
+        
         
         nextButton.layer.cornerRadius = 10
         
