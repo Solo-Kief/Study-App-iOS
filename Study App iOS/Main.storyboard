@@ -642,6 +642,7 @@
                     <connections>
                         <outlet property="answerTextField" destination="CHW-bd-g29" id="ya3-6f-cOl"/>
                         <outlet property="questionTextView" destination="fTL-k2-9Ps" id="ZIn-83-9mC"/>
+                        <outlet property="questionTextViewHeight" destination="mX8-Lj-2Wc" id="zqV-RE-LtC"/>
                         <outlet property="submitButton" destination="MAU-YA-iwz" id="SsG-PU-WOr"/>
                     </connections>
                 </viewController>

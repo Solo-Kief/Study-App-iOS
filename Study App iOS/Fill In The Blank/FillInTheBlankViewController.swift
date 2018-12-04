@@ -11,6 +11,7 @@ import UIKit
 class FillInTheBlankViewController: UIViewController {
     
     @IBOutlet weak var questionTextView: UITextView!
+    @IBOutlet weak var questionTextViewHeight: NSLayoutConstraint!
     @IBOutlet weak var answerTextField: UITextField!
     @IBOutlet weak var submitButton: UIButton!
     
@@ -102,6 +103,20 @@ class FillInTheBlankViewController: UIViewController {
         self.present(incorrectAlert, animated: true, completion: nil)
     }
     
+    @objc func updateTextViewConstraint() { //View did load helper.
+        questionTextViewHeight.constant = CGFloat(20 * Double(Double(self.questionTextView.text.count) / 50).rounded(.up) + 10)
+        if questionTextViewHeight.constant == 30 {
+            questionTextView.layer.cornerRadius = 15
+        } else {
+            questionTextView.layer.cornerRadius = 20
+        }
+        UIView.animate(withDuration: 0.25, animations: {
+            self.questionTextView.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
+            self.questionTextView.textColor = StorageEnclave.Access.getCurrentTextColor()
+        })
+    }
+
+    
     @IBAction func submitButtonTapped(_ sender: Any) {
         if answerTextField.text! == "" {
             answerTextField.placeholder = "Please enter an answer"
@@ -135,11 +150,9 @@ class FillInTheBlankViewController: UIViewController {
 /*
  
  IDEAS FOR FILL IN THE BLANK PAGE
- 1. Fix placeholder stuff (Ex: Changing placeholder text to disapper when beginning to edit text in answerTextField)
- 2. Change questionLabel.text make it show Correct or not correct with a sleep timer and then showing the next question? (Instead of having the pop up alert action thing)
- 3. Set up a reset button?
- 4. Set up a score keeper?
- 5. Change questionTextView to a LABEL
+ -Change questionLabel.text make it show Correct or not correct with a sleep timer and then showing the next question? (Instead of having the pop up alert action thing)
+ -Set up a reset button?
+ -Set up a score keeper?
  
  */
 
