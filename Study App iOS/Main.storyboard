@@ -328,7 +328,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text=" Question/Answer" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UaO-yC-h7q">
-                                <rect key="frame" x="5" y="94" width="365" height="128"/>
+                                <rect key="frame" x="5" y="89" width="365" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="365" id="GFw-Ra-1TG"/>
@@ -386,7 +386,7 @@
                             <constraint firstItem="BF5-AY-ZBP" firstAttribute="centerX" secondItem="YbZ-yG-YjV" secondAttribute="centerX" id="89a-ct-vVV"/>
                             <constraint firstItem="R3Z-Rf-Q7s" firstAttribute="top" secondItem="BF5-AY-ZBP" secondAttribute="bottom" constant="50" id="B1A-s9-LIl"/>
                             <constraint firstItem="UaO-yC-h7q" firstAttribute="centerX" secondItem="YbZ-yG-YjV" secondAttribute="centerX" id="EXR-jq-WeO"/>
-                            <constraint firstItem="UaO-yC-h7q" firstAttribute="top" secondItem="bfZ-JZ-hiA" secondAttribute="top" constant="50" id="Vbl-ef-ZJj"/>
+                            <constraint firstItem="UaO-yC-h7q" firstAttribute="top" secondItem="bfZ-JZ-hiA" secondAttribute="top" constant="45" id="Vbl-ef-ZJj"/>
                             <constraint firstItem="BF5-AY-ZBP" firstAttribute="centerY" secondItem="YbZ-yG-YjV" secondAttribute="centerY" id="ZgK-7t-G67"/>
                             <constraint firstItem="R3Z-Rf-Q7s" firstAttribute="centerX" secondItem="YbZ-yG-YjV" secondAttribute="centerX" id="yco-th-6kq"/>
                         </constraints>
