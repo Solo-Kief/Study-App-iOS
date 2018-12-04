@@ -32,14 +32,19 @@ class FillInTheBlankViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
-        self.submitButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentSecondaryColor()
-        self.questionTextView.backgroundColor = UIColor.lightGray
-        self.questionTextView.textColor = UIColor.black
-
-        
         populateFillInTheBlankQuestions()
         getNewFillInTheBlankQuestion()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
+        self.submitButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
+        self.submitButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        self.questionTextView.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
+        self.questionTextView.textColor = StorageEnclave.Access.getCurrentTextColor()
+        answerTextField.layer.cornerRadius = 15
+        answerTextField.layer.masksToBounds = true
     }
     
     

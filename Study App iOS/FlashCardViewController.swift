@@ -52,38 +52,23 @@ class FlashCardViewController: UIViewController {
             flashCardTextView.text = currentCard.question
         }
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+  
+    override func viewWillAppear(_ animated: Bool) {
         //Sets the colors for buttons and background
         self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
         self.flipButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
         self.flipButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
         self.nextButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
         self.nextButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
-        
-        nextButton.layer.cornerRadius = 10
+        self.flashCardTextView.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
+        flashCardTextView.textColor = StorageEnclave.Access.getCurrentTextColor()
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewDidAppear(false)
         
         //Makes the current card the very first card in the array
         currentCard = flashCardArray[0]
         flashCardTextView.text =  currentCard.question
-    
-        
-        
-
-        // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
