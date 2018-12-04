@@ -35,6 +35,11 @@ class multipleChoiceViewController: UIViewController {
         self.answer2.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
         self.answer3.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
         self.answer4.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
+        self.answer1.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        self.answer2.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        self.answer3.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        self.answer3.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        self.questionField.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
     }
     
     
