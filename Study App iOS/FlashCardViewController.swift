@@ -62,9 +62,7 @@ class FlashCardViewController: UIViewController {
         self.nextButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
         self.nextButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
         self.flashCardTextView.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
-        
-        
-        
+        flashCardTextView.textColor = StorageEnclave.Access.getCurrentTextColor()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
