@@ -14,7 +14,6 @@ class multipleChoiceViewController: UIViewController {
     @IBOutlet var answer3: UIButton!
     @IBOutlet var answer4: UIButton!
     
-    
     var questions: QuestionSet = QuestionSet(Title: "Temp", Style: .MultipleChoice)
     var correctAnswer = 0
     var defaultColor = UIColor()
@@ -22,6 +21,7 @@ class multipleChoiceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewDidAppear(false)
         
         defaultColor = answer1.backgroundColor!
         
@@ -141,8 +141,8 @@ class multipleChoiceViewController: UIViewController {
             questionField.layer.cornerRadius = 20
         }
         UIView.animate(withDuration: 0.25, animations: {
-            self.questionField.backgroundColor = UIColor.lightGray
-            self.questionField.textColor = UIColor.black
+            self.questionField.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
+            self.questionField.textColor = StorageEnclave.Access.getCurrentTextColor()
         })
     }
     
