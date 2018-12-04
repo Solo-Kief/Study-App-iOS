@@ -30,7 +30,7 @@ class multipleChoiceViewController: UIViewController {
         loadQuestion()
         self.navigationItem.title = "Multiple Choice";
     }
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
         self.answer1.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
         self.answer2.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
@@ -43,7 +43,6 @@ class multipleChoiceViewController: UIViewController {
         self.questionField.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
         self.questionField.textColor = StorageEnclave.Access.getCurrentTextColor()
     }
-    
     
     func buildDefaultQuestions() -> QuestionSet {
         let question1 = Question(Question: "What is Dr Suess's real name?", Answers: ["Andrew Butterson", "Suess Stephenson", "Micheal Gene Scott", "Theodor Seuss Geisel"], CorrectAnswer: 3)

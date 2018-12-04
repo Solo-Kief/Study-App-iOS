@@ -53,7 +53,7 @@ class FlashCardViewController: UIViewController {
         }
     }
   
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         //Sets the colors for buttons and background
         self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
         self.flipButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
