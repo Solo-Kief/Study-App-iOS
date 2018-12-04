@@ -628,7 +628,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dRB-dx-d2d"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Fill In" id="QD0-yq-gSM"/>
+                    <tabBarItem key="tabBarItem" title="Fill In" image="FITB-Icon" id="QD0-yq-gSM"/>
                     <connections>
                         <outlet property="answerTextField" destination="CHW-bd-g29" id="ya3-6f-cOl"/>
                         <outlet property="questionTextView" destination="fTL-k2-9Ps" id="ZIn-83-9mC"/>
@@ -641,6 +641,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="FITB-Icon" width="75" height="75"/>
         <image name="Gear-Icon" width="75" height="75"/>
         <image name="MC-Icon" width="75" height="75"/>
     </resources>
