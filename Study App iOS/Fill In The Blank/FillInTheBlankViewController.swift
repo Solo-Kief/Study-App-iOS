@@ -134,6 +134,7 @@ class FillInTheBlankViewController: UIViewController {
  3. Set up a reset button?
  4. Set up a score keeper?
  5. Change questionTextView to a LABEL
+ 6. Set up ViewDidAppear function
  
  */
 

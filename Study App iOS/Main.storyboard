@@ -319,7 +319,7 @@
             </objects>
             <point key="canvasLocation" x="-1254" y="133"/>
         </scene>
-        <!--Item-->
+        <!--Flashcard-->
         <scene sceneID="DFS-ew-32S">
             <objects>
                 <viewController id="nxL-Mj-e6m" customClass="FlashCardViewController" customModule="Study_App_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -387,7 +387,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bfZ-JZ-hiA"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="GHq-yd-XnH"/>
+                    <tabBarItem key="tabBarItem" title="Flashcard" image="Flashcard-Icon" id="GHq-yd-XnH"/>
                     <connections>
                         <outlet property="flashCardTextView" destination="UaO-yC-h7q" id="wFH-db-MnY"/>
                         <outlet property="flipButton" destination="R3Z-Rf-Q7s" id="0sp-2N-VdU"/>
@@ -630,7 +630,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dRB-dx-d2d"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Fill In" id="QD0-yq-gSM"/>
+                    <tabBarItem key="tabBarItem" title="Fill In" image="FITB-Icon" id="QD0-yq-gSM"/>
                     <connections>
                         <outlet property="answerTextField" destination="CHW-bd-g29" id="ya3-6f-cOl"/>
                         <outlet property="questionTextView" destination="fTL-k2-9Ps" id="ZIn-83-9mC"/>
@@ -643,6 +643,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="FITB-Icon" width="75" height="75"/>
+        <image name="Flashcard-Icon" width="75" height="75"/>
         <image name="Gear-Icon" width="75" height="75"/>
         <image name="MC-Icon" width="75" height="75"/>
     </resources>
