@@ -351,7 +351,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="nextButtonPressed:" destination="nxL-Mj-e6m" eventType="touchUpInside" id="Eev-Og-4yu"/>
+                                    <action selector="nextButtonPressed:" destination="nxL-Mj-e6m" eventType="touchUpInside" id="NEs-cv-xEa"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3Z-Rf-Q7s">
@@ -369,7 +369,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="flipButtonPressed:" destination="nxL-Mj-e6m" eventType="touchUpInside" id="edM-co-7lj"/>
+                                    <action selector="flipButtonPressed:" destination="nxL-Mj-e6m" eventType="touchUpInside" id="pGm-1e-Cwr"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -389,7 +389,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="GHq-yd-XnH"/>
                     <connections>
-                        <outlet property="flashCardTextView" destination="UaO-yC-h7q" id="le9-b4-dME"/>
+                        <outlet property="flashCardTextView" destination="UaO-yC-h7q" id="wFH-db-MnY"/>
+                        <outlet property="flipButton" destination="R3Z-Rf-Q7s" id="0sp-2N-VdU"/>
+                        <outlet property="nextButton" destination="BF5-AY-ZBP" id="x5Q-gl-SZf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y18-Ow-C9A" userLabel="First Responder" sceneMemberID="firstResponder"/>
