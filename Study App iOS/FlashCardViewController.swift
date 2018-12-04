@@ -58,8 +58,12 @@ class FlashCardViewController: UIViewController {
         
         //Sets the colors for buttons and background
         self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
-        self.flipButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentSecondaryColor()
-        self.nextButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        self.flipButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
+        self.flipButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        self.nextButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
+        self.nextButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        
+        nextButton.layer.cornerRadius = 10
         
         //Makes the current card the very first card in the array
         currentCard = flashCardArray[0]
