@@ -39,8 +39,9 @@ class multipleChoiceViewController: UIViewController {
         self.answer1.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
         self.answer2.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
         self.answer3.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
-        self.answer3.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        self.answer4.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
         self.questionField.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
+        self.questionField.textColor = StorageEnclave.Access.getCurrentTextColor()
     }
     
     
