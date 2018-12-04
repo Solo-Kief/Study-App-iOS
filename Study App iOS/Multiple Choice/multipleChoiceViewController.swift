@@ -22,17 +22,21 @@ class multipleChoiceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
-        self.answer1.titleLabel?.textColor = StorageEnclave.Access.getCurrentSecondaryColor()
-        self.answer2.titleLabel?.textColor = StorageEnclave.Access.getCurrentSecondaryColor()
-        self.answer3.titleLabel?.textColor = StorageEnclave.Access.getCurrentSecondaryColor()
-        self.answer4.titleLabel?.textColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        
         defaultColor = answer1.backgroundColor!
         
         questions = buildDefaultQuestions()
 
         loadQuestion()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
+        self.answer1.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
+        self.answer2.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
+        self.answer3.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
+        self.answer4.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
+    }
+    
     
     func buildDefaultQuestions() -> QuestionSet {
         let question1 = Question(Question: "What is Dr Suess's real name?", Answers: ["Andrew Butterson", "Suess Stephenson", "Micheal Gene Scott", "Theodor Seuss Geisel"], CorrectAnswer: 3)
