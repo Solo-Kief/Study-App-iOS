@@ -28,6 +28,7 @@ class multipleChoiceViewController: UIViewController {
         questions = buildDefaultQuestions()
 
         loadQuestion()
+        self.navigationItem.title = "Multiple Choice";
     }
     override func viewDidAppear(_ animated: Bool) {
         self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
