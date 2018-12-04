@@ -14,7 +14,6 @@ class multipleChoiceViewController: UIViewController {
     @IBOutlet var answer3: UIButton!
     @IBOutlet var answer4: UIButton!
     
-    
     var questions: QuestionSet = QuestionSet(Title: "Temp", Style: .MultipleChoice)
     var correctAnswer = 0
     var defaultColor = UIColor()
@@ -22,12 +21,14 @@ class multipleChoiceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewDidAppear(false)
         
         defaultColor = answer1.backgroundColor!
         
         questions = buildDefaultQuestions()
 
         loadQuestion()
+        self.navigationItem.title = "Multiple Choice";
     }
     override func viewDidAppear(_ animated: Bool) {
         self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
@@ -35,6 +36,12 @@ class multipleChoiceViewController: UIViewController {
         self.answer2.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
         self.answer3.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
         self.answer4.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
+        self.answer1.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        self.answer2.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        self.answer3.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        self.answer4.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        self.questionField.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
+        self.questionField.textColor = StorageEnclave.Access.getCurrentTextColor()
     }
     
     
@@ -134,8 +141,8 @@ class multipleChoiceViewController: UIViewController {
             questionField.layer.cornerRadius = 20
         }
         UIView.animate(withDuration: 0.25, animations: {
-            self.questionField.backgroundColor = UIColor.lightGray
-            self.questionField.textColor = UIColor.black
+            self.questionField.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
+            self.questionField.textColor = StorageEnclave.Access.getCurrentTextColor()
         })
     }
     
