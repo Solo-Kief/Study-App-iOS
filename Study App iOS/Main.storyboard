@@ -299,6 +299,143 @@
             </objects>
             <point key="canvasLocation" x="41" y="133"/>
         </scene>
+        <!--Question Set Collection View Controller-->
+        <scene sceneID="Lwv-Pf-OEN">
+            <objects>
+                <viewController id="NtW-MV-KbI" customClass="QuestionSetCollectionViewController" customModule="Study_App_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="S4H-VG-kpY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aWs-gV-tYt">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rHL-3X-7n5">
+                                    <size key="itemSize" width="180" height="240"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="4Jm-oi-CCO">
+                                        <rect key="frame" x="0.0" y="0.0" width="180" height="240"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="240"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Question Set Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nlu-rk-dSD">
+                                                    <rect key="frame" x="4" y="4" width="172" height="30"/>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="V1i-V4-OF2"/>
+                                                    </constraints>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="15"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Question Set Description" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSR-OR-KTe">
+                                                    <rect key="frame" x="4" y="38" width="172" height="198"/>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="15"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textView>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="Nlu-rk-dSD" firstAttribute="top" secondItem="4Jm-oi-CCO" secondAttribute="top" constant="4" id="1h3-NE-BXO"/>
+                                            <constraint firstAttribute="trailing" secondItem="zSR-OR-KTe" secondAttribute="trailing" constant="4" id="3AH-B3-lPJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="Nlu-rk-dSD" secondAttribute="trailing" constant="4" id="9B8-LD-ShF"/>
+                                            <constraint firstItem="zSR-OR-KTe" firstAttribute="top" secondItem="Nlu-rk-dSD" secondAttribute="bottom" constant="4" id="BH0-KP-j5y"/>
+                                            <constraint firstItem="zSR-OR-KTe" firstAttribute="top" secondItem="Nlu-rk-dSD" secondAttribute="bottom" constant="4" id="D5x-xJ-UE7"/>
+                                            <constraint firstAttribute="bottom" secondItem="zSR-OR-KTe" secondAttribute="bottom" constant="4" id="Myg-aK-R9b"/>
+                                            <constraint firstItem="zSR-OR-KTe" firstAttribute="leading" secondItem="4Jm-oi-CCO" secondAttribute="leading" constant="4" id="Ndh-7W-j7r"/>
+                                            <constraint firstItem="zSR-OR-KTe" firstAttribute="top" secondItem="Nlu-rk-dSD" secondAttribute="bottom" constant="4" id="SJs-gz-Yr6"/>
+                                            <constraint firstItem="Nlu-rk-dSD" firstAttribute="leading" secondItem="4Jm-oi-CCO" secondAttribute="leading" constant="4" id="xgK-n2-Tqj"/>
+                                        </constraints>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="0fm-1Z-VdG">
+                                        <rect key="frame" x="195" y="0.0" width="180" height="240"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="240"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Question Set Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xHw-el-rW4">
+                                                    <rect key="frame" x="4" y="4" width="172" height="30"/>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="hmQ-TA-X48"/>
+                                                    </constraints>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="15"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Question Set Description" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Utz-6u-yCc">
+                                                    <rect key="frame" x="4" y="38" width="172" height="198"/>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="15"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textView>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="xHw-el-rW4" secondAttribute="trailing" constant="4" id="2bd-oe-mUa"/>
+                                            <constraint firstItem="Utz-6u-yCc" firstAttribute="top" secondItem="xHw-el-rW4" secondAttribute="bottom" constant="4" id="4Vy-oT-Cv6"/>
+                                            <constraint firstItem="Utz-6u-yCc" firstAttribute="top" secondItem="xHw-el-rW4" secondAttribute="bottom" constant="4" id="Ecg-JJ-hao"/>
+                                            <constraint firstItem="xHw-el-rW4" firstAttribute="leading" secondItem="0fm-1Z-VdG" secondAttribute="leading" constant="4" id="Gth-aK-7qS"/>
+                                            <constraint firstAttribute="trailing" secondItem="Utz-6u-yCc" secondAttribute="trailing" constant="4" id="KTL-0m-f3F"/>
+                                            <constraint firstItem="Utz-6u-yCc" firstAttribute="leading" secondItem="0fm-1Z-VdG" secondAttribute="leading" constant="4" id="U2M-3v-zvA"/>
+                                            <constraint firstItem="xHw-el-rW4" firstAttribute="top" secondItem="0fm-1Z-VdG" secondAttribute="top" constant="4" id="ayn-J1-JUZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="Utz-6u-yCc" secondAttribute="bottom" constant="4" id="iGM-lp-BSm"/>
+                                            <constraint firstItem="Utz-6u-yCc" firstAttribute="top" secondItem="xHw-el-rW4" secondAttribute="bottom" constant="4" id="wCY-8e-jcV"/>
+                                        </constraints>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="NtW-MV-KbI" id="hN1-0B-GRf"/>
+                                    <outlet property="delegate" destination="NtW-MV-KbI" id="zai-W2-DZ9"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aWs-gV-tYt" firstAttribute="top" secondItem="YD1-ry-caD" secondAttribute="top" id="JCE-gp-mEH"/>
+                            <constraint firstItem="YD1-ry-caD" firstAttribute="trailing" secondItem="aWs-gV-tYt" secondAttribute="trailing" id="YQU-AW-Dke"/>
+                            <constraint firstItem="YD1-ry-caD" firstAttribute="bottom" secondItem="aWs-gV-tYt" secondAttribute="bottom" id="ldS-0w-twJ"/>
+                            <constraint firstItem="aWs-gV-tYt" firstAttribute="leading" secondItem="YD1-ry-caD" secondAttribute="leading" id="oov-u6-PHL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YD1-ry-caD"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vTx-Ku-IbF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1255" y="-653"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="DcG-lt-hyz">
             <objects>

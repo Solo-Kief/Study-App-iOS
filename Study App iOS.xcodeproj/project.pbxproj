@@ -10,6 +10,7 @@
 		209A62DC21ADDABF007C3A6D /* FlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209A62DB21ADDABF007C3A6D /* FlashCardViewController.swift */; };
 		C60DB8E121B07465003C92A3 /* StorageEnclave.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60DB8E021B07465003C92A3 /* StorageEnclave.swift */; };
 		C60DB8E321B0747E003C92A3 /* multipleChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60DB8E221B0747E003C92A3 /* multipleChoiceViewController.swift */; };
+		C628A24121B8264100C45CC8 /* QuestionSetCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C628A24021B8264100C45CC8 /* QuestionSetCollectionViewController.swift */; };
 		C62F2B7C21A5021800C203EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62F2B7B21A5021800C203EE /* AppDelegate.swift */; };
 		C62F2B8621A5021900C203EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C62F2B8421A5021900C203EE /* LaunchScreen.storyboard */; };
 		C6AA519121A5026D00A29891 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6AA519021A5026D00A29891 /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 		209A62DB21ADDABF007C3A6D /* FlashCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlashCardViewController.swift; path = "Study App iOS/FlashCardViewController.swift"; sourceTree = SOURCE_ROOT; };
 		C60DB8E021B07465003C92A3 /* StorageEnclave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageEnclave.swift; sourceTree = "<group>"; };
 		C60DB8E221B0747E003C92A3 /* multipleChoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = multipleChoiceViewController.swift; sourceTree = "<group>"; };
+		C628A24021B8264100C45CC8 /* QuestionSetCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSetCollectionViewController.swift; sourceTree = "<group>"; };
 		C62F2B7821A5021800C203EE /* Study App iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Study App iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C62F2B7B21A5021800C203EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C62F2B8521A5021900C203EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,6 +57,14 @@
 			path = "Multiple Choice";
 			sourceTree = "<group>";
 		};
+		C628A23D21B8252700C45CC8 /* Question Set Selection */ = {
+			isa = PBXGroup;
+			children = (
+				C628A24021B8264100C45CC8 /* QuestionSetCollectionViewController.swift */,
+			);
+			path = "Question Set Selection";
+			sourceTree = "<group>";
+		};
 		C62F2B6F21A5021800C203EE = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +88,7 @@
 				C60AB8B021ADAC2B00E18CCE /* Multiple Choice */,
 				C9A5142121ADDAED00DB9393 /* Fill In The Blank */,
 				C6E86FD421AA52A200E7A645 /* Flash Card */,
+				C628A23D21B8252700C45CC8 /* Question Set Selection */,
 				C6E86FD321AA520500E7A645 /* Data & Types */,
 				C6E86FD521AA52DD00E7A645 /* Misc */,
 				C6AA519821A502C100A29891 /* Assets.xcassets */,
@@ -196,6 +207,7 @@
 				C6AA519721A502AB00A29891 /* Question.swift in Sources */,
 				209A62DC21ADDABF007C3A6D /* FlashCardViewController.swift in Sources */,
 				C60DB8E121B07465003C92A3 /* StorageEnclave.swift in Sources */,
+				C628A24121B8264100C45CC8 /* QuestionSetCollectionViewController.swift in Sources */,
 				C6E86FD221AA51F100E7A645 /* QuestionSet.swift in Sources */,
 				C62F2B7C21A5021800C203EE /* AppDelegate.swift in Sources */,
 				C6AA519421A502A500A29891 /* SettingsViewController.swift in Sources */,
