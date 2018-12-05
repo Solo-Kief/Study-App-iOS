@@ -16,11 +16,25 @@ class AddEditQuestionSetViewController: UIViewController {
     
     
     var questionSetToEdit: QuestionSet!
-    
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        questionSetTitleTextField.text = questionSetToEdit.title
+        questionSetDetailsTextField.text = questionSetToEdit.details //Make new to make a correction here as details is an optional
+        
+        switch questionSetToEdit.style {
+        case .MultipleChoice:
+            setTypeSegmentedControl.selectedSegmentIndex = 0
+        case .FlashCard:
+            setTypeSegmentedControl.selectedSegmentIndex = 1
+        case .Blank:
+            setTypeSegmentedControl.selectedSegmentIndex = 2
+        default:
+            setTypeSegmentedControl.selectedSegmentIndex = 0
+        }
+
 
         // Do any additional setup after loading the view.
     }
@@ -36,6 +50,28 @@ class AddEditQuestionSetViewController: UIViewController {
     
     @IBAction func submitButtonTapped(_ sender: Any) {
         
+        guard let title = questionSetTitleTextField.text, !title.isEmpty,
+            let details = questionSetDetailsTextField.text, !details.isEmpty else {
+                //Put an error alert function here
+                return
+        }
+        
+        var style: QuestionSet.Style
+        
+        switch setTypeSegmentedControl.selectedSegmentIndex {
+        case 0:
+            style = .MultipleChoice
+        case 1:
+            style = .FlashCard
+        case 2:
+            style = .Blank
+        default:
+            style = .MultipleChoice
+        }
+
+        
+        questionSetToEdit = QuestionSet(Title: title, Details: details, Style: style)
+
     }
     
     /*
