@@ -569,10 +569,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JF5-AJ-qU2"/>
                     </view>
+                    <connections>
+                        <outlet property="detailsTextField" destination="Pwd-cF-Xh4" id="GZj-dk-bdf"/>
+                        <outlet property="questionSetTypeSegmentedControl" destination="rCw-rw-npZ" id="Mb2-6K-mn8"/>
+                        <outlet property="questionTextField" destination="aAS-s0-hZG" id="FlB-aE-1cd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kHr-1s-o7f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1346" y="941"/>
+            <point key="canvasLocation" x="1775" y="899"/>
         </scene>
         <!--Fill In The Blank-->
         <scene sceneID="Hvi-6G-uld">

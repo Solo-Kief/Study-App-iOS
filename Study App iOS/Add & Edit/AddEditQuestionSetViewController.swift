@@ -9,6 +9,13 @@
 import UIKit
 
 class AddEditQuestionSetViewController: UIViewController {
+    
+    @IBOutlet weak var questionTextField: UITextField!
+    @IBOutlet weak var detailsTextField: UITextField!
+    @IBOutlet weak var questionSetTypeSegmentedControl: UISegmentedControl!
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,5 +33,8 @@ class AddEditQuestionSetViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    
 
 }
