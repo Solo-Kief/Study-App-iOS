@@ -9,12 +9,30 @@
 import UIKit
 
 class AddEditQuestionSetViewController: UIViewController {
-
+    
+    @IBOutlet weak var questionSetTitleTextField: UITextField!
+    @IBOutlet weak var questionSetDetailsTextField: UITextField!
+    @IBOutlet weak var setTypeSegmentedControl: UISegmentedControl!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
+    
+    
+    
+    @IBAction func editButtonTapped(_ sender: Any) {
+    }
+    
+    
+    
+    @IBAction func submitButtonTapped(_ sender: Any) {
+    }
+    
+    
     
 
     /*
