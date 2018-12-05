@@ -15,6 +15,10 @@ class AddEditQuestionSetViewController: UIViewController {
     @IBOutlet weak var setTypeSegmentedControl: UISegmentedControl!
     
     
+    var questionSetToEdit: QuestionSet!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,16 +29,15 @@ class AddEditQuestionSetViewController: UIViewController {
     
     
     @IBAction func editButtonTapped(_ sender: Any) {
+        
     }
     
     
     
     @IBAction func submitButtonTapped(_ sender: Any) {
+        
     }
     
-    
-    
-
     /*
     // MARK: - Navigation
 
@@ -46,3 +49,5 @@ class AddEditQuestionSetViewController: UIViewController {
     */
 
 }
+
+
