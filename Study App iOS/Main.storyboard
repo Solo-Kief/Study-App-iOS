@@ -299,6 +299,94 @@
             </objects>
             <point key="canvasLocation" x="41" y="133"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="AQb-5g-MR7">
+            <objects>
+                <viewController id="yUg-NX-V1M" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CvH-WM-5dc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wPT-qi-ovt">
+                                <rect key="frame" x="20" y="44" width="335" height="558.66666666666663"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add/Edit your questions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="waZ-QT-y0w">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="79.666666666666671"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Question" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QDQ-Be-j2U">
+                                        <rect key="frame" x="0.0" y="79.666666666666671" width="335" height="80.000000000000014"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answer 1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ove-Ha-i3T">
+                                        <rect key="frame" x="0.0" y="159.66666666666666" width="335" height="79.666666666666657"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answer 2" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cgM-1u-OJM">
+                                        <rect key="frame" x="0.0" y="239.33333333333329" width="335" height="79.666666666666657"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answer 3" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3VP-Ot-2nU">
+                                        <rect key="frame" x="0.0" y="319" width="335" height="80"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answer 4" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="She-8p-w9J">
+                                        <rect key="frame" x="0.0" y="399" width="335" height="79.666666666666686"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nyd-5F-OWv">
+                                        <rect key="frame" x="0.0" y="478.66666666666663" width="335" height="81"/>
+                                        <segments>
+                                            <segment title="One"/>
+                                            <segment title="Two"/>
+                                            <segment title="Three"/>
+                                            <segment title="Four"/>
+                                        </segments>
+                                    </segmentedControl>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rhm-mg-VUh">
+                                <rect key="frame" x="308" y="735" width="49" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLP-uL-6TC">
+                                <rect key="frame" x="171" y="735" width="32" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Next"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vXg-DK-Ja5">
+                                <rect key="frame" x="26" y="735" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wPT-qi-ovt" firstAttribute="top" secondItem="RfG-a6-Ozy" secondAttribute="top" id="EK6-oY-bn3"/>
+                            <constraint firstItem="wPT-qi-ovt" firstAttribute="leading" secondItem="RfG-a6-Ozy" secondAttribute="leading" constant="20" id="LQb-EH-1ez"/>
+                            <constraint firstItem="RfG-a6-Ozy" firstAttribute="bottom" secondItem="wPT-qi-ovt" secondAttribute="bottom" constant="175.5" id="Qld-kv-aVV"/>
+                            <constraint firstItem="RfG-a6-Ozy" firstAttribute="trailing" secondItem="wPT-qi-ovt" secondAttribute="trailing" constant="20" id="bxd-di-5s6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RfG-a6-Ozy"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iMF-Pe-hIp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1353" y="139"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="DcG-lt-hyz">
             <objects>
@@ -402,6 +490,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y18-Ow-C9A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="41" y="923"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="CYz-ta-KbF">
+            <objects>
+                <viewController id="fJ7-ra-XS7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mnx-1v-jXL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="JF5-AJ-qU2"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kHr-1s-o7f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1346" y="941"/>
         </scene>
         <!--Fill In The Blank-->
         <scene sceneID="Hvi-6G-uld">
