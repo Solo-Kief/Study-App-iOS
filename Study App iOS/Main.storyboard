@@ -392,6 +392,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RfG-a6-Ozy"/>
                     </view>
+                    <connections>
+                        <outlet property="answerFourTextField" destination="She-8p-w9J" id="7Rn-UD-p8q"/>
+                        <outlet property="answerOneTextField" destination="Ove-Ha-i3T" id="dEC-MH-gVo"/>
+                        <outlet property="answerThreeTextField" destination="3VP-Ot-2nU" id="HCX-vX-kHA"/>
+                        <outlet property="answerTwoTextField" destination="cgM-1u-OJM" id="j7g-Tc-euH"/>
+                        <outlet property="backButton" destination="vXg-DK-Ja5" id="zmc-gZ-xqb"/>
+                        <outlet property="correctAnswerSegmentController" destination="nyd-5F-OWv" id="9mY-xE-FVF"/>
+                        <outlet property="nextButton" destination="xLP-uL-6TC" id="Zd5-qd-Aco"/>
+                        <outlet property="questionTextField" destination="QDQ-Be-j2U" id="D3v-41-v9T"/>
+                        <outlet property="submitButton" destination="Rhm-mg-VUh" id="mnj-V1-CA8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iMF-Pe-hIp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
