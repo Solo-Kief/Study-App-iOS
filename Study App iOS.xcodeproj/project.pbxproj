@@ -17,6 +17,8 @@
 		C6AA519721A502AB00A29891 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA519621A502AB00A29891 /* Question.swift */; };
 		C6AA519921A502C100A29891 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6AA519821A502C100A29891 /* Assets.xcassets */; };
 		C6E86FD221AA51F100E7A645 /* QuestionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E86FD121AA51F100E7A645 /* QuestionSet.swift */; };
+		C960B33321B8524C00501C89 /* AddEditQuestionSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C960B33221B8524C00501C89 /* AddEditQuestionSetViewController.swift */; };
+		C960B33521B8528700501C89 /* AddEditQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C960B33421B8528700501C89 /* AddEditQuestionsViewController.swift */; };
 		C9A5142521ADDC6800DB9393 /* FillInTheBlankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A5142421ADDC6800DB9393 /* FillInTheBlankViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +35,8 @@
 		C6AA519621A502AB00A29891 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		C6AA519821A502C100A29891 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C6E86FD121AA51F100E7A645 /* QuestionSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSet.swift; sourceTree = "<group>"; };
+		C960B33221B8524C00501C89 /* AddEditQuestionSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditQuestionSetViewController.swift; sourceTree = "<group>"; };
+		C960B33421B8528700501C89 /* AddEditQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditQuestionsViewController.swift; sourceTree = "<group>"; };
 		C9A5142421ADDC6800DB9393 /* FillInTheBlankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillInTheBlankViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +82,7 @@
 				C60AB8B021ADAC2B00E18CCE /* Multiple Choice */,
 				C9A5142121ADDAED00DB9393 /* Fill In The Blank */,
 				C6E86FD421AA52A200E7A645 /* Flash Card */,
+				C960B33121B8520100501C89 /* Add & Edit */,
 				C6E86FD321AA520500E7A645 /* Data & Types */,
 				C6E86FD521AA52DD00E7A645 /* Misc */,
 				C6AA519821A502C100A29891 /* Assets.xcassets */,
@@ -112,6 +117,15 @@
 				C62F2B8421A5021900C203EE /* LaunchScreen.storyboard */,
 			);
 			path = Misc;
+			sourceTree = "<group>";
+		};
+		C960B33121B8520100501C89 /* Add & Edit */ = {
+			isa = PBXGroup;
+			children = (
+				C960B33221B8524C00501C89 /* AddEditQuestionSetViewController.swift */,
+				C960B33421B8528700501C89 /* AddEditQuestionsViewController.swift */,
+			);
+			path = "Add & Edit";
 			sourceTree = "<group>";
 		};
 		C9A5142121ADDAED00DB9393 /* Fill In The Blank */ = {
@@ -198,8 +212,10 @@
 				C60DB8E121B07465003C92A3 /* StorageEnclave.swift in Sources */,
 				C6E86FD221AA51F100E7A645 /* QuestionSet.swift in Sources */,
 				C62F2B7C21A5021800C203EE /* AppDelegate.swift in Sources */,
+				C960B33321B8524C00501C89 /* AddEditQuestionSetViewController.swift in Sources */,
 				C6AA519421A502A500A29891 /* SettingsViewController.swift in Sources */,
 				C9A5142521ADDC6800DB9393 /* FillInTheBlankViewController.swift in Sources */,
+				C960B33521B8528700501C89 /* AddEditQuestionsViewController.swift in Sources */,
 				C60DB8E321B0747E003C92A3 /* multipleChoiceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

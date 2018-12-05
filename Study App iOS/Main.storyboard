@@ -302,7 +302,7 @@
         <!--Add Edit questions-->
         <scene sceneID="AQb-5g-MR7">
             <objects>
-                <viewController id="yUg-NX-V1M" userLabel="Add Edit questions" sceneMemberID="viewController">
+                <viewController id="yUg-NX-V1M" userLabel="Add Edit questions" customClass="AddEditQuestionsViewController" customModule="Study_App_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CvH-WM-5dc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -500,7 +500,7 @@
         <!--Add Edit question sets-->
         <scene sceneID="CYz-ta-KbF">
             <objects>
-                <viewController id="fJ7-ra-XS7" userLabel="Add Edit question sets" sceneMemberID="viewController">
+                <viewController id="fJ7-ra-XS7" userLabel="Add Edit question sets" customClass="AddEditQuestionSetViewController" customModule="Study_App_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mnx-1v-jXL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
