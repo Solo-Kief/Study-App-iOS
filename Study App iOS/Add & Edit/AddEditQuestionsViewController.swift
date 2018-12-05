@@ -10,6 +10,19 @@ import UIKit
 
 class AddEditQuestionsViewController: UIViewController {
 
+    @IBOutlet weak var questionTextField: UITextField!
+    @IBOutlet weak var answerOneTextField: UITextField!
+    @IBOutlet weak var answerTwoTextField: UITextField!
+    @IBOutlet weak var answerThreeTextField: UITextField!
+    @IBOutlet weak var answerFourTextField: UITextField!
+    @IBOutlet weak var correctAnswerSegmentController: UISegmentedControl!
+    
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var submitButton: UIButton!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
