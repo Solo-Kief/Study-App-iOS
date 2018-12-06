@@ -73,7 +73,7 @@ class AddEditQuestionSetViewController: UIViewController {
         }
 
         
-        questionSetToEdit = QuestionSet(Title: title, Details: details, Style: style)
+//        questionSetToEdit = QuestionSet(Title: title, Details: details, Style: style)
 
     }
     
