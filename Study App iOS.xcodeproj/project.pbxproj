@@ -18,6 +18,7 @@
 		C6AA519721A502AB00A29891 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA519621A502AB00A29891 /* Question.swift */; };
 		C6AA519921A502C100A29891 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6AA519821A502C100A29891 /* Assets.xcassets */; };
 		C6E86FD221AA51F100E7A645 /* QuestionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E86FD121AA51F100E7A645 /* QuestionSet.swift */; };
+		C6FEF81F21B846A2009E00C3 /* QuestionSetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FEF81E21B846A2009E00C3 /* QuestionSetCollectionViewCell.swift */; };
 		C9A5142521ADDC6800DB9393 /* FillInTheBlankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A5142421ADDC6800DB9393 /* FillInTheBlankViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		C6AA519621A502AB00A29891 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		C6AA519821A502C100A29891 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C6E86FD121AA51F100E7A645 /* QuestionSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSet.swift; sourceTree = "<group>"; };
+		C6FEF81E21B846A2009E00C3 /* QuestionSetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSetCollectionViewCell.swift; sourceTree = "<group>"; };
 		C9A5142421ADDC6800DB9393 /* FillInTheBlankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillInTheBlankViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				C628A24021B8264100C45CC8 /* QuestionSetCollectionViewController.swift */,
+				C6FEF81E21B846A2009E00C3 /* QuestionSetCollectionViewCell.swift */,
 			);
 			path = "Question Set Selection";
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6AA519721A502AB00A29891 /* Question.swift in Sources */,
+				C6FEF81F21B846A2009E00C3 /* QuestionSetCollectionViewCell.swift in Sources */,
 				209A62DC21ADDABF007C3A6D /* FlashCardViewController.swift in Sources */,
 				C60DB8E121B07465003C92A3 /* StorageEnclave.swift in Sources */,
 				C628A24121B8264100C45CC8 /* QuestionSetCollectionViewController.swift in Sources */,
