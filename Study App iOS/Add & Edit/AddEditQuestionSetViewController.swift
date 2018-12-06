@@ -26,7 +26,10 @@ class AddEditQuestionSetViewController: UIViewController {
     }
     
     
-    
+    // touch screen to make keyboard go away
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     @IBAction func editButtonTapped(_ sender: Any) {
         
