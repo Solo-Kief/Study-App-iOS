@@ -766,6 +766,10 @@
                                         <integer key="value" value="22"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="questionSetsButtonTapped:" destination="pKl-rO-j64" eventType="touchUpInside" id="IBu-YK-Mc5"/>
+                                    <segue destination="NtW-MV-KbI" kind="show" identifier="showQuestionSetsScreen" id="tPL-Yd-xri"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -16,7 +16,7 @@ class FillInTheBlankViewController: UIViewController {
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var questionSetsButton: UIButton!
     
-    
+    var questionSetStyle = QuestionSet.Style.Blank
     var dummyFillInTheBlankQuestionSet: QuestionSet!
     var lastQuestion = -1
     var defaultColor = StorageEnclave.Access.getCurrentSecondaryColor()
@@ -54,6 +54,15 @@ class FillInTheBlankViewController: UIViewController {
         answerTextField.layer.cornerRadius = 15
         answerTextField.layer.masksToBounds = true
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? QuestionSetCollectionViewController {
+            //We need to pass through the question style.
+            destination.selectedStyle = questionSetStyle
+        }
+    }
+
     
     //Popultates questions when the screen loads
     func populateFillInTheBlankQuestions() {
@@ -154,6 +163,12 @@ class FillInTheBlankViewController: UIViewController {
         getNewFillInTheBlankQuestion()
     }
     
+    @IBAction func questionSetsButtonTapped(_ sender: Any) {
+ self.performSegue(withIdentifier: "showQuestionSetsScreen", sender: self)
+    }
+    
+    
+    
     /*
     // MARK: - Navigation
 
@@ -171,6 +186,7 @@ class FillInTheBlankViewController: UIViewController {
  -Change questionLabel.text make it show Correct or not correct with a sleep timer and then showing the next question? (Instead of having the pop up alert action thing)
  -Set up a reset button?
  -Set up a score keeper?
+ 
  
  */
 
