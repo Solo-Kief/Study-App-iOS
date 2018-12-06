@@ -293,6 +293,7 @@
                         <outlet property="answer4" destination="fkX-Eg-CPl" id="EcF-AT-b0n"/>
                         <outlet property="questionField" destination="X5S-q9-M4t" id="Epc-Vs-qFJ"/>
                         <outlet property="questionFieldHeight" destination="8ef-FC-bMV" id="TTz-WC-IsQ"/>
+                        <segue destination="NtW-MV-KbI" kind="showDetail" id="4MR-r4-I3J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

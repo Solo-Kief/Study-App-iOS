@@ -29,6 +29,10 @@ class multipleChoiceViewController: UIViewController {
 
         loadQuestion()
         self.navigationItem.title = "Multiple Choice";
+   
+    }
+    override func prepare(for segue: (UIStoryboardSegue?), sender: Any?) {
+        var questionSet = StorageEnclave.Access.getQuestionSetIndices(ofStyle: )
     }
     //changes the colors of text, buttons, and question field
     override func viewDidAppear(_ animated: Bool) {
@@ -167,7 +171,7 @@ class multipleChoiceViewController: UIViewController {
 
     
 
-
+    
 
 
 }
