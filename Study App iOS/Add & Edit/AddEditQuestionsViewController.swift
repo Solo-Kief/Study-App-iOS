@@ -19,14 +19,42 @@ class AddEditQuestionsViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var currentQuestionLabel: UILabel!
     
     
+    
+    
+    var questionsArrayToEdit: [Question] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        currentQuestionLabel.text = "Question 1"
+        questionTextField.text = questionsArrayToEdit[0].question
+        answerOneTextField.text = questionsArrayToEdit[0].answers[0]
+        answerTwoTextField.text = questionsArrayToEdit[0].answers[1]
+        answerThreeTextField.text = questionsArrayToEdit[0].answers[2]
+        answerFourTextField.text = questionsArrayToEdit[0].answers[3]
+        
+        switch questionsArrayToEdit[0].correctAnswer {
+        case 0:
+            correctAnswerSegmentController.selectedSegmentIndex = 0
+        case 1:
+            correctAnswerSegmentController.selectedSegmentIndex = 1
+        case 2:
+            correctAnswerSegmentController.selectedSegmentIndex = 2
+        case 3:
+            correctAnswerSegmentController.selectedSegmentIndex = 3
+        default:
+            correctAnswerSegmentController.selectedSegmentIndex = 0
+        }
+
 
         // Do any additional setup after loading the view.
     }
+    
+    
+    
     
     func showErrorAlert() {
         let errorAlert = UIAlertController(title: "Error", message: "Please enter text in all fields, or hit the back button to go back to the quiz.", preferredStyle: .actionSheet)
@@ -34,6 +62,7 @@ class AddEditQuestionsViewController: UIViewController {
         errorAlert.addAction(dismissAction)
         self.present(errorAlert, animated: true, completion: nil)
     }
+    
     // touch screen to make keyboard go away
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -50,8 +79,13 @@ class AddEditQuestionsViewController: UIViewController {
     }
     */
 
+    @IBAction func backButtonTapped(_ sender: Any) {
+        
+    }
     
-    
+    @IBAction func nextButtonTapped(_ sender: Any) {
+        
+    }
     
     
     @IBAction func submitButton(_ sender: Any) {
@@ -64,10 +98,9 @@ class AddEditQuestionsViewController: UIViewController {
                 showErrorAlert()
                 return
         }
+        
+        self.performSegue(withIdentifier: "unwindToAddEditQuestionSetWIthSegue", sender: self)
     }
     
-    
-    
-    
-    
 }
+

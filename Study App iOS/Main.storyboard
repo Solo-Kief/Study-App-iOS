@@ -480,12 +480,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="1" green="0.55358486559999998" blue="0.16336937949999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextButtonTapped:" destination="yUg-NX-V1M" eventType="touchUpInside" id="MWW-eZ-Siy"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vXg-DK-Ja5">
                                 <rect key="frame" x="26" y="735" width="34" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="1" green="0.55358486559999998" blue="0.16336937949999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="yUg-NX-V1M" eventType="touchUpInside" id="Q7c-rZ-ioR"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -504,14 +510,17 @@
                         <outlet property="answerTwoTextField" destination="cgM-1u-OJM" id="j7g-Tc-euH"/>
                         <outlet property="backButton" destination="vXg-DK-Ja5" id="zmc-gZ-xqb"/>
                         <outlet property="correctAnswerSegmentController" destination="nyd-5F-OWv" id="9mY-xE-FVF"/>
+                        <outlet property="currentQuestionLabel" destination="waZ-QT-y0w" id="Aqp-bm-CW1"/>
                         <outlet property="nextButton" destination="xLP-uL-6TC" id="Zd5-qd-Aco"/>
                         <outlet property="questionTextField" destination="QDQ-Be-j2U" id="D3v-41-v9T"/>
                         <outlet property="submitButton" destination="Rhm-mg-VUh" id="mnj-V1-CA8"/>
+                        <segue destination="FnO-g6-eqv" kind="unwind" identifier="unwindToAddEditQuestionSetWIthSegue" unwindAction="unwindToAddEditQuestionSetWithSegue:" id="75Y-Ia-wri"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iMF-Pe-hIp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="FnO-g6-eqv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1353" y="139"/>
+            <point key="canvasLocation" x="2345" y="497"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="DcG-lt-hyz">
@@ -679,6 +688,7 @@
                                 <state key="normal" title="Edit"/>
                                 <connections>
                                     <action selector="editButtonTapped:" destination="fJ7-ra-XS7" eventType="touchUpInside" id="IQy-KN-YHE"/>
+                                    <segue destination="yUg-NX-V1M" kind="show" identifier="showQuestionsScreen" id="p8y-kO-1hH"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -699,7 +709,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kHr-1s-o7f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1775" y="899"/>
+            <point key="canvasLocation" x="1262" y="497"/>
         </scene>
         <!--Fill In The Blank-->
         <scene sceneID="Hvi-6G-uld">

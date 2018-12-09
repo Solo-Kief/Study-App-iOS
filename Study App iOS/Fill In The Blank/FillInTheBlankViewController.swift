@@ -20,7 +20,7 @@ class FillInTheBlankViewController: UIViewController {
     var dummyFillInTheBlankQuestionSet: QuestionSet!
     var lastQuestion = -1
     var defaultColor = StorageEnclave.Access.getCurrentSecondaryColor()
-
+    
     
     //Current fill in the blank question being answered
     var currentFillInTheBlankQuestion: Question! {
@@ -55,14 +55,13 @@ class FillInTheBlankViewController: UIViewController {
         answerTextField.layer.masksToBounds = true
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? QuestionSetCollectionViewController {
             //We need to pass through the question style.
             destination.selectedStyle = questionSetStyle
         }
     }
-
+    
     
     //Popultates questions when the screen loads
     func populateFillInTheBlankQuestions() {
@@ -107,7 +106,7 @@ class FillInTheBlankViewController: UIViewController {
         //Present the alert controller
         self.present(correctAlert, animated: true, completion: nil)
     }
-
+    
     //Shows an alert when the user get the question wrong
     func showIncorrectAnswerAlert() {
         //UIAlertController
@@ -164,20 +163,20 @@ class FillInTheBlankViewController: UIViewController {
     }
     
     @IBAction func questionSetsButtonTapped(_ sender: Any) {
- self.performSegue(withIdentifier: "showQuestionSetsScreen", sender: self)
+        self.performSegue(withIdentifier: "showQuestionSetsScreen", sender: self)
     }
     
     
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
 }
 
 /*

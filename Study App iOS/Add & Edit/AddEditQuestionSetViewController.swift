@@ -14,9 +14,11 @@ class AddEditQuestionSetViewController: UIViewController {
     @IBOutlet weak var questionSetDetailsTextField: UITextField!
     @IBOutlet weak var setTypeSegmentedControl: UISegmentedControl!
     
-    
     var questionSetToEdit: QuestionSet!
-
+    
+    var style = QuestionSet.Style.Blank
+    
+    var tempQuestionsArray: [Question] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +37,23 @@ class AddEditQuestionSetViewController: UIViewController {
             setTypeSegmentedControl.selectedSegmentIndex = 0
         }
 
-
         // Do any additional setup after loading the view.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? AddEditQuestionsViewController {
+            //We need to pass through the Game that we'll be editing.
+            destination.questionsArrayToEdit = tempQuestionsArray
+        }
+    }
+    
+    func showErrorAlert() {
+        let errorAlert = UIAlertController(title: "Error", message: "Please enter text in all fields, or hit the back button to go back to the quiz.", preferredStyle: .actionSheet)
+        let dismissAction = UIAlertAction(title: "Close", style: .default, handler: nil)
+        errorAlert.addAction(dismissAction)
+        self.present(errorAlert, animated: true, completion: nil)
+    }
+
     
     
     // touch screen to make keyboard go away
@@ -46,7 +62,7 @@ class AddEditQuestionSetViewController: UIViewController {
     }
     
     @IBAction func editButtonTapped(_ sender: Any) {
-        
+        self.performSegue(withIdentifier: "showQuestionsScreen", sender: self)
     }
     
     
@@ -59,8 +75,6 @@ class AddEditQuestionSetViewController: UIViewController {
                 return
         }
         
-        var style: QuestionSet.Style
-        
         switch setTypeSegmentedControl.selectedSegmentIndex {
         case 0:
             style = .MultipleChoice
@@ -71,10 +85,8 @@ class AddEditQuestionSetViewController: UIViewController {
         default:
             style = .MultipleChoice
         }
-
         
-//        questionSetToEdit = QuestionSet(Title: title, Details: details, Style: style)
-
+        questionSetToEdit = QuestionSet(Title: title, Details: details, Questions: tempQuestionsArray, Style: style)
     }
     
     /*
@@ -86,7 +98,8 @@ class AddEditQuestionSetViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    @IBAction func unwindToAddEditQuestionSet(segue: UIStoryboardSegue) {}
 }
 
 
