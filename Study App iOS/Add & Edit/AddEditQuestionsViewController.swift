@@ -9,7 +9,7 @@
 import UIKit
 
 class AddEditQuestionsViewController: UIViewController {
-
+    
     @IBOutlet weak var questionTextField: UITextField!
     @IBOutlet weak var answerOneTextField: UITextField!
     @IBOutlet weak var answerTwoTextField: UITextField!
@@ -48,8 +48,8 @@ class AddEditQuestionsViewController: UIViewController {
         default:
             correctAnswerSegmentController.selectedSegmentIndex = 0
         }
-
-
+        
+        
         // Do any additional setup after loading the view.
     }
     
@@ -58,7 +58,8 @@ class AddEditQuestionsViewController: UIViewController {
     
     func showErrorAlert() {
         let errorAlert = UIAlertController(title: "Error", message: "Please enter text in all fields, or hit the back button to go back to the quiz.", preferredStyle: .actionSheet)
-        let dismissAction = UIAlertAction(title: "Close", style: .default, handler: nil)
+        let dismissAction = UIAlertAction(title: "Close", style: .default) { _ in
+        }
         errorAlert.addAction(dismissAction)
         self.present(errorAlert, animated: true, completion: nil)
     }
@@ -70,15 +71,15 @@ class AddEditQuestionsViewController: UIViewController {
     
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
     @IBAction func backButtonTapped(_ sender: Any) {
         
     }
@@ -103,4 +104,7 @@ class AddEditQuestionsViewController: UIViewController {
     }
     
 }
+
+
+
 
