@@ -14,7 +14,7 @@ class multipleChoiceViewController: UIViewController {
     @IBOutlet var answer3: UIButton!
     @IBOutlet var answer4: UIButton!
     
-    var liveQuestionSet: QuestionSet? = nil
+    var liveQuestionSet: QuestionSet?
     var correctAnswer = 0
     var defaultColor = UIColor()
     var lastQuestion = -1

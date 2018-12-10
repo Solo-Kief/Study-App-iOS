@@ -1,14 +1,20 @@
-//
 //  FlashCardViewController.swift
 //  Study App iOS
 //
 //  Created by Brian Sadler on 11/27/18.
 //  Copyright © 2018 Phoenix Development. All rights reserved.
-//
 
 import UIKit
 //Brian's File
 
+// !IMPORTANT! You need to change this screen to use an optional QuestionSet instead of the current "flashCardArray"
+// array of questions. The value should be called "activeQuestionSet" and must be optional!
+
+// This screen needs to be able to handle "activeQuestionSet" having no question set loaded in.
+// Look at the other two screens to see how this might be handled.
+
+// I noticed that you are using an array to keep track or which questions have been used.
+// I recommend changing it to simply use the index of the questions instead.
 
 class FlashCardViewController: UIViewController {
     //Outlets for buttons and flashcard
@@ -33,7 +39,6 @@ class FlashCardViewController: UIViewController {
         else {
             flashCardTextView.text = currentCard.question
         }
-
     }
     
     //Function to switch a new card
@@ -53,6 +58,19 @@ class FlashCardViewController: UIViewController {
         }
     }
   
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //Impliment the same function found in the multiple choice screen. Adapt as needed.
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewDidAppear(false)
+        
+        //Makes the current card the very first card in the array
+        currentCard = flashCardArray[0]
+        flashCardTextView.text =  currentCard.question
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         //Sets the colors for buttons and background
         self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
@@ -62,22 +80,5 @@ class FlashCardViewController: UIViewController {
         self.nextButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
         self.flashCardTextView.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
         flashCardTextView.textColor = StorageEnclave.Access.getCurrentTextColor()
-    }
-    
-    @IBAction func questionSetButtonPressed(_ sender: Any) {
-        
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        viewDidAppear(false)
-        
-        //Makes the current card the very first card in the array
-        currentCard = flashCardArray[0]
-        flashCardTextView.text =  currentCard.question
-        
-       
     }
 }

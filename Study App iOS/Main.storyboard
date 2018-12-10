@@ -634,16 +634,16 @@
                                     <action selector="flipButtonPressed:" destination="nxL-Mj-e6m" eventType="touchUpInside" id="pGm-1e-Cwr"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="STS-9J-vO4">
-                                <rect key="frame" x="143" y="628" width="89" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.63289841629999999" blue="0.099396445459999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Question Set">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="STS-9J-vO4">
+                                <rect key="frame" x="87.666666666666686" y="44" width="200" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="FZJ-2e-yQg"/>
+                                    <constraint firstAttribute="height" constant="15" id="SQ4-fT-hbc"/>
+                                </constraints>
+                                <state key="normal" title="Change Questions">
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="questionSetButtonPressed:" destination="nxL-Mj-e6m" eventType="touchUpInside" id="ctR-AG-e3n"/>
                                     <segue destination="NtW-MV-KbI" kind="showDetail" id="xvu-I1-dBq"/>
                                 </connections>
                             </button>
@@ -653,8 +653,10 @@
                             <constraint firstItem="BF5-AY-ZBP" firstAttribute="centerX" secondItem="YbZ-yG-YjV" secondAttribute="centerX" id="89a-ct-vVV"/>
                             <constraint firstItem="R3Z-Rf-Q7s" firstAttribute="top" secondItem="BF5-AY-ZBP" secondAttribute="bottom" constant="50" id="B1A-s9-LIl"/>
                             <constraint firstItem="UaO-yC-h7q" firstAttribute="centerX" secondItem="YbZ-yG-YjV" secondAttribute="centerX" id="EXR-jq-WeO"/>
+                            <constraint firstItem="STS-9J-vO4" firstAttribute="top" secondItem="bfZ-JZ-hiA" secondAttribute="top" id="Pf2-nJ-xe6"/>
                             <constraint firstItem="UaO-yC-h7q" firstAttribute="top" secondItem="bfZ-JZ-hiA" secondAttribute="top" constant="45" id="Vbl-ef-ZJj"/>
                             <constraint firstItem="BF5-AY-ZBP" firstAttribute="centerY" secondItem="YbZ-yG-YjV" secondAttribute="centerY" id="ZgK-7t-G67"/>
+                            <constraint firstItem="STS-9J-vO4" firstAttribute="centerX" secondItem="YbZ-yG-YjV" secondAttribute="centerX" id="nX6-Yp-chW"/>
                             <constraint firstItem="R3Z-Rf-Q7s" firstAttribute="centerX" secondItem="YbZ-yG-YjV" secondAttribute="centerX" id="yco-th-6kq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bfZ-JZ-hiA"/>
@@ -668,7 +670,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y18-Ow-C9A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="41" y="923"/>
+            <point key="canvasLocation" x="40.799999999999997" y="922.90640394088678"/>
         </scene>
         <!--Add Edit question sets-->
         <scene sceneID="CYz-ta-KbF">
@@ -818,7 +820,7 @@
                                     <constraint firstAttribute="height" constant="15" id="nSN-wk-ZSW"/>
                                     <constraint firstAttribute="width" constant="200" id="y27-2E-CZD"/>
                                 </constraints>
-                                <state key="normal" title="Change Questoins"/>
+                                <state key="normal" title="Change Questions"/>
                                 <connections>
                                     <action selector="questionSetsButtonTapped:" destination="pKl-rO-j64" eventType="touchUpInside" id="IBu-YK-Mc5"/>
                                     <segue destination="NtW-MV-KbI" kind="show" identifier="showQuestionSetsScreen" id="tPL-Yd-xri"/>
@@ -858,6 +860,6 @@
         <image name="MC-Icon" width="75" height="75"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tPL-Yd-xri"/>
+        <segue reference="xvu-I1-dBq"/>
     </inferredMetricsTieBreakers>
 </document>
