@@ -14,11 +14,13 @@ class FillInTheBlankViewController: UIViewController {
     @IBOutlet weak var questionTextViewHeight: NSLayoutConstraint!
     @IBOutlet weak var answerTextField: UITextField!
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var questionSetsButton: UIButton!
     
+    var questionSetStyle = QuestionSet.Style.Blank
     var dummyFillInTheBlankQuestionSet: QuestionSet!
     var lastQuestion = -1
     var defaultColor = StorageEnclave.Access.getCurrentSecondaryColor()
-
+    
     
     //Current fill in the blank question being answered
     var currentFillInTheBlankQuestion: Question! {
@@ -45,11 +47,21 @@ class FillInTheBlankViewController: UIViewController {
         self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
         self.submitButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
         self.submitButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        self.questionSetsButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
+        self.questionSetsButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
         self.questionTextView.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
         self.questionTextView.textColor = StorageEnclave.Access.getCurrentTextColor()
         answerTextField.layer.cornerRadius = 15
         answerTextField.layer.masksToBounds = true
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? QuestionSetCollectionViewController {
+            //We need to pass through the question style.
+            destination.selectedStyle = questionSetStyle
+        }
+    }
+    
     
     //Popultates questions when the screen loads
     func populateFillInTheBlankQuestions() {
@@ -94,7 +106,7 @@ class FillInTheBlankViewController: UIViewController {
         //Present the alert controller
         self.present(correctAlert, animated: true, completion: nil)
     }
-
+    
     //Shows an alert when the user get the question wrong
     func showIncorrectAnswerAlert() {
         //UIAlertController
@@ -150,15 +162,21 @@ class FillInTheBlankViewController: UIViewController {
         getNewFillInTheBlankQuestion()
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func questionSetsButtonTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "showQuestionSetsScreen", sender: self)
     }
-    */
+    
+    
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
 }
 
 /*
@@ -167,6 +185,7 @@ class FillInTheBlankViewController: UIViewController {
  -Change questionLabel.text make it show Correct or not correct with a sleep timer and then showing the next question? (Instead of having the pop up alert action thing)
  -Set up a reset button?
  -Set up a score keeper?
+ 
  
  */
 

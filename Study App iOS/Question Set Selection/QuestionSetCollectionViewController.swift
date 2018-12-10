@@ -10,13 +10,14 @@ class QuestionSetCollectionViewController: UIViewController, UICollectionViewDat
     
     @IBOutlet var CollectionView: UICollectionView!
     var selectedStyle: QuestionSet.Style?
+    let sender: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return StorageEnclave.Access.getQuestionSetCount(ofStyle: selectedStyle!)
+        return StorageEnclave.Access.getQuestionSetCount(ofStyle: .MultipleChoice)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -35,6 +36,9 @@ class QuestionSetCollectionViewController: UIViewController, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //This will eventually either return the new question set to use, or it will segue to next screen for editing.
+        let item = collectionView.cellForItem(at: indexPath) as! QuestionSetCollectionViewCell
+        self.dismiss(animated: true) {
+            //Send item.QSID back to sender.
+        }
     }
 }
