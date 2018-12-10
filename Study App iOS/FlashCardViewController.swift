@@ -63,6 +63,13 @@ class FlashCardViewController: UIViewController {
         self.flashCardTextView.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
         flashCardTextView.textColor = StorageEnclave.Access.getCurrentTextColor()
     }
+    
+    @IBAction func questionSetButtonPressed(_ sender: Any) {
+        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDidAppear(false)
@@ -70,5 +77,7 @@ class FlashCardViewController: UIViewController {
         //Makes the current card the very first card in the array
         currentCard = flashCardArray[0]
         flashCardTextView.text =  currentCard.question
+        
+       
     }
 }
