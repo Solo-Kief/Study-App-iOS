@@ -22,6 +22,7 @@ class StorageEnclave: NSObject, NSCoding {
     private var SecondaryColor = UIColor(red: 255.0/255.0, green: 143.0/255.0, blue: 0.0/255.0, alpha: 1.0)
     private var TertiaryColor = UIColor.lightGray
     private var TextColor = UIColor.white
+    private var Defaults: [Int?] = [nil, nil, nil]
     
     //MARK:- Core Setup
     private override init() {
@@ -33,15 +34,17 @@ class StorageEnclave: NSObject, NSCoding {
             SecondaryColor = enclave.SecondaryColor
             TertiaryColor = enclave.TertiaryColor
             TextColor = enclave.TextColor
+            Defaults = enclave.Defaults
         }
     }
     
-    private init(QuestionSets: [QuestionSet], PrimaryColor: UIColor, SecondaryColor: UIColor, TertiaryColor: UIColor, TextColor: UIColor) {
+    private init(QuestionSets: [QuestionSet], PrimaryColor: UIColor, SecondaryColor: UIColor, TertiaryColor: UIColor, TextColor: UIColor, Defaults: [Int?]) {
         self.QuestionSets = QuestionSets
         self.PrimaryColor = PrimaryColor
         self.SecondaryColor = SecondaryColor
         self.TertiaryColor = TertiaryColor
         self.TextColor = TextColor
+        self.Defaults = Defaults
     }
     
     internal required convenience init?(coder aDecoder: NSCoder) {
@@ -50,8 +53,9 @@ class StorageEnclave: NSObject, NSCoding {
         let SecondaryColor = aDecoder.decodeObject(forKey: "SecondaryColor") as! UIColor
         let TertiaryColor = aDecoder.decodeObject(forKey: "TertiaryColor") as! UIColor
         let TextColor = aDecoder.decodeObject(forKey: "TextColor") as! UIColor
+        let Defaults = aDecoder.decodeObject(forKey: "Defaults") as! [Int?]
         
-        self.init(QuestionSets: QuestionSets, PrimaryColor: PrimaryColor, SecondaryColor: SecondaryColor, TertiaryColor: TertiaryColor, TextColor: TextColor)
+        self.init(QuestionSets: QuestionSets, PrimaryColor: PrimaryColor, SecondaryColor: SecondaryColor, TertiaryColor: TertiaryColor, TextColor: TextColor, Defaults: Defaults)
     }
     
     internal func encode(with aCoder: NSCoder) {
@@ -60,6 +64,7 @@ class StorageEnclave: NSObject, NSCoding {
         aCoder.encode(self.SecondaryColor, forKey: "SecondaryColor")
         aCoder.encode(self.TertiaryColor, forKey: "TertiaryColor")
         aCoder.encode(self.TextColor, forKey: "TextColor")
+        aCoder.encode(self.Defaults, forKey: "Defaults")
     }
     
     private static func save() {
@@ -192,6 +197,18 @@ class StorageEnclave: NSObject, NSCoding {
         StorageEnclave.save()
     }
     
+    func setDefault(for style: QuestionSet.Style, to index: Int) {
+        switch style {
+        case .Blank:
+            Defaults[0] = index
+        case .FlashCard:
+            Defaults[1] = index
+        case .MultipleChoice:
+            Defaults[2] = index
+        }
+        StorageEnclave.save()
+    }
+    
     func getCurrentPrimaryColor() -> UIColor {
         return PrimaryColor
     }
@@ -208,6 +225,17 @@ class StorageEnclave: NSObject, NSCoding {
         return TextColor
     }
     
+    func getDefault(for style: QuestionSet.Style) -> Int? {
+        switch style {
+        case .Blank:
+            return Defaults[0]
+        case .FlashCard:
+            return Defaults[1]
+        case .MultipleChoice:
+            return Defaults[2]
+        }
+    }
+    
     func restoreDefaultColors() {
         PrimaryColor = UIColor.darkGray
         SecondaryColor = UIColor(red: 255.0/255.0, green: 143.0/255.0, blue: 0.0/255.0, alpha: 1.0)
@@ -218,5 +246,12 @@ class StorageEnclave: NSObject, NSCoding {
     
     func deleteAllQuestions() {
         QuestionSets = []
+        resetDefaults()
+        StorageEnclave.save()
+    }
+    
+    func resetDefaults() {
+        Defaults = [nil, nil, nil]
+        StorageEnclave.save()
     }
 }

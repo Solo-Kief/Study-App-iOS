@@ -14,24 +14,28 @@ class multipleChoiceViewController: UIViewController {
     @IBOutlet var answer3: UIButton!
     @IBOutlet var answer4: UIButton!
     
-    var questions: QuestionSet = QuestionSet(Title: "Temp", Style: .MultipleChoice)
+    var liveQuestionSet: QuestionSet? = nil
     var correctAnswer = 0
     var defaultColor = UIColor()
     var lastQuestion = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewDidAppear(false)
         
         defaultColor = answer1.backgroundColor!
         
-        questions = buildDefaultQuestions()
+        if StorageEnclave.Access.getDefault(for: QuestionSet.Style.MultipleChoice) == nil {
+            questionField.text = "There are no questions currently loaded."
+            liveQuestionSet = nil
+        } else {
+            liveQuestionSet =
+                StorageEnclave.Access.getQuestionSet(at: StorageEnclave.Access.getDefault(for: QuestionSet.Style.MultipleChoice)!)
+        }
 
         loadQuestion()
-        self.navigationItem.title = "Multiple Choice";
     }
     //changes the colors of text, buttons, and question field
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
         self.answer1.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
         self.answer2.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
@@ -45,12 +49,23 @@ class multipleChoiceViewController: UIViewController {
         self.questionField.textColor = StorageEnclave.Access.getCurrentTextColor()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? QuestionSetCollectionViewController {
+            destination.selectedStyle = .MultipleChoice
+            destination.newQuestionSet = { newQuestionSet in
+                self.liveQuestionSet = newQuestionSet
+                self.loadQuestion()
+            }
+        }
+    }
+    
+    
    // default questions
     func buildDefaultQuestions() -> QuestionSet {
         let question1 = Question(Question: "What is Dr Suess's real name?", Answers: ["Andrew Butterson", "Suess Stephenson", "Micheal Gene Scott", "Theodor Seuss Geisel"], CorrectAnswer: 3)
         let question2 = Question(Question: "What year did heavy metal legend Lemmy Kilmister die?", Answers: ["1997", "2012", "2015", "2008"], CorrectAnswer: 2)
         let question3 = Question(Question: "In Norse Mythology who is the god of light, joy, purity, beauty, innocence, and reconciliation?", Answers: ["Odin", "Balder", "Frigg", "Tyr"], CorrectAnswer: 1)
-        let question4 = Question(Question: "Famous gothic author Edgar Allen Poe wrote which short story?", Answers: ["Call of Cathulu", "Reign in Blood", "Tomorrow is Today", "Tell Tale Heart"], CorrectAnswer: 3)
+        let question4 = Question(Question: "Famous gothic author Edgar Allen Poe wrote which short story?", Answers: ["Call of Cathulu", "Reign in Blood", "Tomorrow is Today", "Tell Tale Heart"], CorrectAnswer: 4)
         let question5 = Question(Question: "Which is a real law in the state of Oklahoma?", Answers: ["No bear wrestling", "No eating rice past 9:00 p.m.", "Can't wear red shoes in the month of January", "It is illegal to practice Vodoo"], CorrectAnswer: 0)
         
         let questionSet = QuestionSet(Title: "Default Questions", Details: nil, Questions: [question1, question2, question3, question4, question5], Style: .MultipleChoice)
@@ -60,18 +75,22 @@ class multipleChoiceViewController: UIViewController {
 
     // this function loads new questions at random
     func loadQuestion() {
-        var selector = Int.random(in: 0..<questions.questions.count)
-        while lastQuestion == selector && questions.questions.count != 1 {
-            selector = Int.random(in: 0..<questions.questions.count)
+        guard liveQuestionSet != nil else {
+            return updateTextViewConstraint()
+        }
+        
+        var selector = Int.random(in: 0..<liveQuestionSet!.questions.count)
+        while lastQuestion == selector && liveQuestionSet!.questions.count != 1 {
+            selector = Int.random(in: 0..<liveQuestionSet!.questions.count)
         } //Prevents a question from repeating back-to-back.
         lastQuestion = selector
         
-        questionField.text = questions.questions[selector].question
-        answer1.setTitle(questions.questions[selector].answers[0], for: .normal)
-        answer2.setTitle(questions.questions[selector].answers[1], for: .normal)
-        answer3.setTitle(questions.questions[selector].answers[2], for: .normal)
-        answer4.setTitle(questions.questions[selector].answers[3], for: .normal)
-        correctAnswer = questions.questions[selector].correctAnswer
+        questionField.text = liveQuestionSet!.questions[selector].question
+        answer1.setTitle(liveQuestionSet!.questions[selector].answers[0], for: .normal)
+        answer2.setTitle(liveQuestionSet!.questions[selector].answers[1], for: .normal)
+        answer3.setTitle(liveQuestionSet!.questions[selector].answers[2], for: .normal)
+        answer4.setTitle(liveQuestionSet!.questions[selector].answers[3], for: .normal)
+        correctAnswer = liveQuestionSet!.questions[selector].correctAnswer
         
         UIView.animate(withDuration: 0.25, animations: {
             self.questionField.backgroundColor = UIColor.clear

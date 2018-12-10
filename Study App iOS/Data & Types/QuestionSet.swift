@@ -36,7 +36,7 @@ class QuestionSet: NSObject, NSCoding {
         let title = aDecoder.decodeObject(forKey: "Title") as! String
         let details = aDecoder.decodeObject(forKey: "Details") as? String
         let questions = aDecoder.decodeObject(forKey: "Questions") as! [Question]
-        let style = aDecoder.decodeObject(forKey: "Style") as! Int
+        let style = aDecoder.decodeInteger(forKey: "Style")
         
         self.init(Title: title, Details: details, Questions: questions, Style: QuestionSet.Style(rawValue: style)!)
     }

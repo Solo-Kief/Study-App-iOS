@@ -14,7 +14,6 @@ class FillInTheBlankViewController: UIViewController {
     @IBOutlet weak var questionTextViewHeight: NSLayoutConstraint!
     @IBOutlet weak var answerTextField: UITextField!
     @IBOutlet weak var submitButton: UIButton!
-    @IBOutlet weak var questionSetsButton: UIButton!
     
     var questionSetStyle = QuestionSet.Style.Blank
     var dummyFillInTheBlankQuestionSet: QuestionSet!
@@ -47,8 +46,6 @@ class FillInTheBlankViewController: UIViewController {
         self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
         self.submitButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
         self.submitButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
-        self.questionSetsButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
-        self.questionSetsButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
         self.questionTextView.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
         self.questionTextView.textColor = StorageEnclave.Access.getCurrentTextColor()
         answerTextField.layer.cornerRadius = 15

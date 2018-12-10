@@ -10,18 +10,20 @@ class QuestionSetCollectionViewController: UIViewController, UICollectionViewDat
     
     @IBOutlet var CollectionView: UICollectionView!
     var selectedStyle: QuestionSet.Style?
-    let sender: UIViewController
+    var sender: UIViewController?
+    
+    var newQuestionSet: ((QuestionSet) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return StorageEnclave.Access.getQuestionSetCount(ofStyle: .MultipleChoice)
+        return StorageEnclave.Access.getQuestionSetCount(ofStyle: selectedStyle!)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let IDs = StorageEnclave.Access.getQuestionSetIndices(ofStyle: .MultipleChoice)
+        let IDs = StorageEnclave.Access.getQuestionSetIndices(ofStyle: selectedStyle!)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! QuestionSetCollectionViewCell
         
         let index = IDs[((indexPath.section + 1) * 2) - (2 - indexPath.row)]
@@ -38,7 +40,11 @@ class QuestionSetCollectionViewController: UIViewController, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = collectionView.cellForItem(at: indexPath) as! QuestionSetCollectionViewCell
         self.dismiss(animated: true) {
-            //Send item.QSID back to sender.
+            self.newQuestionSet!(StorageEnclave.Access.getQuestionSet(at: item.QSID)!)
+            StorageEnclave.Access.setDefault(for: self.selectedStyle!, to: item.QSID)
         }
+    }
+    @IBAction func cancleUpdate(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

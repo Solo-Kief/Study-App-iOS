@@ -256,7 +256,7 @@
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5S-q9-M4t">
                                 <rect key="frame" x="5" y="89" width="365" height="64"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="8ef-FC-bMV"/>
                                     <constraint firstAttribute="width" constant="365" id="e65-wA-Sgy"/>
@@ -269,9 +269,21 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdb-JK-xiZ">
+                                <rect key="frame" x="87.666666666666686" y="44" width="200" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="9Eg-Ui-IGc"/>
+                                    <constraint firstAttribute="width" constant="200" id="MeE-FJ-k5K"/>
+                                </constraints>
+                                <state key="normal" title="Change Questions"/>
+                                <connections>
+                                    <segue destination="NtW-MV-KbI" kind="presentation" id="VrV-bM-Xc2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="gdb-JK-xiZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6IP-Nv-QY5"/>
                             <constraint firstItem="dmS-Ye-ZdN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BAp-M8-08j"/>
                             <constraint firstItem="00n-Jb-baS" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="FDN-vc-H5Z"/>
                             <constraint firstItem="Zle-1J-HLd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ITp-OI-AO6"/>
@@ -279,6 +291,7 @@
                             <constraint firstItem="X5S-q9-M4t" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="45" id="O98-8L-UiO"/>
                             <constraint firstItem="Zle-1J-HLd" firstAttribute="top" secondItem="dmS-Ye-ZdN" secondAttribute="bottom" constant="50" id="P3l-uf-PpL"/>
                             <constraint firstItem="00n-Jb-baS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WhR-c8-MBc"/>
+                            <constraint firstItem="gdb-JK-xiZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZB9-Yn-jyu"/>
                             <constraint firstItem="fkX-Eg-CPl" firstAttribute="top" secondItem="Zle-1J-HLd" secondAttribute="bottom" constant="50" id="j1b-c3-CFl"/>
                             <constraint firstItem="fkX-Eg-CPl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kb6-SI-xlS"/>
                             <constraint firstItem="dmS-Ye-ZdN" firstAttribute="top" secondItem="00n-Jb-baS" secondAttribute="bottom" constant="50" id="xEf-jT-2ro"/>
@@ -297,7 +310,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="41" y="133"/>
+            <point key="canvasLocation" x="40.799999999999997" y="132.26600985221674"/>
         </scene>
         <!--Question Set Collection View Controller-->
         <scene sceneID="Lwv-Pf-OEN">
@@ -382,17 +395,35 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDb-tk-a03">
+                                <rect key="frame" x="8" y="49" width="48" height="30"/>
+                                <state key="normal" title="Cancle"/>
+                                <connections>
+                                    <action selector="cancleUpdate:" destination="NtW-MV-KbI" eventType="touchUpInside" id="eM7-AV-t2Y"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4r9-VB-W3Q">
+                                <rect key="frame" x="312" y="49" width="55" height="30"/>
+                                <state key="normal" title="Add Set"/>
+                                <connections>
+                                    <action selector="cancleUpdate:" destination="NtW-MV-KbI" eventType="touchUpInside" id="nNh-GW-Ijc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="KDb-tk-a03" firstAttribute="centerY" secondItem="uyq-PU-hUC" secondAttribute="centerY" id="62s-G4-tGV"/>
                             <constraint firstItem="uyq-PU-hUC" firstAttribute="top" secondItem="YD1-ry-caD" secondAttribute="top" id="6Hw-oq-01n"/>
                             <constraint firstItem="aWs-gV-tYt" firstAttribute="top" secondItem="uyq-PU-hUC" secondAttribute="bottom" id="DSz-vC-5aX"/>
                             <constraint firstItem="aWs-gV-tYt" firstAttribute="top" secondItem="YD1-ry-caD" secondAttribute="top" constant="40" id="JCE-gp-mEH"/>
+                            <constraint firstItem="4r9-VB-W3Q" firstAttribute="centerY" secondItem="uyq-PU-hUC" secondAttribute="centerY" id="RC8-Hr-gEO"/>
                             <constraint firstItem="YD1-ry-caD" firstAttribute="trailing" secondItem="uyq-PU-hUC" secondAttribute="trailing" id="Wce-CE-n9G"/>
                             <constraint firstItem="YD1-ry-caD" firstAttribute="trailing" secondItem="aWs-gV-tYt" secondAttribute="trailing" id="YQU-AW-Dke"/>
+                            <constraint firstItem="YD1-ry-caD" firstAttribute="trailing" secondItem="4r9-VB-W3Q" secondAttribute="trailing" constant="8" id="d2h-hE-6XW"/>
                             <constraint firstAttribute="bottom" secondItem="aWs-gV-tYt" secondAttribute="bottom" id="ldS-0w-twJ"/>
                             <constraint firstItem="aWs-gV-tYt" firstAttribute="leading" secondItem="YD1-ry-caD" secondAttribute="leading" id="oov-u6-PHL"/>
                             <constraint firstItem="uyq-PU-hUC" firstAttribute="leading" secondItem="YD1-ry-caD" secondAttribute="leading" id="pE9-FP-B7i"/>
+                            <constraint firstItem="KDb-tk-a03" firstAttribute="leading" secondItem="S4H-VG-kpY" secondAttribute="leading" constant="8" id="wed-FK-li8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YD1-ry-caD"/>
                     </view>
@@ -768,14 +799,13 @@
                                     <action selector="submitButtonTapped:" destination="pKl-rO-j64" eventType="touchUpInside" id="xF7-0i-4fL"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVh-EN-QrZ">
-                                <rect key="frame" x="139" y="556" width="96" height="30"/>
-                                <state key="normal" title="Question Sets"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="22"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVh-EN-QrZ">
+                                <rect key="frame" x="87.666666666666686" y="44" width="200" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="nSN-wk-ZSW"/>
+                                    <constraint firstAttribute="width" constant="200" id="y27-2E-CZD"/>
+                                </constraints>
+                                <state key="normal" title="Change Questoins"/>
                                 <connections>
                                     <action selector="questionSetsButtonTapped:" destination="pKl-rO-j64" eventType="touchUpInside" id="IBu-YK-Mc5"/>
                                     <segue destination="NtW-MV-KbI" kind="show" identifier="showQuestionSetsScreen" id="tPL-Yd-xri"/>
@@ -786,6 +816,7 @@
                         <constraints>
                             <constraint firstItem="fTL-k2-9Ps" firstAttribute="top" secondItem="dRB-dx-d2d" secondAttribute="top" constant="45" id="CWs-hZ-BCz"/>
                             <constraint firstItem="MAU-YA-iwz" firstAttribute="centerX" secondItem="z7K-Rz-h0S" secondAttribute="centerX" id="Dls-ci-3wa"/>
+                            <constraint firstItem="MVh-EN-QrZ" firstAttribute="top" secondItem="dRB-dx-d2d" secondAttribute="top" id="Oa6-tx-173"/>
                             <constraint firstItem="MAU-YA-iwz" firstAttribute="centerY" secondItem="z7K-Rz-h0S" secondAttribute="centerY" id="alB-l7-PTB"/>
                             <constraint firstItem="fTL-k2-9Ps" firstAttribute="centerX" secondItem="z7K-Rz-h0S" secondAttribute="centerX" id="kVF-RC-SBo"/>
                             <constraint firstItem="CHW-bd-g29" firstAttribute="centerX" secondItem="z7K-Rz-h0S" secondAttribute="centerX" id="rmS-mk-zIl"/>
@@ -797,7 +828,6 @@
                     <tabBarItem key="tabBarItem" title="Fill In" image="FITB-Icon" id="QD0-yq-gSM"/>
                     <connections>
                         <outlet property="answerTextField" destination="CHW-bd-g29" id="ya3-6f-cOl"/>
-                        <outlet property="questionSetsButton" destination="MVh-EN-QrZ" id="LKL-Pi-fFN"/>
                         <outlet property="questionTextView" destination="fTL-k2-9Ps" id="ZIn-83-9mC"/>
                         <outlet property="questionTextViewHeight" destination="E32-Ng-hPT" id="iUi-uO-bBc"/>
                         <outlet property="submitButton" destination="MAU-YA-iwz" id="SsG-PU-WOr"/>
@@ -814,4 +844,7 @@
         <image name="Gear-Icon" width="75" height="75"/>
         <image name="MC-Icon" width="75" height="75"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="tPL-Yd-xri"/>
+    </inferredMetricsTieBreakers>
 </document>
