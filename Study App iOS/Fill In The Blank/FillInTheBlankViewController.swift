@@ -17,7 +17,7 @@ class FillInTheBlankViewController: UIViewController {
     @IBOutlet weak var questionSetsButton: UIButton!
     
     var questionSetStyle = QuestionSet.Style.Blank
-    var dummyFillInTheBlankQuestionSet: QuestionSet!
+    var liveQuestionSet: QuestionSet?
     var lastQuestion = -1
     var defaultColor = StorageEnclave.Access.getCurrentSecondaryColor()
     
@@ -38,12 +38,13 @@ class FillInTheBlankViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        populateFillInTheBlankQuestions()
-        getNewFillInTheBlankQuestion()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        submitButton.isHidden = false
+        populateFillInTheBlankQuestions()
+        getNewFillInTheBlankQuestion()
         self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
         self.submitButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
         self.submitButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
@@ -65,32 +66,38 @@ class FillInTheBlankViewController: UIViewController {
     
     //Popultates questions when the screen loads
     func populateFillInTheBlankQuestions() {
-        //A Fill in the blank QuestionSet
-        let question1 = Question(Question: "In a deck of cards the king of ______ is the only king without a moustache.", Answers: ["Hearts"], CorrectAnswer: 0)
-        let question2 = Question(Question: "Stressed is ______ spelled backwards.", Answers: ["Desserts"], CorrectAnswer: 0)
-        let question3 = Question(Question: "What is the Twitter bird's actual name?", Answers: ["Larry"], CorrectAnswer: 0)
-        dummyFillInTheBlankQuestionSet = QuestionSet(Title: "Dummy Fill In The Blank Questions", Details: nil, Questions: [question1, question2, question3], Style: .Blank)
+        liveQuestionSet
+
+//        //A Fill in the blank QuestionSet
+//        let question1 = Question(Question: "In a deck of cards the king of ______ is the only king without a moustache.", Answers: ["Hearts"], CorrectAnswer: 0)
+//        let question2 = Question(Question: "Stressed is ______ spelled backwards.", Answers: ["Desserts"], CorrectAnswer: 0)
+//        let question3 = Question(Question: "What is the Twitter bird's actual name?", Answers: ["Larry"], CorrectAnswer: 0)
+//        liveQuestionSet = QuestionSet(Title: "Dummy Fill In The Blank Questions", Details: nil, Questions: [question1, question2, question3], Style: .Blank)
     }
     
     //Gets a random question from the array of fill in the blank questions
     func getNewFillInTheBlankQuestion() {
-        if dummyFillInTheBlankQuestionSet.questions.count > 0 {
-            //Get a random index from 0 to 1 less then the amount of elements in the questions array
-            randomIndex = Int.random(in: 0..<dummyFillInTheBlankQuestionSet.questions.count)
-            //Set currentQuestion equal to the question that is at the random index in the questions array
-            currentFillInTheBlankQuestion = dummyFillInTheBlankQuestionSet.questions[randomIndex]
+        if let liveQuestionSet = liveQuestionSet {
+            if liveQuestionSet.questions.count > 0 {
+                //Get a random index from 0 to 1 less then the amount of elements in the questions array
+                randomIndex = Int.random(in: 0..<liveQuestionSet.questions.count)
+                //Set currentQuestion equal to the question that is at the random index in the questions array
+                currentFillInTheBlankQuestion = liveQuestionSet.questions[randomIndex]
+            } else {
+                liveQuestionSet.questions = self.completedFillInTheBlankQuestions
+                completedFillInTheBlankQuestions.removeAll()
+                //Get a new question
+                getNewFillInTheBlankQuestion()
+            }
+            UIView.animate(withDuration: 0.25, animations: {
+                self.questionTextView.backgroundColor = UIColor.clear
+                self.questionTextView.textColor = UIColor.clear
+            })
+            let time = Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(updateTextViewConstraint), userInfo: nil, repeats: false)
+            time.fireDate = Date().addingTimeInterval(0.35)
         } else {
-            dummyFillInTheBlankQuestionSet.questions = self.completedFillInTheBlankQuestions
-            completedFillInTheBlankQuestions.removeAll()
-            //Get a new question
-            getNewFillInTheBlankQuestion()
+            submitButton.isHidden = true
         }
-        UIView.animate(withDuration: 0.25, animations: {
-            self.questionTextView.backgroundColor = UIColor.clear
-            self.questionTextView.textColor = UIColor.clear
-        })
-        let time = Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(updateTextViewConstraint), userInfo: nil, repeats: false)
-        time.fireDate = Date().addingTimeInterval(0.35)
     }
     
     //Shows an alert when the user gets the question correct
@@ -99,7 +106,7 @@ class FillInTheBlankViewController: UIViewController {
         let correctAlert = UIAlertController(title: "Correct", message: "\(currentFillInTheBlankQuestion.answers[0]) was the correct answer.", preferredStyle: .actionSheet)
         //UIAlertAction
         let closeAction = UIAlertAction(title: "Close", style: .default) { _ in
-            self.completedFillInTheBlankQuestions.append(self.dummyFillInTheBlankQuestionSet.questions.remove(at: self.randomIndex))
+            self.completedFillInTheBlankQuestions.append(self.liveQuestionSet!.questions.remove(at: self.randomIndex))
         }
         //Add action to the alert controller
         correctAlert.addAction(closeAction)
@@ -113,7 +120,7 @@ class FillInTheBlankViewController: UIViewController {
         let incorrectAlert = UIAlertController(title: "Incorrect", message: "\(currentFillInTheBlankQuestion.answers[0]) was the correct answer.", preferredStyle: .actionSheet)
         //UIAlertAction
         let closeAction = UIAlertAction(title: "Close", style: .default) { _ in
-            self.completedFillInTheBlankQuestions.append(self.dummyFillInTheBlankQuestionSet.questions.remove(at: self.randomIndex))
+            self.completedFillInTheBlankQuestions.append(self.liveQuestionSet!.questions.remove(at: self.randomIndex))
         }
         //Add the action to the alert controller
         incorrectAlert.addAction(closeAction)
