@@ -433,7 +433,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vTx-Ku-IbF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="118" y="-274"/>
+            <point key="canvasLocation" x="-78" y="-635"/>
         </scene>
         <!--Add Edit questions-->
         <scene sceneID="AQb-5g-MR7">
@@ -505,6 +505,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="1" green="0.55358486559999998" blue="0.16336937949999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Submit"/>
+                                <connections>
+                                    <segue destination="FnO-g6-eqv" kind="unwind" unwindAction="unwindToAddEditQuestionSetWithSegue:" id="olz-MS-SZN"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLP-uL-6TC">
                                 <rect key="frame" x="171" y="735" width="32" height="30"/>
@@ -545,7 +548,7 @@
                         <outlet property="nextButton" destination="xLP-uL-6TC" id="Zd5-qd-Aco"/>
                         <outlet property="questionTextField" destination="QDQ-Be-j2U" id="D3v-41-v9T"/>
                         <outlet property="submitButton" destination="Rhm-mg-VUh" id="mnj-V1-CA8"/>
-                        <segue destination="FnO-g6-eqv" kind="unwind" identifier="unwindToAddEditQuestionSetWIthSegue" unwindAction="unwindToAddEditQuestionSetWithSegue:" id="75Y-Ia-wri"/>
+                        <segue destination="FnO-g6-eqv" kind="unwind" identifier="unwindToAddEditQuestionSetWithSegue" unwindAction="unwindToAddEditQuestionSetWithSegue:" id="75Y-Ia-wri"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iMF-Pe-hIp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -640,9 +643,7 @@
                                     <constraint firstAttribute="width" constant="200" id="FZJ-2e-yQg"/>
                                     <constraint firstAttribute="height" constant="15" id="SQ4-fT-hbc"/>
                                 </constraints>
-                                <state key="normal" title="Change Questions">
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
+                                <state key="normal" title="Change Questions"/>
                                 <connections>
                                     <segue destination="NtW-MV-KbI" kind="showDetail" id="xvu-I1-dBq"/>
                                 </connections>
