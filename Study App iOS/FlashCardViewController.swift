@@ -74,9 +74,7 @@ class FlashCardViewController: UIViewController {
             
         }
     }
-    func populateFlashCards() {
-        liveQuestionSet
-    }
+    
     func getNewFlashCard() {
         if (liveQuestionSet?.questions.count)! > 1 {
             usedFlashCards.append(currentCard)
@@ -95,8 +93,13 @@ class FlashCardViewController: UIViewController {
         super.viewDidLoad()
         viewDidAppear(false)
         
-        //populate flashcards with function call
-        populateFlashCards()
+        if StorageEnclave.Access.getDefault(for: QuestionSet.Style.Blank) == nil {
+            flashCardTextView.text = "There are no questions currently loaded."
+            liveQuestionSet = nil
+        } else {
+            liveQuestionSet =
+                StorageEnclave.Access.getQuestionSet(at: StorageEnclave.Access.getDefault(for: QuestionSet.Style.Blank)!)
+        }
         
         
     }
