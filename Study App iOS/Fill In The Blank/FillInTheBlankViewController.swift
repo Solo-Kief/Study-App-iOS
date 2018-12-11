@@ -14,13 +14,11 @@ class FillInTheBlankViewController: UIViewController {
     @IBOutlet weak var questionTextViewHeight: NSLayoutConstraint!
     @IBOutlet weak var answerTextField: UITextField!
     @IBOutlet weak var submitButton: UIButton!
-    @IBOutlet weak var questionSetsButton: UIButton!
     
     var questionSetStyle = QuestionSet.Style.Blank
     var liveQuestionSet: QuestionSet?
     var lastQuestion = -1
     var defaultColor = StorageEnclave.Access.getCurrentSecondaryColor()
-    
     
     //Current fill in the blank question being answered
     var currentFillInTheBlankQuestion: Question! {
@@ -38,18 +36,23 @@ class FillInTheBlankViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if StorageEnclave.Access.getDefault(for: QuestionSet.Style.Blank) == nil {
+            questionTextView.text = "There are no questions currently loaded."
+            liveQuestionSet = nil
+        } else {
+            liveQuestionSet =
+                StorageEnclave.Access.getQuestionSet(at: StorageEnclave.Access.getDefault(for: QuestionSet.Style.Blank)!)
+        }
+        
+        getNewFillInTheBlankQuestion()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         submitButton.isHidden = false
-        populateFillInTheBlankQuestions()
-        getNewFillInTheBlankQuestion()
         self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
         self.submitButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
         self.submitButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
-        self.questionSetsButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
-        self.questionSetsButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
         self.questionTextView.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
         self.questionTextView.textColor = StorageEnclave.Access.getCurrentTextColor()
         answerTextField.layer.cornerRadius = 15
@@ -58,25 +61,29 @@ class FillInTheBlankViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? QuestionSetCollectionViewController {
-            //We need to pass through the question style.
-            destination.selectedStyle = questionSetStyle
+            destination.selectedStyle = .Blank
+            destination.newQuestionSet = { newQuestionSet in
+                self.liveQuestionSet = newQuestionSet
+                self.getNewFillInTheBlankQuestion()
+            }
         }
     }
     
-    
     //Popultates questions when the screen loads
-    func populateFillInTheBlankQuestions() {
-        liveQuestionSet
-
-//        //A Fill in the blank QuestionSet
-//        let question1 = Question(Question: "In a deck of cards the king of ______ is the only king without a moustache.", Answers: ["Hearts"], CorrectAnswer: 0)
-//        let question2 = Question(Question: "Stressed is ______ spelled backwards.", Answers: ["Desserts"], CorrectAnswer: 0)
-//        let question3 = Question(Question: "What is the Twitter bird's actual name?", Answers: ["Larry"], CorrectAnswer: 0)
-//        liveQuestionSet = QuestionSet(Title: "Dummy Fill In The Blank Questions", Details: nil, Questions: [question1, question2, question3], Style: .Blank)
+    func populateFillInTheBlankQuestions() -> QuestionSet {
+        //A Fill in the blank QuestionSet
+        let question1 = Question(Question: "In a deck of cards the king of ______ is the only king without a moustache.", Answers: ["Hearts"], CorrectAnswer: 0)
+        let question2 = Question(Question: "Stressed is ______ spelled backwards.", Answers: ["Desserts"], CorrectAnswer: 0)
+        let question3 = Question(Question: "What is the Twitter bird's actual name?", Answers: ["Larry"], CorrectAnswer: 0)
+        return(QuestionSet(Title: "Dummy Fill In The Blank Questions", Details: nil, Questions: [question1, question2, question3], Style: .Blank))
     }
     
     //Gets a random question from the array of fill in the blank questions
     func getNewFillInTheBlankQuestion() {
+        guard liveQuestionSet != nil else {
+            return
+        }
+        
         if let liveQuestionSet = liveQuestionSet {
             if liveQuestionSet.questions.count > 0 {
                 //Get a random index from 0 to 1 less then the amount of elements in the questions array

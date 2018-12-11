@@ -1,13 +1,12 @@
-//
 //  FlashCardViewController.swift
 //  Study App iOS
 //
 //  Created by Brian Sadler on 11/27/18.
 //  Copyright © 2018 Phoenix Development. All rights reserved.
-//
 
 import UIKit
 //Brian's File
+
 // !IMPORTANT! You need to change this screen to use an optional QuestionSet instead of the current "flashCardArray"
 // array of questions. The value should be called "activeQuestionSet" and must be optional!
 
@@ -43,7 +42,6 @@ class FlashCardViewController: UIViewController {
         else {
             flashCardTextView.text = currentCard.question
         }
-
     }
     
     //Function to switch a new card
@@ -51,6 +49,19 @@ class FlashCardViewController: UIViewController {
     getNewFlashCard()
     }
   
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //Impliment the same function found in the multiple choice screen. Adapt as needed.
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewDidAppear(false)
+        
+        //Makes the current card the very first card in the array
+        currentCard = flashCardArray[0]
+        flashCardTextView.text =  currentCard.question
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         //Sets the colors for buttons and background
         self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
