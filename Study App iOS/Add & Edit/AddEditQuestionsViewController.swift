@@ -22,14 +22,12 @@ class AddEditQuestionsViewController: UIViewController {
     @IBOutlet weak var currentQuestionLabel: UILabel!
     
     
-    
-    
     var questionsArrayToEdit: [Question] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        currentQuestionLabel.text = "Question 1"
+        currentQuestionLabel.text = "Editing Question 1"
         questionTextField.text = questionsArrayToEdit[0].question
         answerOneTextField.text = questionsArrayToEdit[0].answers[0]
         answerTwoTextField.text = questionsArrayToEdit[0].answers[1]
