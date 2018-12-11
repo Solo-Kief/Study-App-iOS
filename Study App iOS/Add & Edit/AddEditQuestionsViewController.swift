@@ -24,6 +24,8 @@ class AddEditQuestionsViewController: UIViewController {
     
     var questionsArrayToEdit: [Question] = []
     
+    var currentQuestion: Question!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -108,14 +110,46 @@ class AddEditQuestionsViewController: UIViewController {
             correctAnswer = 0
         }
         
+        currentQuestion.question = question
+        currentQuestion.answers = [answerOne, answerTwo, answerThree, answerFour]
+        currentQuestion.correctAnswer = correctAnswer
+        
+        questionsArrayToEdit.append(currentQuestion)
     }
     
     
     @IBAction func submitButton(_ sender: Any) {
-
         
+        // make sure each txt field has txt
+        guard let question = questionTextField.text, !question.isEmpty,
+            let answerOne = answerOneTextField.text, !answerOne.isEmpty,
+            let answerTwo = answerTwoTextField.text, !answerTwo.isEmpty,
+            let answerThree = answerThreeTextField.text, !answerThree.isEmpty,
+            let answerFour = answerFourTextField.text, !answerFour.isEmpty else {
+                showErrorAlert()
+                return
+        }
         
+        var correctAnswer: Int!
         
+        switch correctAnswerSegmentController.selectedSegmentIndex {
+        case 0:
+            correctAnswer = 0
+        case 1:
+            correctAnswer = 1
+        case 2:
+            correctAnswer = 2
+        case 3:
+            correctAnswer = 3
+        default:
+            correctAnswer = 0
+        }
+        
+        currentQuestion.question = question
+        currentQuestion.answers = [answerOne, answerTwo, answerThree, answerFour]
+        currentQuestion.correctAnswer = correctAnswer
+        
+        questionsArrayToEdit.append(currentQuestion)
         
         self.performSegue(withIdentifier: "unwindToAddEditQuestionSetWIthSegue", sender: self)
     }
