@@ -56,39 +56,47 @@ class FlashCardViewController: UIViewController {
         self.flipButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
         self.nextButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
         self.nextButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
-        self.questionSetButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
-        self.questionSetButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
         self.flashCardTextView.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
         flashCardTextView.textColor = StorageEnclave.Access.getCurrentTextColor()
     }
     
-    @IBAction func questionSetButtonPressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "showQuestionSetsScreen", sender: self)
-        
-        
-    }
+   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? QuestionSetCollectionViewController {
-            
-            destination.selectedStyle = questionSetStyle
-            
+            destination.selectedStyle = .Blank
+            destination.newQuestionSet = { newQuestionSet in
+                self.liveQuestionSet = newQuestionSet
+                self.getNewFlashCard()
+            }
         }
     }
     
     func getNewFlashCard() {
-        if (liveQuestionSet?.questions.count)! > 1 {
-            usedFlashCards.append(currentCard)
-            liveQuestionSet?.questions.remove(at: 0)
-            currentCard = liveQuestionSet?.questions[0]
-            flashCardTextView.text = currentCard.question
+        guard liveQuestionSet != nil else {
+            return
         }
-        else {
-            liveQuestionSet?.questions = self.usedFlashCards
-            usedFlashCards.removeAll()
-            getNewFlashCard()
+        
+        if let liveQuestionSet = liveQuestionSet {
+            if liveQuestionSet.questions.count > 0 {
+                //Get a random index from 0 to 1 less then the amount of elements in the array
+                randomIndex = Int.random(in: 0..<liveQuestionSet.questions.count)
+                //Set currentCard equal to the question that is at the random index in the questions array
+                currentCard = liveQuestionSet.questions[randomIndex]
+                flashCardTextView.text = currentCard.question
+            } else {
+                liveQuestionSet.questions = self.usedFlashCards
+                usedFlashCards.removeAll()
+                //Get a new question
+                getNewFlashCard()
+            }
+           
+        } else {
+            nextButton.isHidden = true
+            flipButton.isHidden = true
         }
         
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDidAppear(false)
@@ -99,6 +107,7 @@ class FlashCardViewController: UIViewController {
         } else {
             liveQuestionSet =
                 StorageEnclave.Access.getQuestionSet(at: StorageEnclave.Access.getDefault(for: QuestionSet.Style.Blank)!)
+            
         }
         
         
