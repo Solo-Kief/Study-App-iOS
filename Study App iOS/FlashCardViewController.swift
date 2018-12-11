@@ -12,11 +12,13 @@ import UIKit
 
 class FlashCardViewController: UIViewController {
     //Outlets for buttons and flashcard
+    @IBOutlet weak var questionSetButton: UIButton!
     @IBOutlet weak var flashCardTextView: UITextView!
     @IBOutlet weak var flipButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
-    
+    var liveQuestionSet: QuestionSet?
     //Array for unused flashcards
+    
     var flashCardArray:[Question] = [Question(Question: "In which year did the Titanic sink?", Answers: ["1912"], CorrectAnswer: 0), Question(Question: "What nationality was Karl Marx?", Answers: ["German"], CorrectAnswer: 0)]
     
     //Array to put used flascards
@@ -60,6 +62,8 @@ class FlashCardViewController: UIViewController {
         self.flipButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
         self.nextButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
         self.nextButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        self.questionSetButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        self.questionSetButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
         self.flashCardTextView.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
         flashCardTextView.textColor = StorageEnclave.Access.getCurrentTextColor()
     }

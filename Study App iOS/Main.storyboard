@@ -633,6 +633,7 @@
                         <outlet property="flashCardTextView" destination="UaO-yC-h7q" id="wFH-db-MnY"/>
                         <outlet property="flipButton" destination="R3Z-Rf-Q7s" id="0sp-2N-VdU"/>
                         <outlet property="nextButton" destination="BF5-AY-ZBP" id="x5Q-gl-SZf"/>
+                        <outlet property="questionSetButton" destination="STS-9J-vO4" id="sCK-jD-4nQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y18-Ow-C9A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -827,4 +828,7 @@
         <image name="Gear-Icon" width="75" height="75"/>
         <image name="MC-Icon" width="75" height="75"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="xvu-I1-dBq"/>
+    </inferredMetricsTieBreakers>
 </document>
