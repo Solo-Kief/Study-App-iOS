@@ -28,7 +28,7 @@ class StorageEnclave: NSObject, NSCoding {
     private override init() {
         if let storedData = UserDefaults.standard.value(forKey: "StorageEnclave") {
             let enclave = NSKeyedUnarchiver.unarchiveObject(with: storedData as! Data) as! StorageEnclave
-            
+
             QuestionSets = enclave.QuestionSets
             PrimaryColor = enclave.PrimaryColor
             SecondaryColor = enclave.SecondaryColor
