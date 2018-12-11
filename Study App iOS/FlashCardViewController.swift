@@ -6,7 +6,6 @@
 
 import UIKit
 //Brian's File
-
 // !IMPORTANT! You need to change this screen to use an optional QuestionSet instead of the current "flashCardArray"
 // array of questions. The value should be called "activeQuestionSet" and must be optional!
 
@@ -42,24 +41,12 @@ class FlashCardViewController: UIViewController {
         else {
             flashCardTextView.text = currentCard.question
         }
+        
     }
     
     //Function to switch a new card
     @IBAction func nextButtonPressed(_ sender: Any) {
-    getNewFlashCard()
-    }
-  
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //Impliment the same function found in the multiple choice screen. Adapt as needed.
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        viewDidAppear(false)
-        
-        //Makes the current card the very first card in the array
-        currentCard = flashCardArray[0]
-        flashCardTextView.text =  currentCard.question
+        getNewFlashCard()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,7 +63,7 @@ class FlashCardViewController: UIViewController {
     }
     
     @IBAction func questionSetButtonPressed(_ sender: Any) {
-    self.performSegue(withIdentifier: "showQuestionSetsScreen", sender: self)
+        self.performSegue(withIdentifier: "showQuestionSetsScreen", sender: self)
         
         
     }
@@ -84,8 +71,8 @@ class FlashCardViewController: UIViewController {
         if let destination = segue.destination as? QuestionSetCollectionViewController {
             
             destination.selectedStyle = questionSetStyle
-        
-    }
+            
+        }
     }
     func populateFlashCards() {
         liveQuestionSet
@@ -100,17 +87,19 @@ class FlashCardViewController: UIViewController {
         else {
             liveQuestionSet?.questions = self.usedFlashCards
             usedFlashCards.removeAll()
-                getNewFlashCard()
-            }
-       
+            getNewFlashCard()
         }
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDidAppear(false)
         
         //populate flashcards with function call
-       populateFlashCards()
+        populateFlashCards()
         
-       
-    } 
+        
+    }
 }
+
+
