@@ -8,7 +8,14 @@
 
 import UIKit
 //Brian's File
+// !IMPORTANT! You need to change this screen to use an optional QuestionSet instead of the current "flashCardArray"
+// array of questions. The value should be called "activeQuestionSet" and must be optional!
 
+// This screen needs to be able to handle "activeQuestionSet" having no question set loaded in.
+// Look at the other two screens to see how this might be handled.
+
+// I noticed that you are using an array to keep track or which questions have been used.
+// I recommend changing it to simply use the index of the questions instead.
 
 class FlashCardViewController: UIViewController {
     //Outlets for buttons and flashcard
@@ -17,12 +24,13 @@ class FlashCardViewController: UIViewController {
     @IBOutlet weak var flipButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     var liveQuestionSet: QuestionSet?
-    //Array for unused flashcards
+    var questionSetStyle = QuestionSet.Style.Blank
+    var lastFlashCard = -1
+    var randomIndex: Int!
     
-    var flashCardArray:[Question] = [Question(Question: "In which year did the Titanic sink?", Answers: ["1912"], CorrectAnswer: 0), Question(Question: "What nationality was Karl Marx?", Answers: ["German"], CorrectAnswer: 0)]
+    //empty array for used flashcard storage
+    var usedFlashCards: [Question] = []
     
-    //Array to put used flascards
-    var usedFlashCards:[Question] = []
     
     //Setup for getting the card the user sees
     var currentCard: Question!
@@ -40,19 +48,7 @@ class FlashCardViewController: UIViewController {
     
     //Function to switch a new card
     @IBAction func nextButtonPressed(_ sender: Any) {
-        if flashCardArray.count > 1 {
-            usedFlashCards.append(currentCard)
-            flashCardArray.remove(at: 0)
-            currentCard = flashCardArray[0]
-            flashCardTextView.text = currentCard.question
-        }
-        else {
-            usedFlashCards.append(contentsOf: flashCardArray)
-            flashCardArray = []
-            flashCardArray.append(contentsOf: usedFlashCards)
-            currentCard = flashCardArray[0]
-            flashCardTextView.text = currentCard.question
-        }
+    getNewFlashCard()
     }
   
     override func viewWillAppear(_ animated: Bool) {
@@ -69,19 +65,41 @@ class FlashCardViewController: UIViewController {
     }
     
     @IBAction func questionSetButtonPressed(_ sender: Any) {
+    self.performSegue(withIdentifier: "showQuestionSetsScreen", sender: self)
+        
         
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? QuestionSetCollectionViewController {
+            
+            destination.selectedStyle = questionSetStyle
         
     }
+    }
+    func populateFlashCards() {
+        liveQuestionSet
+    }
+    func getNewFlashCard() {
+        if (liveQuestionSet?.questions.count)! > 1 {
+            usedFlashCards.append(currentCard)
+            liveQuestionSet?.questions.remove(at: 0)
+            currentCard = liveQuestionSet?.questions[0]
+            flashCardTextView.text = currentCard.question
+        }
+        else {
+            liveQuestionSet?.questions = self.usedFlashCards
+            usedFlashCards.removeAll()
+                getNewFlashCard()
+            }
+       
+        }
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDidAppear(false)
         
-        //Makes the current card the very first card in the array
-        currentCard = flashCardArray[0]
-        flashCardTextView.text =  currentCard.question
+        //populate flashcards with function call
+       populateFlashCards()
         
        
-    }
+    } 
 }
