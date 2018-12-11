@@ -21,9 +21,8 @@ class AddEditQuestionsViewController: UIViewController {
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var currentQuestionLabel: UILabel!
     
-    
     var questionsArrayToEdit: [Question] = []
-    
+
     var currentQuestion: Question!
     
     override func viewDidLoad() {
@@ -110,10 +109,8 @@ class AddEditQuestionsViewController: UIViewController {
             correctAnswer = 0
         }
         
-        currentQuestion.question = question
-        currentQuestion.answers = [answerOne, answerTwo, answerThree, answerFour]
-        currentQuestion.correctAnswer = correctAnswer
-        
+        currentQuestion = Question(Question: question, Answers: [answerOne, answerTwo, answerThree, answerFour], CorrectAnswer: correctAnswer)
+
         questionsArrayToEdit.append(currentQuestion)
     }
     
@@ -145,9 +142,8 @@ class AddEditQuestionsViewController: UIViewController {
             correctAnswer = 0
         }
         
-        currentQuestion.question = question
-        currentQuestion.answers = [answerOne, answerTwo, answerThree, answerFour]
-        currentQuestion.correctAnswer = correctAnswer
+        
+        currentQuestion = Question(Question: question, Answers: [answerOne, answerTwo, answerThree, answerFour], CorrectAnswer: correctAnswer)
         
         questionsArrayToEdit.append(currentQuestion)
         

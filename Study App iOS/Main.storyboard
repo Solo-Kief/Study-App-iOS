@@ -397,7 +397,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDb-tk-a03">
                                 <rect key="frame" x="8" y="49" width="48" height="30"/>
-                                <state key="normal" title="Cancle"/>
+                                <state key="normal" title="Cancel"/>
                                 <connections>
                                     <action selector="cancleUpdate:" destination="NtW-MV-KbI" eventType="touchUpInside" id="eM7-AV-t2Y"/>
                                 </connections>

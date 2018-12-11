@@ -136,7 +136,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     @IBAction func resetAllColors(_ sender: Any) {
         let alert = UIAlertController(title: "Reset UI Colors", message: "You are about to restore all colors to their default settings. Are you sure you want to do this?", preferredStyle: .alert)
-        let cancleAction = UIAlertAction(title: "Cancle", style: .cancel, handler: nil)
+        let cancleAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let resetAction = UIAlertAction(title: "Reset", style: .destructive) { _ in
             StorageEnclave.Access.restoreDefaultColors()
             self.viewDidLoad()
@@ -149,7 +149,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     @IBAction func deleteAllQuestions(_ sender: Any) {
         let alert = UIAlertController(title: "Delete All Questions", message: "You are about to DELETE ALL QUESTIONS currently stored on the app. Are you absolutely certian that you wish to do this?", preferredStyle: .alert)
-        let cancleAction = UIAlertAction(title: "Cancle", style: .cancel, handler: nil)
+        let cancleAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let resetAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
             StorageEnclave.Access.deleteAllQuestions()
         }
@@ -161,7 +161,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     @IBAction func masterReset(_ sender: Any) {
         let alert = UIAlertController(title: "Reset Everything", message: "You are about to reset everything in the app. This will restore all of your settings to default and will DELETE ALL QUESTIONS. Are you absolutely sure you want to do this?", preferredStyle: .alert)
-        let cancleAction = UIAlertAction(title: "Cancle", style: .cancel, handler: nil)
+        let cancleAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let resetAction = UIAlertAction(title: "Reset Everything", style: .destructive) { _ in
             StorageEnclave.Access.deleteAllQuestions()
             StorageEnclave.Access.restoreDefaultColors()

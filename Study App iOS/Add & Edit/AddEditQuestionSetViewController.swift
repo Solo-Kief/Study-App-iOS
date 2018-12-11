@@ -16,6 +16,8 @@ class AddEditQuestionSetViewController: UIViewController {
     
     var newQuestionSet: ((QuestionSet) -> Void)?
     
+    var questionsArrayToEdit: [Question] = []
+    
     var questionSetToEdit: QuestionSet!
     
     var style = QuestionSet.Style.Blank
@@ -35,8 +37,6 @@ class AddEditQuestionSetViewController: UIViewController {
             setTypeSegmentedControl.selectedSegmentIndex = 1
         case .Blank:
             setTypeSegmentedControl.selectedSegmentIndex = 2
-        default:
-            setTypeSegmentedControl.selectedSegmentIndex = 0
         }
         
         // Do any additional setup after loading the view.
@@ -88,7 +88,7 @@ class AddEditQuestionSetViewController: UIViewController {
             style = .MultipleChoice
         }
         
-        questionSetToEdit = QuestionSet(Title: title, Details: details, Questions: tempQuestionsArray, Style: style)
+        questionSetToEdit = QuestionSet(Title: title, Details: details, Questions: questionsArrayToEdit, Style: style)
     }
     
     /*
