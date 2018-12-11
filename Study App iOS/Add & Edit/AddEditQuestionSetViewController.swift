@@ -14,6 +14,8 @@ class AddEditQuestionSetViewController: UIViewController {
     @IBOutlet weak var questionSetDetailsTextField: UITextField!
     @IBOutlet weak var setTypeSegmentedControl: UISegmentedControl!
     
+    var newQuestionSet: ((QuestionSet) -> Void)?
+    
     var questionSetToEdit: QuestionSet!
     
     var style = QuestionSet.Style.Blank

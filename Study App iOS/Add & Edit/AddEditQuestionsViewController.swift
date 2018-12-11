@@ -83,11 +83,6 @@ class AddEditQuestionsViewController: UIViewController {
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
-        
-    }
-    
-    
-    @IBAction func submitButton(_ sender: Any) {
         // make sure each txt field has txt
         guard let question = questionTextField.text, !question.isEmpty,
             let answerOne = answerOneTextField.text, !answerOne.isEmpty,
@@ -97,6 +92,30 @@ class AddEditQuestionsViewController: UIViewController {
                 showErrorAlert()
                 return
         }
+        
+        var correctAnswer: Int!
+        
+        switch correctAnswerSegmentController.selectedSegmentIndex {
+        case 0:
+            correctAnswer = 0
+        case 1:
+            correctAnswer = 1
+        case 2:
+            correctAnswer = 2
+        case 3:
+            correctAnswer = 3
+        default:
+            correctAnswer = 0
+        }
+        
+    }
+    
+    
+    @IBAction func submitButton(_ sender: Any) {
+
+        
+        
+        
         
         self.performSegue(withIdentifier: "unwindToAddEditQuestionSetWIthSegue", sender: self)
     }
