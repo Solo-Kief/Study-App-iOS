@@ -35,13 +35,7 @@ class FlashCardViewController: UIViewController {
     
     //Function to show the opposite sides of the flashcard
     @IBAction func flipButtonPressed(_ sender: Any) {
-        if currentCard.question == flashCardTextView.text {
-            flashCardTextView.text = currentCard.answers[0]
-        }
-        else {
-            flashCardTextView.text = currentCard.question
-        }
-        
+     flipFlashCard()
     }
     
     //Function to switch a new card
@@ -95,6 +89,19 @@ class FlashCardViewController: UIViewController {
             flipButton.isHidden = true
         }
         
+    }
+    func flipFlashCard() {
+        guard currentCard != nil else {
+            return
+        }
+        if currentCard.question == flashCardTextView.text {
+            flashCardTextView.text = currentCard.answers[0]
+        }
+        else {
+            flashCardTextView.text = currentCard.question
+        }
+        
+
     }
     
     override func viewDidLoad() {
