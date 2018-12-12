@@ -16,6 +16,8 @@ class AddEditQuestionSetViewController: UIViewController {
     
     var newQuestionSet: ((QuestionSet) -> Void)?
     
+    var questionsArrayToEdit: [Question] = []
+    
     var questionSetToEdit: QuestionSet!
     
     var style = QuestionSet.Style.Blank
@@ -25,19 +27,22 @@ class AddEditQuestionSetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        questionSetTitleTextField.text = questionSetToEdit.title
-        questionSetDetailsTextField.text = questionSetToEdit.details //Make new to make a correction here as details is an optional
+//        questionSetTitleTextField.text = questionSetToEdit.title
+//        questionSetDetailsTextField.text = questionSetToEdit.details //Make new to make a correction here as details is an optional
+//
+//        switch questionSetToEdit.style {
+//        case .MultipleChoice:
+//            setTypeSegmentedControl.selectedSegmentIndex = 0
+//        case .FlashCard:
+//            setTypeSegmentedControl.selectedSegmentIndex = 1
+//        case .Blank:
+//            setTypeSegmentedControl.selectedSegmentIndex = 2
+//        }
+//
         
-        switch questionSetToEdit.style {
-        case .MultipleChoice:
-            setTypeSegmentedControl.selectedSegmentIndex = 0
-        case .FlashCard:
-            setTypeSegmentedControl.selectedSegmentIndex = 1
-        case .Blank:
-            setTypeSegmentedControl.selectedSegmentIndex = 2
-        default:
-            setTypeSegmentedControl.selectedSegmentIndex = 0
-        }
+        
+        
+        
         
         // Do any additional setup after loading the view.
     }
@@ -88,7 +93,7 @@ class AddEditQuestionSetViewController: UIViewController {
             style = .MultipleChoice
         }
         
-        questionSetToEdit = QuestionSet(Title: title, Details: details, Questions: tempQuestionsArray, Style: style)
+        questionSetToEdit = QuestionSet(Title: title, Details: details, Questions: questionsArrayToEdit, Style: style)
     }
     
     /*

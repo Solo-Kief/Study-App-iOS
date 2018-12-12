@@ -21,33 +21,35 @@ class AddEditQuestionsViewController: UIViewController {
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var currentQuestionLabel: UILabel!
     
-    
     var questionsArrayToEdit: [Question] = []
-    
+
     var currentQuestion: Question!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        currentQuestionLabel.text = "Editing Question 1"
-        questionTextField.text = questionsArrayToEdit[0].question
-        answerOneTextField.text = questionsArrayToEdit[0].answers[0]
-        answerTwoTextField.text = questionsArrayToEdit[0].answers[1]
-        answerThreeTextField.text = questionsArrayToEdit[0].answers[2]
-        answerFourTextField.text = questionsArrayToEdit[0].answers[3]
+//        currentQuestionLabel.text = "Editing Question 1"
+//        questionTextField.text = questionsArrayToEdit[0].question
+//        answerOneTextField.text = questionsArrayToEdit[0].answers[0]
+//        answerTwoTextField.text = questionsArrayToEdit[0].answers[1]
+//        answerThreeTextField.text = questionsArrayToEdit[0].answers[2]
+//        answerFourTextField.text = questionsArrayToEdit[0].answers[3]
+//
+//        switch questionsArrayToEdit[0].correctAnswer {
+//        case 0:
+//            correctAnswerSegmentController.selectedSegmentIndex = 0
+//        case 1:
+//            correctAnswerSegmentController.selectedSegmentIndex = 1
+//        case 2:
+//            correctAnswerSegmentController.selectedSegmentIndex = 2
+//        case 3:
+//            correctAnswerSegmentController.selectedSegmentIndex = 3
+//        default:
+//            correctAnswerSegmentController.selectedSegmentIndex = 0
+//        }
+
         
-        switch questionsArrayToEdit[0].correctAnswer {
-        case 0:
-            correctAnswerSegmentController.selectedSegmentIndex = 0
-        case 1:
-            correctAnswerSegmentController.selectedSegmentIndex = 1
-        case 2:
-            correctAnswerSegmentController.selectedSegmentIndex = 2
-        case 3:
-            correctAnswerSegmentController.selectedSegmentIndex = 3
-        default:
-            correctAnswerSegmentController.selectedSegmentIndex = 0
-        }
+        
         
         
         // Do any additional setup after loading the view.
@@ -110,11 +112,17 @@ class AddEditQuestionsViewController: UIViewController {
             correctAnswer = 0
         }
         
-        currentQuestion.question = question
-        currentQuestion.answers = [answerOne, answerTwo, answerThree, answerFour]
-        currentQuestion.correctAnswer = correctAnswer
-        
+        currentQuestion = Question(Question: question, Answers: [answerOne, answerTwo, answerThree, answerFour], CorrectAnswer: correctAnswer)
+
         questionsArrayToEdit.append(currentQuestion)
+        
+        questionTextField.text = ""
+        answerOneTextField.text = ""
+        answerTwoTextField.text = ""
+        answerThreeTextField.text = ""
+        answerFourTextField.text = ""
+        
+        
     }
     
     
@@ -145,13 +153,12 @@ class AddEditQuestionsViewController: UIViewController {
             correctAnswer = 0
         }
         
-        currentQuestion.question = question
-        currentQuestion.answers = [answerOne, answerTwo, answerThree, answerFour]
-        currentQuestion.correctAnswer = correctAnswer
+        
+        currentQuestion = Question(Question: question, Answers: [answerOne, answerTwo, answerThree, answerFour], CorrectAnswer: correctAnswer)
         
         questionsArrayToEdit.append(currentQuestion)
         
-        self.performSegue(withIdentifier: "unwindToAddEditQuestionSetWIthSegue", sender: self)
+        self.performSegue(withIdentifier: "unwindToAddEditQuestionSetWithSegue", sender: self)
     }
     
 }
