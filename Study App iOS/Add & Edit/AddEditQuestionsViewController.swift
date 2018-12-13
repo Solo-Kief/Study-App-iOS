@@ -175,15 +175,6 @@ class AddEditQuestionsViewController: UIViewController, UIPickerViewDelegate, UI
     }
     
     @IBAction func returnToPrevious(_ sender: Any) {
-        if questionWasChanged {
-            StorageEnclave.Access.changeTitleOfQuestionSet(at: questionSetPicker.selectedRow(inComponent: 0), to: questionSetNameField.text!)
-            StorageEnclave.Access.changeQuestionText(for: questionSetPicker.selectedRow(inComponent: 0),from: questionSetPicker.selectedRow(inComponent: 1), to: questionField.text!)
-            StorageEnclave.Access.changeQuestionAnswer(for: questionSetPicker.selectedRow(inComponent: 0), from: questionSetPicker.selectedRow(inComponent: 1), to: answerField1.text!, at: 0)
-            StorageEnclave.Access.changeQuestionAnswer(for: questionSetPicker.selectedRow(inComponent: 0), from: questionSetPicker.selectedRow(inComponent: 1), to: answerField2.text!, at: 1)
-            StorageEnclave.Access.changeQuestionAnswer(for: questionSetPicker.selectedRow(inComponent: 0), from: questionSetPicker.selectedRow(inComponent: 1), to: answerField3.text!, at: 2)
-            StorageEnclave.Access.changeQuestionAnswer(for: questionSetPicker.selectedRow(inComponent: 0), from: questionSetPicker.selectedRow(inComponent: 1), to: answerField4.text!, at: 3)
-            StorageEnclave.Access.changeQuestionCorrectAnswer(for: questionSetPicker.selectedRow(inComponent: 0), from: questionSetPicker.selectedRow(inComponent: 0), to: correctAnswerSelecter.selectedSegmentIndex + 1)
-        }
         dismiss(animated: true, completion: nil)
     }
     
@@ -232,5 +223,15 @@ class AddEditQuestionsViewController: UIViewController, UIPickerViewDelegate, UI
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+        if questionWasChanged {
+            StorageEnclave.Access.changeTitleOfQuestionSet(at: questionSetPicker.selectedRow(inComponent: 0), to: questionSetNameField.text!)
+            StorageEnclave.Access.changeDescriptionOfQuestionSet(at: questionSetPicker.selectedRow(inComponent: 0), to: questionSetDescriptionField.text!)
+            StorageEnclave.Access.changeQuestionText(for: questionSetPicker.selectedRow(inComponent: 1),from: questionSetPicker.selectedRow(inComponent: 0), to: questionField.text!)
+            StorageEnclave.Access.changeQuestionAnswer(for: questionSetPicker.selectedRow(inComponent: 1), from: questionSetPicker.selectedRow(inComponent: 0), to: answerField1.text!, at: 0)
+            StorageEnclave.Access.changeQuestionAnswer(for: questionSetPicker.selectedRow(inComponent: 1), from: questionSetPicker.selectedRow(inComponent: 0), to: answerField2.text!, at: 1)
+            StorageEnclave.Access.changeQuestionAnswer(for: questionSetPicker.selectedRow(inComponent: 1), from: questionSetPicker.selectedRow(inComponent: 0), to: answerField3.text!, at: 2)
+            StorageEnclave.Access.changeQuestionAnswer(for: questionSetPicker.selectedRow(inComponent: 1), from: questionSetPicker.selectedRow(inComponent: 0), to: answerField4.text!, at: 3)
+            StorageEnclave.Access.changeQuestionCorrectAnswer(for: questionSetPicker.selectedRow(inComponent: 1), from: questionSetPicker.selectedRow(inComponent: 0), to: correctAnswerSelecter.selectedSegmentIndex + 1)
+        }
     }
 }
