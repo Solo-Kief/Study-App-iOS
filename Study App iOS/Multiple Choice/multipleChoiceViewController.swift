@@ -23,7 +23,7 @@ class multipleChoiceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        defaultColor = answer1.backgroundColor!
+        defaultColor = StorageEnclave.Access.getCurrentSecondaryColor()
         
         if StorageEnclave.Access.getDefault(for: QuestionSet.Style.MultipleChoice) == nil {
             questionField.text = "There are no questions currently loaded."
@@ -61,8 +61,7 @@ class multipleChoiceViewController: UIViewController {
         }
     }
     
-    
-   // default questions
+    // default questions
     func buildDefaultQuestions() -> QuestionSet {
         let question1 = Question(Question: "What is Dr Suess's real name?", Answers: ["Andrew Butterson", "Suess Stephenson", "Micheal Gene Scott", "Theodor Seuss Geisel"], CorrectAnswer: 3)
         let question2 = Question(Question: "What year did heavy metal legend Lemmy Kilmister die?", Answers: ["1997", "2012", "2015", "2008"], CorrectAnswer: 2)
