@@ -54,6 +54,11 @@ class FlashCardViewController: UIViewController {
         self.nextButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
         self.flashCardTextView.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
         flashCardTextView.textColor = StorageEnclave.Access.getCurrentTextColor()
+        
+        if StorageEnclave.Access.getQuestionSetCount() == 0 {
+            liveQuestionSet = nil
+            viewDidLoad()
+        }
     }
     
    

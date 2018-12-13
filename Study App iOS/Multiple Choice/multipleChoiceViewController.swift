@@ -49,6 +49,11 @@ class multipleChoiceViewController: UIViewController {
         self.answer4.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
         self.questionField.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
         self.questionField.textColor = StorageEnclave.Access.getCurrentTextColor()
+        
+        if StorageEnclave.Access.getQuestionSetCount() == 0 {
+            liveQuestionSet = nil
+            loadQuestion()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

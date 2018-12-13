@@ -58,6 +58,11 @@ class FillInTheBlankViewController: UIViewController {
         self.questionTextView.textColor = StorageEnclave.Access.getCurrentTextColor()
         answerTextField.layer.cornerRadius = 15
         answerTextField.layer.masksToBounds = true
+        
+        if StorageEnclave.Access.getQuestionSetCount() == 0 {
+            liveQuestionSet = nil
+            viewDidLoad()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
