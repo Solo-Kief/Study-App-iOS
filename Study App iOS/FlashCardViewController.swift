@@ -5,15 +5,6 @@
 //  Copyright © 2018 Phoenix Development. All rights reserved.
 
 import UIKit
-//Brian's File
-// !IMPORTANT! You need to change this screen to use an optional QuestionSet instead of the current "flashCardArray"
-// array of questions. The value should be called "activeQuestionSet" and must be optional!
-
-// This screen needs to be able to handle "activeQuestionSet" having no question set loaded in.
-// Look at the other two screens to see how this might be handled.
-
-// I noticed that you are using an array to keep track or which questions have been used.
-// I recommend changing it to simply use the index of the questions instead.
 
 class FlashCardViewController: UIViewController {
     //Outlets for buttons and flashcard
@@ -29,7 +20,6 @@ class FlashCardViewController: UIViewController {
     
     //empty array for used flashcard storage
     var usedFlashCards: [Question] = []
-    
     
     //Setup for getting the card the user sees
     var currentCard: Question!
@@ -60,7 +50,6 @@ class FlashCardViewController: UIViewController {
             viewDidLoad()
         }
     }
-    
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? QuestionSetCollectionViewController {
@@ -95,8 +84,8 @@ class FlashCardViewController: UIViewController {
             nextButton.isHidden = true
             flipButton.isHidden = true
         }
-        
     }
+    
     func flipFlashCard() {
         guard currentCard != nil else {
             return
@@ -107,8 +96,6 @@ class FlashCardViewController: UIViewController {
         else {
             flashCardTextView.text = currentCard.question
         }
-        
-
     }
     
     override func viewDidLoad() {
@@ -121,11 +108,6 @@ class FlashCardViewController: UIViewController {
         } else {
             liveQuestionSet =
                 StorageEnclave.Access.getQuestionSet(at: StorageEnclave.Access.getDefault(for: QuestionSet.Style.Blank)!)
-            
         }
-        
-        
     }
 }
-
-

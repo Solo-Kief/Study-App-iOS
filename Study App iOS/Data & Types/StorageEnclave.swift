@@ -7,11 +7,6 @@
 import Foundation
 import UIKit
 
-// To-Do list:
-//
-// Impliment application settings that will be determined at a later date.
-// Bonus - Make a method for file based importation and exprotation for questions, question sets, themes, and settings..
-
 class StorageEnclave: NSObject, NSCoding {
     //MARK:- Core Values
     static let Access = StorageEnclave()

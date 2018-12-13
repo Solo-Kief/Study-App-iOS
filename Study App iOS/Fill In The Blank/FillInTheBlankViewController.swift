@@ -1,10 +1,8 @@
-//
 //  FillInTheBlankViewController.swift
 //  Study App iOS
 //
 //  Created by Matthew Riley on 11/27/18.
 //  Copyright © 2018 Phoenix Development. All rights reserved.
-//
 
 import UIKit
 
@@ -185,27 +183,11 @@ class FillInTheBlankViewController: UIViewController {
     @IBAction func questionSetsButtonTapped(_ sender: Any) {
         self.performSegue(withIdentifier: "showQuestionSetsScreen", sender: self)
     }
-    
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
 }
 
 /*
- 
  IDEAS FOR FILL IN THE BLANK PAGE
  -Change questionLabel.text make it show Correct or not correct with a sleep timer and then showing the next question? (Instead of having the pop up alert action thing)
  -Set up a reset button?
  -Set up a score keeper?
- 
- 
  */
-

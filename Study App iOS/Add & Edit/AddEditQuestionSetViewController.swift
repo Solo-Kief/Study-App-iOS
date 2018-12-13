@@ -45,7 +45,6 @@ class AddEditQuestionSetViewController: UIViewController {
         self.view.endEditing(true)
     }
 
-    
     @IBAction func addQuestionSet(_ sender: Any) {
         guard questionSetTitleField.text != "" && questionSetTypeSelector.selectedSegmentIndex != -1 else {
             let alert = UIAlertController(title: "Incomplete", message: "A title must be made and a type selected in order to create a new question set", preferredStyle: .alert)

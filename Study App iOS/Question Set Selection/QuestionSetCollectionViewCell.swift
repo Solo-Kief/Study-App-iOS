@@ -1,10 +1,8 @@
-//
 //  QuestionSetCollectionViewCell.swift
 //  Study App iOS
 //
 //  Created by Solomon Kieffer on 12/5/18.
 //  Copyright © 2018 Phoenix Development. All rights reserved.
-//
 
 import UIKit
 

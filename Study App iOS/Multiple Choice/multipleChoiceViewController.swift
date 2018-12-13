@@ -189,12 +189,4 @@ class multipleChoiceViewController: UIViewController {
         
         loadQuestion()
     }
-
-    
-
-
-
-
 }
-
-
