@@ -21,6 +21,7 @@ class FlashCardViewController: UIViewController {
     @IBOutlet weak var flashCardTextView: UITextView!
     @IBOutlet weak var flipButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet var changeQuestionsButton: UIButton!
     var liveQuestionSet: QuestionSet?
     var questionSetStyle = QuestionSet.Style.Blank
     var lastFlashCard = -1
@@ -45,6 +46,7 @@ class FlashCardViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         //Sets the colors for buttons and background
+        changeQuestionsButton.tintColor = StorageEnclave.Access.getCurrentSecondaryColor()
         self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
         self.flipButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
         self.flipButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()

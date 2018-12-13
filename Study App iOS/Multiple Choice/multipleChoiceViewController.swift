@@ -13,6 +13,7 @@ class multipleChoiceViewController: UIViewController {
     @IBOutlet var answer2: UIButton!
     @IBOutlet var answer3: UIButton!
     @IBOutlet var answer4: UIButton!
+    @IBOutlet var changeQuestionsButton: UIButton!
     
     var liveQuestionSet: QuestionSet?
     var correctAnswer = 0
@@ -37,6 +38,7 @@ class multipleChoiceViewController: UIViewController {
     //changes the colors of text, buttons, and question field
     override func viewWillAppear(_ animated: Bool) {
         self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
+        changeQuestionsButton.tintColor = StorageEnclave.Access.getCurrentSecondaryColor()
         self.answer1.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
         self.answer2.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
         self.answer3.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()

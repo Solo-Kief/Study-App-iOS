@@ -12,6 +12,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet var GreenColorPicker: UISlider!
     @IBOutlet var BlueColorPicker: UISlider!
     @IBOutlet var sampleText: UILabel!
+    @IBOutlet var editAddButton: UIButton!
     
     override func viewDidLoad() {
         view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
@@ -19,6 +20,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         GreenColorPicker.thumbTintColor = StorageEnclave.Access.getCurrentSecondaryColor()
         BlueColorPicker.thumbTintColor = StorageEnclave.Access.getCurrentSecondaryColor()
         UIObjectPicker.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
+        
         
         UIObjectPicker.selectRow(0, inComponent: 0, animated: true)
         pickerView(UIObjectPicker, didSelectRow: 0, inComponent: 0)

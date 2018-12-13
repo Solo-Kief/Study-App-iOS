@@ -1,7 +1,7 @@
 //  AddEditQuestionSetViewController.swift
 //  Study App iOS
 //
-//  Created by Matthew Riley on 12/5/18.
+//  Created by Solomon Kieffer on 12/13/18.
 //  Copyright © 2018 Phoenix Development. All rights reserved.
 
 import UIKit
@@ -13,16 +13,31 @@ class AddEditQuestionSetViewController: UIViewController {
     @IBOutlet var questionSetDescriptionField: UITextView!
     @IBOutlet var questionSetTypeSelector: UISegmentedControl!
     @IBOutlet var submitButton: UIButton!
+    @IBOutlet var cancelButton: UIButton!
     
     var didCreateQuestionSet: ((Bool) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Colors and Semantics
         questionSetTypeSelector.layer.cornerRadius = 20.0
         questionSetTypeSelector.layer.borderColor = StorageEnclave.Access.getCurrentSecondaryColor().cgColor
         questionSetTypeSelector.layer.borderWidth = 1.0
         questionSetTypeSelector.layer.masksToBounds = true
         
+        view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
+        cancelButton.tintColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        titleLabel.textColor = StorageEnclave.Access.getCurrentTextColor()
+        questionSetTitleField.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
+        questionSetTitleField.textColor = StorageEnclave.Access.getCurrentTextColor()
+        questionSetDescriptionField.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
+        questionSetDescriptionField.textColor = StorageEnclave.Access.getCurrentTextColor()
+        QSTypeLabel.textColor = StorageEnclave.Access.getCurrentTextColor()
+        questionSetTypeSelector.tintColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        submitButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        submitButton.tintColor = StorageEnclave.Access.getCurrentTextColor()
+        //////////////////////
         didCreateQuestionSet!(false)
     }
     

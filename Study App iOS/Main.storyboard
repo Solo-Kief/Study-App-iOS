@@ -127,10 +127,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mGo-7F-goo">
-                                <rect key="frame" x="16" y="388.66666666666669" width="343" height="35"/>
+                                <rect key="frame" x="16" y="441" width="343" height="35"/>
                                 <color key="backgroundColor" red="1" green="0.55984028200000002" blue="0.21234739150000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="J3S-9d-xdr"/>
                                     <constraint firstAttribute="height" constant="35" id="b5w-Qy-aWY"/>
                                 </constraints>
                                 <state key="normal" title="Edit / Add Question Sets">
@@ -160,6 +159,7 @@
                             <constraint firstItem="MHx-so-lWk" firstAttribute="top" secondItem="Ggq-Rn-wCj" secondAttribute="bottom" constant="16" id="JXM-SQ-Pvj"/>
                             <constraint firstItem="cLq-Uq-csr" firstAttribute="top" secondItem="Gfd-hd-T2G" secondAttribute="top" id="JzE-B4-w2g"/>
                             <constraint firstItem="cLq-Uq-csr" firstAttribute="leading" secondItem="Gfd-hd-T2G" secondAttribute="leading" id="KFd-Xm-si1"/>
+                            <constraint firstItem="Ggq-Rn-wCj" firstAttribute="top" secondItem="mGo-7F-goo" secondAttribute="bottom" constant="100" id="KIT-jZ-B0I"/>
                             <constraint firstItem="Gfd-hd-T2G" firstAttribute="trailing" secondItem="zMj-Zc-gPE" secondAttribute="trailing" constant="16" id="RMf-zg-P8M"/>
                             <constraint firstItem="ruX-bg-GkC" firstAttribute="leading" secondItem="Gfd-hd-T2G" secondAttribute="leading" constant="16" id="VUT-kt-vH3"/>
                             <constraint firstItem="Ggq-Rn-wCj" firstAttribute="leading" secondItem="Gfd-hd-T2G" secondAttribute="leading" constant="16" id="Ytj-3C-YWN"/>
@@ -171,7 +171,6 @@
                             <constraint firstItem="cLq-Uq-csr" firstAttribute="trailing" secondItem="Gfd-hd-T2G" secondAttribute="trailing" id="q7C-KO-a1a"/>
                             <constraint firstItem="Gfd-hd-T2G" firstAttribute="trailing" secondItem="wiY-uZ-Blf" secondAttribute="trailing" constant="16" id="ql9-FF-dHz"/>
                             <constraint firstItem="wiY-uZ-Blf" firstAttribute="top" secondItem="cLq-Uq-csr" secondAttribute="bottom" constant="8" id="s3g-6s-39z"/>
-                            <constraint firstItem="mGo-7F-goo" firstAttribute="centerY" secondItem="NoS-dC-skX" secondAttribute="centerY" id="u9g-Go-38r"/>
                             <constraint firstItem="Gfd-hd-T2G" firstAttribute="trailing" secondItem="ruX-bg-GkC" secondAttribute="trailing" constant="16" id="uIO-aG-GZA"/>
                             <constraint firstItem="Gfd-hd-T2G" firstAttribute="trailing" secondItem="axg-Po-4lV" secondAttribute="trailing" constant="16" id="wCI-76-Yxu"/>
                             <constraint firstItem="zMj-Zc-gPE" firstAttribute="top" secondItem="wiY-uZ-Blf" secondAttribute="bottom" constant="4" id="yvI-5F-atN"/>
@@ -185,6 +184,7 @@
                         <outlet property="GreenColorPicker" destination="zMj-Zc-gPE" id="4TS-Jh-M4C"/>
                         <outlet property="RedColorPicker" destination="wiY-uZ-Blf" id="faK-mw-da3"/>
                         <outlet property="UIObjectPicker" destination="cLq-Uq-csr" id="MdI-hz-kdQ"/>
+                        <outlet property="editAddButton" destination="mGo-7F-goo" id="Wtf-Qv-0OL"/>
                         <outlet property="sampleText" destination="ruX-bg-GkC" id="wbN-75-2tY"/>
                     </connections>
                 </viewController>
@@ -200,28 +200,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkX-Eg-CPl">
-                                <rect key="frame" x="22.666666666666657" y="668.66666666666663" width="330" height="45"/>
-                                <color key="backgroundColor" red="0.93678659200668335" green="0.55373817682266235" blue="0.20377305150032043" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="SoZ-15-pUm"/>
-                                    <constraint firstAttribute="width" constant="330" id="Vyo-Ns-vzE"/>
-                                </constraints>
-                                <state key="normal" title="Answer 4">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="22"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cvy-y6-f1h"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zle-1J-HLd">
-                                <rect key="frame" x="22.666666666666657" y="573.66666666666663" width="330" height="45"/>
+                                <rect key="frame" x="22.666666666666657" y="573" width="330" height="45"/>
                                 <color key="backgroundColor" red="0.93678659200668335" green="0.55373817682266235" blue="0.20377305150032043" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="330" id="25O-q4-Gh3"/>
@@ -240,7 +220,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmS-Ye-ZdN">
-                                <rect key="frame" x="22.666666666666657" y="478.66666666666669" width="330" height="45.000000000000057"/>
+                                <rect key="frame" x="22.666666666666657" y="478" width="330" height="45"/>
                                 <color key="backgroundColor" red="0.93678659200668335" green="0.55373817682266235" blue="0.20377305150032043" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Fu9-lD-lrG"/>
@@ -259,7 +239,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00n-Jb-baS">
-                                <rect key="frame" x="22.666666666666657" y="383.66666666666669" width="330" height="45"/>
+                                <rect key="frame" x="22.666666666666657" y="383" width="330" height="45"/>
                                 <color key="backgroundColor" red="1" green="0.55984028200049374" blue="0.21234739150955617" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="33l-bE-4r2"/>
@@ -303,12 +283,32 @@
                                     <segue destination="NtW-MV-KbI" kind="show" id="VrV-bM-Xc2"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkX-Eg-CPl">
+                                <rect key="frame" x="22.666666666666657" y="668" width="330" height="45"/>
+                                <color key="backgroundColor" red="0.93678659200668335" green="0.55373817682266235" blue="0.20377305150032043" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="SoZ-15-pUm"/>
+                                    <constraint firstAttribute="width" constant="330" id="Vyo-Ns-vzE"/>
+                                </constraints>
+                                <state key="normal" title="Answer 4">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cvy-y6-f1h"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gdb-JK-xiZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6IP-Nv-QY5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fkX-Eg-CPl" secondAttribute="bottom" constant="16" id="8Ig-Ko-hHQ"/>
                             <constraint firstItem="dmS-Ye-ZdN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BAp-M8-08j"/>
-                            <constraint firstItem="00n-Jb-baS" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="FDN-vc-H5Z"/>
                             <constraint firstItem="Zle-1J-HLd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ITp-OI-AO6"/>
                             <constraint firstItem="X5S-q9-M4t" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LlY-At-JEu"/>
                             <constraint firstItem="X5S-q9-M4t" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="45" id="O98-8L-UiO"/>
@@ -327,6 +327,7 @@
                         <outlet property="answer2" destination="dmS-Ye-ZdN" id="5jW-1o-yRf"/>
                         <outlet property="answer3" destination="Zle-1J-HLd" id="XGi-e5-kk1"/>
                         <outlet property="answer4" destination="fkX-Eg-CPl" id="EcF-AT-b0n"/>
+                        <outlet property="changeQuestionsButton" destination="gdb-JK-xiZ" id="ZdP-hc-hPM"/>
                         <outlet property="questionField" destination="X5S-q9-M4t" id="Epc-Vs-qFJ"/>
                         <outlet property="questionFieldHeight" destination="8ef-FC-bMV" id="TTz-WC-IsQ"/>
                     </connections>
@@ -557,6 +558,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Flashcard" image="Flashcard-Icon" id="GHq-yd-XnH"/>
                     <connections>
+                        <outlet property="changeQuestionsButton" destination="STS-9J-vO4" id="xE3-ql-XqO"/>
                         <outlet property="flashCardTextView" destination="UaO-yC-h7q" id="wFH-db-MnY"/>
                         <outlet property="flipButton" destination="R3Z-Rf-Q7s" id="0sp-2N-VdU"/>
                         <outlet property="nextButton" destination="BF5-AY-ZBP" id="x5Q-gl-SZf"/>
@@ -624,7 +626,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGU-Xk-SF2">
                                 <rect key="frame" x="8" y="41" width="48" height="30"/>
-                                <state key="normal" title="Cancle"/>
+                                <state key="normal" title="Cancel"/>
                                 <connections>
                                     <action selector="returnToPrevious:" destination="fJ7-ra-XS7" eventType="touchUpInside" id="GLO-sO-Zc3"/>
                                 </connections>
@@ -675,6 +677,7 @@
                     <navigationItem key="navigationItem" id="ow3-jA-N0O"/>
                     <connections>
                         <outlet property="QSTypeLabel" destination="Rhz-bQ-K6B" id="LBH-N1-dgM"/>
+                        <outlet property="cancelButton" destination="qGU-Xk-SF2" id="J96-Em-YjM"/>
                         <outlet property="questionSetDescriptionField" destination="agj-Zu-vd0" id="AhP-v4-WUo"/>
                         <outlet property="questionSetTitleField" destination="aAS-s0-hZG" id="mcf-qc-5gv"/>
                         <outlet property="questionSetTypeSelector" destination="rCw-rw-npZ" id="DQ0-9v-V3F"/>
@@ -772,6 +775,7 @@
                     <tabBarItem key="tabBarItem" title="Fill In" image="FITB-Icon" id="QD0-yq-gSM"/>
                     <connections>
                         <outlet property="answerTextField" destination="CHW-bd-g29" id="ya3-6f-cOl"/>
+                        <outlet property="changeQuestionsButton" destination="MVh-EN-QrZ" id="Juw-eY-yL4"/>
                         <outlet property="questionTextView" destination="fTL-k2-9Ps" id="ZIn-83-9mC"/>
                         <outlet property="questionTextViewHeight" destination="E32-Ng-hPT" id="iUi-uO-bBc"/>
                         <outlet property="submitButton" destination="MAU-YA-iwz" id="SsG-PU-WOr"/>
@@ -799,7 +803,7 @@
                                     <outlet property="delegate" destination="bTc-GV-Nde" id="UI5-5x-jpl"/>
                                 </connections>
                             </pickerView>
-                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Question" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AHI-Rl-Prl">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Question" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AHI-Rl-Prl">
                                 <rect key="frame" x="16" y="371" width="343" height="30"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="textColor"/>
@@ -812,7 +816,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answer #1" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iTR-9X-zih">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answer #1" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iTR-9X-zih">
                                 <rect key="frame" x="16" y="416" width="343" height="30"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="textColor"/>
@@ -825,7 +829,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answer #2" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8ab-cQ-h9x">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answer #2" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8ab-cQ-h9x">
                                 <rect key="frame" x="16" y="461" width="343" height="30"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="textColor"/>
@@ -838,7 +842,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answer #3" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4bc-Hg-jhd">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answer #3" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4bc-Hg-jhd">
                                 <rect key="frame" x="16" y="506" width="343" height="30"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="textColor"/>
@@ -851,7 +855,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answer #4" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jUK-5D-H3E">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answer #4" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jUK-5D-H3E">
                                 <rect key="frame" x="16" y="551" width="343" height="30"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="textColor"/>
@@ -878,9 +882,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="GQF-9b-SZW">
-                                <rect key="frame" x="16" y="591" width="343" height="41"/>
+                                <rect key="frame" x="16" y="591" width="343" height="31"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="uvo-IA-Je6"/>
+                                    <constraint firstAttribute="height" constant="30" id="uvo-IA-Je6"/>
                                 </constraints>
                                 <segments>
                                     <segment title="1"/>
@@ -961,6 +965,24 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pg4-Cw-rrl">
+                                <rect key="frame" x="16" y="641" width="343" height="35"/>
+                                <color key="backgroundColor" red="1" green="0.55984028200000002" blue="0.21234739150000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="bjY-nz-G3U"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="md8-PF-HmH"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Add New Question"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="17"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addNewQuestion:" destination="bTc-GV-Nde" eventType="touchUpInside" id="yfc-n6-S8s"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -990,11 +1012,14 @@
                             <constraint firstItem="jUK-5D-H3E" firstAttribute="top" secondItem="4bc-Hg-jhd" secondAttribute="bottom" constant="15" id="a4S-hP-CNV"/>
                             <constraint firstItem="ngr-3c-St4" firstAttribute="leading" secondItem="ARS-oW-4RL" secondAttribute="leading" id="atU-fp-fhX"/>
                             <constraint firstItem="jUK-5D-H3E" firstAttribute="leading" secondItem="ARS-oW-4RL" secondAttribute="leading" constant="16" id="bR6-ps-yqJ"/>
+                            <constraint firstItem="pg4-Cw-rrl" firstAttribute="leading" secondItem="ARS-oW-4RL" secondAttribute="leading" constant="16" id="hEb-CV-cMC"/>
                             <constraint firstItem="ARS-oW-4RL" firstAttribute="trailing" secondItem="aqv-HG-f3A" secondAttribute="trailing" constant="16" id="hQI-dx-oFU"/>
                             <constraint firstItem="ngr-3c-St4" firstAttribute="top" secondItem="6MJ-EC-bsg" secondAttribute="bottom" id="hpg-xO-Awm"/>
                             <constraint firstItem="ARS-oW-4RL" firstAttribute="trailing" secondItem="uLL-vq-Pu8" secondAttribute="trailing" id="iTD-Jm-rTC"/>
+                            <constraint firstItem="ARS-oW-4RL" firstAttribute="trailing" secondItem="pg4-Cw-rrl" secondAttribute="trailing" constant="16" id="kzW-3U-OhR"/>
                             <constraint firstItem="6MJ-EC-bsg" firstAttribute="centerY" secondItem="uLL-vq-Pu8" secondAttribute="centerY" id="lZt-Ia-3Ye"/>
                             <constraint firstItem="uLL-vq-Pu8" firstAttribute="leading" secondItem="ARS-oW-4RL" secondAttribute="leading" id="lsf-Zs-ErQ"/>
+                            <constraint firstItem="grv-Bd-DDy" firstAttribute="top" secondItem="pg4-Cw-rrl" secondAttribute="bottom" constant="16" id="niI-yw-JUe"/>
                             <constraint firstItem="grv-Bd-DDy" firstAttribute="leading" secondItem="ARS-oW-4RL" secondAttribute="leading" constant="16" id="sSi-im-HSQ"/>
                             <constraint firstItem="ARS-oW-4RL" firstAttribute="bottom" secondItem="iS4-Tc-Lib" secondAttribute="bottom" id="sqi-bV-4Wv"/>
                             <constraint firstItem="ARS-oW-4RL" firstAttribute="trailing" secondItem="8ab-cQ-h9x" secondAttribute="trailing" constant="16" id="tYX-BZ-WjL"/>
@@ -1009,12 +1034,14 @@
                     </view>
                     <connections>
                         <outlet property="addNewButton" destination="9ob-LW-ns9" id="thA-5L-PeO"/>
+                        <outlet property="addQuestionButton" destination="pg4-Cw-rrl" id="VZ3-6m-Prt"/>
                         <outlet property="answerField1" destination="iTR-9X-zih" id="rZd-G3-acQ"/>
                         <outlet property="answerField2" destination="8ab-cQ-h9x" id="dSo-6D-EWZ"/>
                         <outlet property="answerField3" destination="4bc-Hg-jhd" id="cED-kb-MuB"/>
                         <outlet property="answerField4" destination="jUK-5D-H3E" id="s6x-qC-rXz"/>
                         <outlet property="correctAnswerSelecter" destination="GQF-9b-SZW" id="Ovs-VP-sYX"/>
                         <outlet property="questionField" destination="AHI-Rl-Prl" id="kY3-an-NYM"/>
+                        <outlet property="questionSetDescriptionField" destination="aqv-HG-f3A" id="MoR-iI-qvw"/>
                         <outlet property="questionSetNameField" destination="CCk-vr-uid" id="l1m-At-mpf"/>
                         <outlet property="questionSetPicker" destination="ngr-3c-St4" id="yW1-Ec-GXH"/>
                         <outlet property="returnButton" destination="6MJ-EC-bsg" id="qj0-es-UVg"/>

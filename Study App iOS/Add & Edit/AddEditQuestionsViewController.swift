@@ -1,7 +1,7 @@
 //  AddEditQuestionsViewController.swift
 //  Study App iOS
 //
-//  Created by Matthew Riley on 12/5/18.
+//  Created by Solomon Kieffer on 12/13/18.
 //  Copyright © 2018 Phoenix Development. All rights reserved.
 
 import UIKit
@@ -11,6 +11,7 @@ class AddEditQuestionsViewController: UIViewController, UIPickerViewDelegate, UI
     @IBOutlet var addNewButton: UIButton!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var questionSetPicker: UIPickerView!
+    @IBOutlet var questionSetDescriptionField: UITextView!
     @IBOutlet var questionSetNameField: UITextField!
     @IBOutlet var questionField: UITextField!
     @IBOutlet var answerField1: UITextField!
@@ -18,22 +19,48 @@ class AddEditQuestionsViewController: UIViewController, UIPickerViewDelegate, UI
     @IBOutlet var answerField3: UITextField!
     @IBOutlet var answerField4: UITextField!
     @IBOutlet var correctAnswerSelecter: UISegmentedControl!
+    @IBOutlet var addQuestionButton: UIButton!
     
     var questionWasChanged = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Colors and Semantics
         correctAnswerSelecter.layer.cornerRadius = 20.0
         correctAnswerSelecter.layer.borderColor = StorageEnclave.Access.getCurrentSecondaryColor().cgColor
         correctAnswerSelecter.layer.borderWidth = 1.0
         correctAnswerSelecter.layer.masksToBounds = true
         
+        view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
+        titleLabel.textColor = StorageEnclave.Access.getCurrentTextColor()
+        questionSetNameField.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
+        questionSetDescriptionField.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
+        questionField.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
+        answerField1.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
+        answerField2.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
+        answerField3.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
+        answerField4.backgroundColor = StorageEnclave.Access.getCurrentTertiaryColor()
+        questionSetNameField.textColor = StorageEnclave.Access.getCurrentTextColor()
+        questionSetDescriptionField.textColor = StorageEnclave.Access.getCurrentTextColor()
+        questionField.textColor = StorageEnclave.Access.getCurrentTextColor()
+        answerField1.textColor = StorageEnclave.Access.getCurrentTextColor()
+        answerField2.textColor = StorageEnclave.Access.getCurrentTextColor()
+        answerField3.textColor = StorageEnclave.Access.getCurrentTextColor()
+        answerField4.textColor = StorageEnclave.Access.getCurrentTextColor()
+        correctAnswerSelecter.tintColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        returnButton.tintColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        addNewButton.tintColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        addQuestionButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
+        addQuestionButton.tintColor = StorageEnclave.Access.getCurrentTextColor()
+        //////////////////////
         questionField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         answerField1.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         answerField2.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         answerField3.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         answerField4.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        
+        updateText()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -86,8 +113,14 @@ class AddEditQuestionsViewController: UIViewController, UIPickerViewDelegate, UI
     //////////////////////////////
     
     func updateText() { //Loads all of the questions into the text fields.
+        guard StorageEnclave.Access.getQuestionSetCount() != 0 else {
+            questionSetNameField.isEnabled = false
+            questionSetDescriptionField.isEditable = false
+            return
+        }
         guard StorageEnclave.Access.getQuestionSet(at: questionSetPicker.selectedRow(inComponent: 0))?.questions.count != 0 else {
             questionSetNameField.text = StorageEnclave.Access.getQuestionSet(at: questionSetPicker.selectedRow(inComponent: 0))!.title
+            questionSetDescriptionField.text = StorageEnclave.Access.getQuestionSet(at: questionSetPicker.selectedRow(inComponent: 0))!.details
             questionField.text = ""
             answerField1.text = ""
             answerField2.text = ""
@@ -95,25 +128,35 @@ class AddEditQuestionsViewController: UIViewController, UIPickerViewDelegate, UI
             answerField4.text = ""
             correctAnswerSelecter.selectedSegmentIndex = -1
             correctAnswerSelecter.isEnabled = false
+            questionSetNameField.isEnabled = true
+            questionSetDescriptionField.isEditable = true
+            answerField1.isEnabled = false
+            answerField2.isEnabled = false
+            answerField3.isEnabled = false
+            answerField4.isEnabled = false
+            correctAnswerSelecter.isEnabled = false
             return
         }
         
         let qset = StorageEnclave.Access.getQuestionSet(at: questionSetPicker.selectedRow(inComponent: 0))
         
         if qset!.style == .MultipleChoice {
+            questionSetNameField.isEnabled = true
+            questionSetDescriptionField.isEditable = true
+            answerField1.isEnabled = true
             answerField2.isEnabled = true
             answerField3.isEnabled = true
             answerField4.isEnabled = true
             correctAnswerSelecter.isEnabled = true
-            correctAnswerSelecter.selectedSegmentIndex = -1
             
             questionSetNameField.text = qset!.title
+            questionSetDescriptionField.text = qset?.details
             questionField.text = qset!.questions[questionSetPicker.selectedRow(inComponent: 1)].question
             answerField1.text = qset!.questions[questionSetPicker.selectedRow(inComponent: 1)].answers[0]
             answerField2.text = qset!.questions[questionSetPicker.selectedRow(inComponent: 1)].answers[1]
             answerField3.text = qset!.questions[questionSetPicker.selectedRow(inComponent: 1)].answers[2]
             answerField4.text = qset!.questions[questionSetPicker.selectedRow(inComponent: 1)].answers[3]
-            correctAnswerSelecter.selectedSegmentIndex = qset!.questions[questionSetPicker.selectedRow(inComponent: 1)].correctAnswer
+            correctAnswerSelecter.selectedSegmentIndex = qset!.questions[questionSetPicker.selectedRow(inComponent: 1)].correctAnswer - 1
         } else {
             answerField2.isEnabled = false
             answerField3.isEnabled = false
@@ -122,6 +165,7 @@ class AddEditQuestionsViewController: UIViewController, UIPickerViewDelegate, UI
             correctAnswerSelecter.selectedSegmentIndex = 0
             
             questionSetNameField.text = qset!.title
+            questionSetDescriptionField.text = qset?.details
             questionField.text = qset!.questions[questionSetPicker.selectedRow(inComponent: 1)].question
             answerField1.text = qset!.questions[questionSetPicker.selectedRow(inComponent: 1)].answers[0]
             answerField2.text = ""
@@ -141,6 +185,20 @@ class AddEditQuestionsViewController: UIViewController, UIPickerViewDelegate, UI
             StorageEnclave.Access.changeQuestionCorrectAnswer(for: questionSetPicker.selectedRow(inComponent: 0), from: questionSetPicker.selectedRow(inComponent: 0), to: correctAnswerSelecter.selectedSegmentIndex + 1)
         }
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func addNewQuestion(_ sender: Any) {
+        if StorageEnclave.Access.getQuestionSetCount() != 0 {
+            let newQuestion = Question(Question: "", Answers: ["", "", "", ""], CorrectAnswer: 1)
+            StorageEnclave.Access.addQuestion(newQuestion, to: questionSetPicker.selectedRow(inComponent: 0))
+            
+            questionSetPicker.reloadComponent(1)
+        } else {
+            let alert = UIAlertController(title: "Can't Add Question", message: "You must add a question set first in order to add a question", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     @IBAction func deleteQuestion(_ sender: UIButton) {

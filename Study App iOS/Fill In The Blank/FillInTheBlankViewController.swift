@@ -9,11 +9,11 @@
 import UIKit
 
 class FillInTheBlankViewController: UIViewController {
-    
     @IBOutlet weak var questionTextView: UITextView!
     @IBOutlet weak var questionTextViewHeight: NSLayoutConstraint!
     @IBOutlet weak var answerTextField: UITextField!
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet var changeQuestionsButton: UIButton!
     
     var questionSetStyle = QuestionSet.Style.Blank
     var liveQuestionSet: QuestionSet?
@@ -50,6 +50,7 @@ class FillInTheBlankViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         submitButton.isHidden = false
+        changeQuestionsButton.tintColor = StorageEnclave.Access.getCurrentSecondaryColor()
         self.view.backgroundColor = StorageEnclave.Access.getCurrentPrimaryColor()
         self.submitButton.titleLabel?.textColor = StorageEnclave.Access.getCurrentTextColor()
         self.submitButton.backgroundColor = StorageEnclave.Access.getCurrentSecondaryColor()
