@@ -44,6 +44,7 @@ class QuestionSetCollectionViewController: UIViewController, UICollectionViewDat
             StorageEnclave.Access.setDefault(for: self.selectedStyle!, to: item.QSID)
         }
     }
+    
     @IBAction func cancleUpdate(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

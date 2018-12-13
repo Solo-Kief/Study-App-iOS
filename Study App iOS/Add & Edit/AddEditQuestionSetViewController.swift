@@ -1,112 +1,63 @@
-//
 //  AddEditQuestionSetViewController.swift
 //  Study App iOS
 //
 //  Created by Matthew Riley on 12/5/18.
 //  Copyright © 2018 Phoenix Development. All rights reserved.
-//
 
 import UIKit
 
 class AddEditQuestionSetViewController: UIViewController {
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var QSTypeLabel: UILabel!
+    @IBOutlet var questionSetTitleField: UITextField!
+    @IBOutlet var questionSetDescriptionField: UITextView!
+    @IBOutlet var questionSetTypeSelector: UISegmentedControl!
+    @IBOutlet var submitButton: UIButton!
     
-    @IBOutlet weak var questionSetTitleTextField: UITextField!
-    @IBOutlet weak var questionSetDetailsTextField: UITextField!
-    @IBOutlet weak var setTypeSegmentedControl: UISegmentedControl!
-    
-    var newQuestionSet: ((QuestionSet) -> Void)?
-    
-    var questionsArrayToEdit: [Question] = []
-    
-    var questionSetToEdit: QuestionSet!
-    
-    var style = QuestionSet.Style.Blank
-    
-    var tempQuestionsArray: [Question] = []
+    var didCreateQuestionSet: ((Bool) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        questionSetTypeSelector.layer.cornerRadius = 20.0
+        questionSetTypeSelector.layer.borderColor = StorageEnclave.Access.getCurrentSecondaryColor().cgColor
+        questionSetTypeSelector.layer.borderWidth = 1.0
+        questionSetTypeSelector.layer.masksToBounds = true
         
-//        questionSetTitleTextField.text = questionSetToEdit.title
-//        questionSetDetailsTextField.text = questionSetToEdit.details //Make new to make a correction here as details is an optional
-//
-//        switch questionSetToEdit.style {
-//        case .MultipleChoice:
-//            setTypeSegmentedControl.selectedSegmentIndex = 0
-//        case .FlashCard:
-//            setTypeSegmentedControl.selectedSegmentIndex = 1
-//        case .Blank:
-//            setTypeSegmentedControl.selectedSegmentIndex = 2
-//        }
-//
-        
-        
-        
-        
-        
-        // Do any additional setup after loading the view.
+        didCreateQuestionSet!(false)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? AddEditQuestionsViewController {
-            //We need to pass through the Game that we'll be editing.
-            destination.questionsArrayToEdit = tempQuestionsArray
-        }
-    }
-    
-    func showErrorAlert() {
-        let errorAlert = UIAlertController(title: "Error", message: "Please enter text in all fields, or hit the back button to go back to the quiz.", preferredStyle: .actionSheet)
-        let dismissAction = UIAlertAction(title: "Close", style: .default, handler: nil)
-        errorAlert.addAction(dismissAction)
-        self.present(errorAlert, animated: true, completion: nil)
-    }
-    
-    
-    
-    // touch screen to make keyboard go away
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+
     
-    @IBAction func editButtonTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "showQuestionsScreen", sender: self)
-    }
-    
-    
-    
-    @IBAction func submitButtonTapped(_ sender: Any) {
-        
-        guard let title = questionSetTitleTextField.text, !title.isEmpty,
-            let details = questionSetDetailsTextField.text, !details.isEmpty else {
-                //Put an error alert function here
-                return
+    @IBAction func addQuestionSet(_ sender: Any) {
+        guard questionSetTitleField.text != "" && questionSetTypeSelector.selectedSegmentIndex != -1 else {
+            let alert = UIAlertController(title: "Incomplete", message: "A title must be made and a type selected in order to create a new question set", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            
+            alert.addAction(action)
+            return present(alert, animated: true, completion: nil)
         }
         
-        switch setTypeSegmentedControl.selectedSegmentIndex {
-        case 0:
-            style = .MultipleChoice
-        case 1:
-            style = .FlashCard
-        case 2:
-            style = .Blank
-        default:
-            style = .MultipleChoice
+        let newSet = QuestionSet(Title: questionSetTitleField.text!, Style: QuestionSet.Style(rawValue: questionSetTypeSelector.selectedSegmentIndex)!)
+        if questionSetDescriptionField.text != "" {
+            newSet.details = questionSetDescriptionField.text!
         }
         
-        questionSetToEdit = QuestionSet(Title: title, Details: details, Questions: questionsArrayToEdit, Style: style)
+        StorageEnclave.Access.addQuestionSet(newSet)
+        
+        let alert = UIAlertController(title: "Complete", message: "You're new question set had been created.", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Great!", style: .default) { (_) in
+            self.didCreateQuestionSet!(true)
+            self.returnToPrevious(self.submitButton)
+        }
+        
+        alert.addAction(action)
+        present(alert, animated: true)
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-    @IBAction func unwindToAddEditQuestionSet(segue: UIStoryboardSegue) {}
+    @IBAction func returnToPrevious(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 }
-
-

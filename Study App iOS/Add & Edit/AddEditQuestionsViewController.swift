@@ -1,168 +1,178 @@
-//
 //  AddEditQuestionsViewController.swift
 //  Study App iOS
 //
 //  Created by Matthew Riley on 12/5/18.
 //  Copyright © 2018 Phoenix Development. All rights reserved.
-//
 
 import UIKit
 
-class AddEditQuestionsViewController: UIViewController {
+class AddEditQuestionsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    @IBOutlet var returnButton: UIButton!
+    @IBOutlet var addNewButton: UIButton!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var questionSetPicker: UIPickerView!
+    @IBOutlet var questionSetNameField: UITextField!
+    @IBOutlet var questionField: UITextField!
+    @IBOutlet var answerField1: UITextField!
+    @IBOutlet var answerField2: UITextField!
+    @IBOutlet var answerField3: UITextField!
+    @IBOutlet var answerField4: UITextField!
+    @IBOutlet var correctAnswerSelecter: UISegmentedControl!
     
-    @IBOutlet weak var questionTextField: UITextField!
-    @IBOutlet weak var answerOneTextField: UITextField!
-    @IBOutlet weak var answerTwoTextField: UITextField!
-    @IBOutlet weak var answerThreeTextField: UITextField!
-    @IBOutlet weak var answerFourTextField: UITextField!
-    @IBOutlet weak var correctAnswerSegmentController: UISegmentedControl!
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var submitButton: UIButton!
-    @IBOutlet weak var currentQuestionLabel: UILabel!
-    
-    var questionsArrayToEdit: [Question] = []
-
-    var currentQuestion: Question!
+    var questionWasChanged = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        currentQuestionLabel.text = "Editing Question 1"
-//        questionTextField.text = questionsArrayToEdit[0].question
-//        answerOneTextField.text = questionsArrayToEdit[0].answers[0]
-//        answerTwoTextField.text = questionsArrayToEdit[0].answers[1]
-//        answerThreeTextField.text = questionsArrayToEdit[0].answers[2]
-//        answerFourTextField.text = questionsArrayToEdit[0].answers[3]
-//
-//        switch questionsArrayToEdit[0].correctAnswer {
-//        case 0:
-//            correctAnswerSegmentController.selectedSegmentIndex = 0
-//        case 1:
-//            correctAnswerSegmentController.selectedSegmentIndex = 1
-//        case 2:
-//            correctAnswerSegmentController.selectedSegmentIndex = 2
-//        case 3:
-//            correctAnswerSegmentController.selectedSegmentIndex = 3
-//        default:
-//            correctAnswerSegmentController.selectedSegmentIndex = 0
-//        }
-
+        correctAnswerSelecter.layer.cornerRadius = 20.0
+        correctAnswerSelecter.layer.borderColor = StorageEnclave.Access.getCurrentSecondaryColor().cgColor
+        correctAnswerSelecter.layer.borderWidth = 1.0
+        correctAnswerSelecter.layer.masksToBounds = true
         
-        
-        
-        
-        // Do any additional setup after loading the view.
+        questionField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        answerField1.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        answerField2.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        answerField3.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        answerField4.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     
-    
-    
-    
-    func showErrorAlert() {
-        let errorAlert = UIAlertController(title: "Error", message: "Please enter text in all fields, or hit the back button to go back to the quiz.", preferredStyle: .actionSheet)
-        let dismissAction = UIAlertAction(title: "Close", style: .default) { _ in
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? AddEditQuestionSetViewController {
+            destination.didCreateQuestionSet = { didCreateQuestionSet in
+                if didCreateQuestionSet {
+                    self.questionSetPicker.selectRow(StorageEnclave.Access.getQuestionSetCount() - 1, inComponent: 0, animated: true)
+                }
+            }
         }
-        errorAlert.addAction(dismissAction)
-        self.present(errorAlert, animated: true, completion: nil)
     }
     
-    // touch screen to make keyboard go away
+    @objc @IBAction func textFieldDidChange() {
+        questionWasChanged = true
+    }
+    
+    //MARK:- Picker View Functions
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 2
+    } //Column Count
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if component == 0 {
+            return StorageEnclave.Access.getQuestionSetCount()
+        } else {
+            if StorageEnclave.Access.getQuestionSetCount() == 0 {
+                return 0
+            } else {
+                return StorageEnclave.Access.getQuestionSet(at: pickerView.selectedRow(inComponent: 0))!.questions.count
+            }
+        }
+    } //Row Count
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if component == 0 {
+            return StorageEnclave.Access.getQuestionSet(at: row)?.title
+        } else {
+            return "Question \(row + 1)"
+        }
+    } //Text in Rows
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if component == 0 {
+            pickerView.reloadComponent(1)
+            updateText()
+        } else {
+            updateText()
+        }
+    } //Reloads the rows' texts when a new row is selected.
+    //////////////////////////////
+    
+    func updateText() { //Loads all of the questions into the text fields.
+        guard StorageEnclave.Access.getQuestionSet(at: questionSetPicker.selectedRow(inComponent: 0))?.questions.count != 0 else {
+            questionSetNameField.text = StorageEnclave.Access.getQuestionSet(at: questionSetPicker.selectedRow(inComponent: 0))!.title
+            questionField.text = ""
+            answerField1.text = ""
+            answerField2.text = ""
+            answerField3.text = ""
+            answerField4.text = ""
+            correctAnswerSelecter.selectedSegmentIndex = -1
+            correctAnswerSelecter.isEnabled = false
+            return
+        }
+        
+        let qset = StorageEnclave.Access.getQuestionSet(at: questionSetPicker.selectedRow(inComponent: 0))
+        
+        if qset!.style == .MultipleChoice {
+            answerField2.isEnabled = true
+            answerField3.isEnabled = true
+            answerField4.isEnabled = true
+            correctAnswerSelecter.isEnabled = true
+            correctAnswerSelecter.selectedSegmentIndex = -1
+            
+            questionSetNameField.text = qset!.title
+            questionField.text = qset!.questions[questionSetPicker.selectedRow(inComponent: 1)].question
+            answerField1.text = qset!.questions[questionSetPicker.selectedRow(inComponent: 1)].answers[0]
+            answerField2.text = qset!.questions[questionSetPicker.selectedRow(inComponent: 1)].answers[1]
+            answerField3.text = qset!.questions[questionSetPicker.selectedRow(inComponent: 1)].answers[2]
+            answerField4.text = qset!.questions[questionSetPicker.selectedRow(inComponent: 1)].answers[3]
+            correctAnswerSelecter.selectedSegmentIndex = qset!.questions[questionSetPicker.selectedRow(inComponent: 1)].correctAnswer
+        } else {
+            answerField2.isEnabled = false
+            answerField3.isEnabled = false
+            answerField4.isEnabled = false
+            correctAnswerSelecter.isEnabled = false
+            correctAnswerSelecter.selectedSegmentIndex = 0
+            
+            questionSetNameField.text = qset!.title
+            questionField.text = qset!.questions[questionSetPicker.selectedRow(inComponent: 1)].question
+            answerField1.text = qset!.questions[questionSetPicker.selectedRow(inComponent: 1)].answers[0]
+            answerField2.text = ""
+            answerField3.text = ""
+            answerField4.text = ""
+        }
+    }
+    
+    @IBAction func returnToPrevious(_ sender: Any) {
+        if questionWasChanged {
+            StorageEnclave.Access.changeTitleOfQuestionSet(at: questionSetPicker.selectedRow(inComponent: 0), to: questionSetNameField.text!)
+            StorageEnclave.Access.changeQuestionText(for: questionSetPicker.selectedRow(inComponent: 0),from: questionSetPicker.selectedRow(inComponent: 1), to: questionField.text!)
+            StorageEnclave.Access.changeQuestionAnswer(for: questionSetPicker.selectedRow(inComponent: 0), from: questionSetPicker.selectedRow(inComponent: 1), to: answerField1.text!, at: 0)
+            StorageEnclave.Access.changeQuestionAnswer(for: questionSetPicker.selectedRow(inComponent: 0), from: questionSetPicker.selectedRow(inComponent: 1), to: answerField2.text!, at: 1)
+            StorageEnclave.Access.changeQuestionAnswer(for: questionSetPicker.selectedRow(inComponent: 0), from: questionSetPicker.selectedRow(inComponent: 1), to: answerField3.text!, at: 2)
+            StorageEnclave.Access.changeQuestionAnswer(for: questionSetPicker.selectedRow(inComponent: 0), from: questionSetPicker.selectedRow(inComponent: 1), to: answerField4.text!, at: 3)
+            StorageEnclave.Access.changeQuestionCorrectAnswer(for: questionSetPicker.selectedRow(inComponent: 0), from: questionSetPicker.selectedRow(inComponent: 0), to: correctAnswerSelecter.selectedSegmentIndex + 1)
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func deleteQuestion(_ sender: UIButton) {
+        if StorageEnclave.Access.getQuestionSet(at: questionSetPicker.selectedRow(inComponent: 0))!.questions.count > 0 {
+            let alert = UIAlertController(title: "Delete Question?", message: "Are you sure you want to delete this question?", preferredStyle: .alert)
+            let cancleAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+                StorageEnclave.Access.removeQuestion(at: self.questionSetPicker.selectedRow(inComponent: 1), from: self.questionSetPicker.selectedRow(inComponent: 0))
+                
+                self.questionSetPicker.reloadComponent(1)
+            }
+            alert.addAction(cancleAction)
+            alert.addAction(deleteAction)
+            
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func deleteQuestionSet(_ sender: UIButton) {
+        if StorageEnclave.Access.getQuestionSetCount() > 0 {
+            let alert = UIAlertController(title: "Delete Question Set?", message: "Are you sure you want to delete this entire question set?", preferredStyle: .alert)
+            let cancleAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+                StorageEnclave.Access.removeQuestionSet(at: self.questionSetPicker.selectedRow(inComponent: 0))
+                self.questionSetPicker.reloadAllComponents()
+            }
+            alert.addAction(cancleAction)
+            alert.addAction(deleteAction)
+        }
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-    @IBAction func backButtonTapped(_ sender: Any) {
-        
-    }
-    
-    @IBAction func nextButtonTapped(_ sender: Any) {
-        // make sure each txt field has txt
-        guard let question = questionTextField.text, !question.isEmpty,
-            let answerOne = answerOneTextField.text, !answerOne.isEmpty,
-            let answerTwo = answerTwoTextField.text, !answerTwo.isEmpty,
-            let answerThree = answerThreeTextField.text, !answerThree.isEmpty,
-            let answerFour = answerFourTextField.text, !answerFour.isEmpty else {
-                showErrorAlert()
-                return
-        }
-        
-        var correctAnswer: Int!
-        
-        switch correctAnswerSegmentController.selectedSegmentIndex {
-        case 0:
-            correctAnswer = 0
-        case 1:
-            correctAnswer = 1
-        case 2:
-            correctAnswer = 2
-        case 3:
-            correctAnswer = 3
-        default:
-            correctAnswer = 0
-        }
-        
-        currentQuestion = Question(Question: question, Answers: [answerOne, answerTwo, answerThree, answerFour], CorrectAnswer: correctAnswer)
-
-        questionsArrayToEdit.append(currentQuestion)
-        
-        questionTextField.text = ""
-        answerOneTextField.text = ""
-        answerTwoTextField.text = ""
-        answerThreeTextField.text = ""
-        answerFourTextField.text = ""
-        
-        
-    }
-    
-    
-    @IBAction func submitButton(_ sender: Any) {
-        
-        // make sure each txt field has txt
-        guard let question = questionTextField.text, !question.isEmpty,
-            let answerOne = answerOneTextField.text, !answerOne.isEmpty,
-            let answerTwo = answerTwoTextField.text, !answerTwo.isEmpty,
-            let answerThree = answerThreeTextField.text, !answerThree.isEmpty,
-            let answerFour = answerFourTextField.text, !answerFour.isEmpty else {
-                showErrorAlert()
-                return
-        }
-        
-        var correctAnswer: Int!
-        
-        switch correctAnswerSegmentController.selectedSegmentIndex {
-        case 0:
-            correctAnswer = 0
-        case 1:
-            correctAnswer = 1
-        case 2:
-            correctAnswer = 2
-        case 3:
-            correctAnswer = 3
-        default:
-            correctAnswer = 0
-        }
-        
-        
-        currentQuestion = Question(Question: question, Answers: [answerOne, answerTwo, answerThree, answerFour], CorrectAnswer: correctAnswer)
-        
-        questionsArrayToEdit.append(currentQuestion)
-        
-        self.performSegue(withIdentifier: "unwindToAddEditQuestionSetWithSegue", sender: self)
-    }
-    
 }
-
-
-
-
